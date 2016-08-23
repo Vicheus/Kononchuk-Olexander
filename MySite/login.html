@@ -5,6 +5,7 @@
     <meta name="description" content="login page for Shura's first site"/>
     <meta name="keywords" content="Shura, web-development, php, javaScript, html5, css3"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="validation.js"></script>
     </head>
@@ -12,18 +13,14 @@
 <body>
     <div class="container">
         <h1>Authentication</h1>
-        <form name="login" method="post" onsubmit="return formValidation();">
-            <div class="row">
-                <label for="userName">Username:</label>
-                <input class="col-xs-12" id="userName" type="text" name="userName" width="25" size="25" placeholder="Please input your username">
-            </div>
-            <div class="row">
-                <label for="password">Password:</label>
-                <input class="col-xs-12" id="password" type="password" name="password" width="25" size="25" placeholder="Please input your password">
-            </div>
-            <div class="row">
-                <button class="btn btn-success col-xs-2" type="submit" name="submit" value="submit">Submit</button>
-            </div>
+        <form name="login" method="post" action="index.php">
+            <ul style="list-style-type: none; padding: 0;">
+            <li><label for="userName">Username:</label></li>
+            <li><input id="userName" type="text" name="userName" width="25" size="25" placeholder="Please input your username"></li>
+            <li><label for="password">Password:</label></li>
+            <li><input id="password" type="password" name="password" width="25" size="25" placeholder="Please input your password"></li>
+            <li style="padding-top: 5px;"><button class="btn btn-success" type="submit" name="submit" value="submit"><i class="fa fa-save"></i> Submit</button></li>
+            </ul>
         </form>
     </div>
 </body>
