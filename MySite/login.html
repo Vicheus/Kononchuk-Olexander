@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta title="Login page"/>
-	<meta description="Shura's login page"/>
-</head>	
+    <title>Login page</title>
+    <meta name="description" content="login page for Shura's first site"/>
+    <meta name="keywords" content="Shura, web-development, php, javaScript, html5, css3"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="validation.js"></script>
+    </head>
 
 <body>
-	<form action="index.php" method="POST">
-		<h3>Authenticate</h3>
-		<p><input type="text" name="userName" width="25" maxlength="25" placeholder="input your username"></p>
-		<p><input type="password" name="password" width="25" maxlength="25" placeholder="input your password"></p>
-		<p><button type="submit" name="submit">Submit</button></p>
-	</form>
+    <div class="container">
+        <h1>Authentication</h1>
+        <form name="login" method="post" onsubmit="return formValidation();">
+            <div class="row">
+                <label for="userName">Username:</label>
+                <input class="col-xs-12" id="userName" type="text" name="userName" width="25" size="25" placeholder="Please input your username">
+            </div>
+            <div class="row">
+                <label for="password">Password:</label>
+                <input class="col-xs-12" id="password" type="password" name="password" width="25" size="25" placeholder="Please input your password">
+            </div>
+            <div class="row">
+                <button class="btn btn-success col-xs-2" type="submit" name="submit" value="submit">Submit</button>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
