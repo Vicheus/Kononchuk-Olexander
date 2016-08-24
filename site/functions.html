@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS functions</title>
+	<script type="text/javascript">
+		//var number = +prompt("Please, input the number from 1 to 100");
+		function square (num) {
+			if (num) {
+				var rezult = num*num;
+				document.write("Rezult is: " + rezult);
+			}
+			else {
+				document.write("You did not input correct number<br />");
+			}
+		}
+		//square(number);
+		function fio () {
+			arrayFio = ['first name', 'fathers name', 'last name'];
+			var rezult = new Array;
+			for (var i = 0; i <= (arrayFio.length -1); i++) {
+				var name = prompt("Please, input your " + arrayFio[i]);
+				if (name === null) {
+					rezult[0] = "You are fucking idiot, dude!";
+					break;
+				}
+				else if (name && !parseInt(name) && parseInt(name) !== 0) {
+					rezult[i] = name;
+				}
+				else {
+					i = i - 1;
+				}
+			}
+			return rezult;
+		}
+		var fullName = fio();
+		for (var i = 0; i <= (fullName.length - 1); i++) {
+				document.write(fullName[i] + "&nbsp");
+			}
+		
+	</script>
+</head>
+<body>
+<h1></h1>
+
+</body>
+</html>
