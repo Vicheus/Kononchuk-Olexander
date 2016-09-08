@@ -1,16 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shura
- * Date: 23.08.16
- * Time: 18:11
- */
 
-namespace SignUp;
+namespace Authorization;
+
+require_once __DIR__ . '/../classes.php';
 
 class SignUp
 {
-
     const DB_USERNAME = "root";
     const DB_PASSWORD = "root";
     const DB_HOST= "localhost";
@@ -82,5 +77,5 @@ class SignUp
 
 }
 
-    $user = new SignUp();
-    $user->reg_user($_POST['password'], $_POST['username'], $_POST['email']);
+//    $user = new SignUp();
+//    $user->reg_user($_POST['password'], $_POST['username'], $_POST['email']);
