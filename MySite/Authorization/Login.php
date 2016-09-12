@@ -6,6 +6,7 @@ require_once __DIR__ . '/../classes.php';
 class Login 
 {
 //class SignUp
+
 	const DB_USERNAME = "root";
     const DB_PASSWORD = "root";
     const DB_HOST= "localhost";
@@ -81,7 +82,12 @@ class Login
         }
     }
 
-	public function fieldsIsNotEmpty ($usrnm, $pass) 
+    /**
+     * @param $usrnm
+     * @param $pass
+     * @return string
+     */
+    public function fieldsIsNotEmpty ($usrnm, $pass)
 	{
 		if (!$usrnm) {
 			$this->message = "You should input your username first";
@@ -91,7 +97,12 @@ class Login
 		}
 		return $this->message;
 	}
-    public function checkUser ($usrnm, $pass)
+
+    /**
+     * @param $usrnm
+     * @param $pass
+     */
+	public function checkUser ($usrnm, $pass)
     {
         $sql = "SELECT user_name, user_pass FROM users WHERE user_name = '$usrnm'";
         $check = $this->conn->query($sql)->fetch_assoc();

@@ -5,7 +5,7 @@
  * Date: 08.09.16
  * Time: 11:21
  */
-namespace tester;
+namespace Authorization\tester;
 
 class testClass
 {
