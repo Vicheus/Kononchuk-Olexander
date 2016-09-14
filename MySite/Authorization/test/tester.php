@@ -7,11 +7,12 @@
  */
 namespace Authorization\tester;
 
-class testClass
-{
-    public $name = 'Shura';
+use Authorization\Session;
 
-    public function returnName ($name) {
-        echo "My name is $name";
-    }
-}
+require_once __DIR__ . '/../../classes.php';
+
+$sessionTest = new Session();
+$array = ['name' => 'Shura', 'pass' => '4238366', 'id' => '3'];
+$sessionTest->set('user', $array);
+$sessionTest->destroy();
+

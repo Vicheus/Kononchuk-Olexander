@@ -1,45 +1,31 @@
 <?php
 namespace Authorization;
 
+use CustomClasses\Session;
+
 require_once __DIR__ . '/../classes.php';
 
-class Login 
+use CustomClasses\MyDatabase;
+
+class Login
 {
 //class SignUp
 
-	const DB_USERNAME = "root";
-    const DB_PASSWORD = "root";
-    const DB_HOST= "localhost";
-    const DB_NAME= "login";
-
     /**
-     * @var \mysqli
+     * @var MyDatabase
      */
-    public $conn;
+    public $myConn;
 
-    /**
-    * @var string
-    **/
-    public $message;
-
-    /**
-     * SignUp constructor.
-     */
     public function __construct()
     {
-        $this->conn = new \mysqli (self::DB_HOST, self::DB_USERNAME, self::DB_PASSWORD, self::DB_NAME);
-        //check connection
-        if ($this->conn->connect_error)
-        {
-            echo "Connection error" . $this->conn->connect_error;
-        }
-        else {
-            $this->conn->select_db(self::DB_NAME);
-        }
-
-        return $this->conn;
-
+        $this->myConn = new MyDatabase();
+        return $this->myConn;
     }
+
+    /**
+     * @var string
+     **/
+    public $message;
 
     /***
      * @param $password
@@ -47,8 +33,9 @@ class Login
      * @param $email
      * @return bool
      */
-    public function regUser ($password, $username, $email)
+    public function regUser ($username, $password, $email)
     {
+
         if (!$username) {
             echo "You must input username first";
         }
@@ -59,16 +46,19 @@ class Login
             echo "You must input email first";
         }
         $password = password_hash($password, PASSWORD_BCRYPT);
-        $sqlName = "SELECT * FROM users WHERE user_name = '$username';";
-        $sqlEmail = "SELECT * FROM users WHERE user_email = '$email';";
-        $checkName = $this->conn->query($sqlName);
-        $checkEmail = $this->conn->query($sqlEmail);
+        $sqlName = "SELECT * FROM users WHERE user_name = ?;";
+        $sqlEmail = "SELECT * FROM users WHERE user_email = ?;";
+        $tempArray1 = array("s", $username);
+        $tempArray2 = array("s", $password);
+        $checkName = $this->myConn->executeSqlAndReturnArray($sqlName, $tempArray1);
+        $checkEmail = $this->myConn->executeSqlAndReturnArray($sqlEmail, $tempArray2);
         $countRowName = $checkName->num_rows;
         $countRowEmail = $checkEmail->num_rows;
         $validateEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
         if ($countRowName == 0 && $countRowEmail == 0 && $validateEmail) {
-            $sql1 = "INSERT INTO users (user_name, user_pass, user_email) VALUES ('$username', '$password', '$email');";
-            $this->conn->query($sql1) or die($this->conn->error);
+            $sql1 = "INSERT INTO users (user_name, user_pass, user_email) VALUES (?, ?, ?);";
+            $array = array("sss", "$username", "$password", "$email");
+            $this->myConn->executeSqlAndReturnArray($sql1, $array);
             header("Location: http://localhost:8000/SignIn.html");
         }
         elseif ($countRowName != 0) {
@@ -101,17 +91,22 @@ class Login
     /**
      * @param $usrnm
      * @param $pass
+     * @return array
      */
 	public function checkUser ($usrnm, $pass)
     {
-        $sql = "SELECT user_name, user_pass FROM users WHERE user_name = '$usrnm'";
-        $check = $this->conn->query($sql)->fetch_assoc();
+        $session = new Session();
+        $sql = "SELECT user_name, user_pass, user_id FROM users WHERE user_name = ?";
+        $a = array("s", "$usrnm");
+        $check = $this->myConn->executeSqlAndReturnArray($sql, $a)->fetch_assoc();
+
+        $session->set('user', $check);
         if (!$check) {
         	echo "User with such username is not exists";
         }
         else {
 	        if (password_verify($pass, $check['user_pass']) == TRUE) {
-	        	header('Location: http://www.google.com');
+	        	header('Location: http://localhost:8000/account.html');
 	        }
 	        else {
 	        	echo "This is invalid password";
