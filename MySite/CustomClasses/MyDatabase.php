@@ -28,22 +28,22 @@ class MyDatabase {
      */
     public function __construct()
     {
-
         $this->conn = new \mysqli (self::DB_HOST, self::DB_USERNAME, self::DB_PASSWORD, self::DB_NAME);
         //check connection
-        if ($this->conn->connect_error)
-        {
+        if ($this->conn->connect_error) {
             echo "Connection error" . $this->conn->connect_error;
-        }
-        else {
+        } else {
             $this->conn->select_db(self::DB_NAME);
         }
-
-        return $this->conn;
-
     }
 
-    public function executeSqlAndReturnArray ($paramSql, $paramArray) {
+    /**
+     * @param $paramSql string
+     * @param $paramArray array
+     * @return bool|\mysqli_result
+     */
+    public function executeSqlAndReturnArray ($paramSql, array $paramArray)
+    {
         $res = $this->conn->prepare($paramSql);
         $ref = new \ReflectionClass('mysqli_stmt');
         $method = $ref->getMethod('bind_param');

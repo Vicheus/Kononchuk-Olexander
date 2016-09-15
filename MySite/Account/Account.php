@@ -29,13 +29,13 @@ class Account extends Login {
     /**
      * @return bool
      */
-    public function checkAuthorizationOfUser () {
+    public function checkAuthorizationOfUser ()
+    {
         $session = new Session();
-        $this->id = intval($session->get('user', 'user_id'));
+        $this->id = (int) ($session->get('user', 'user_id'));
         if (!$this->id) {
             header("Location: http://localhost:8000/SignIn.html");
-        }
-        else {
+        } else {
             return $this->id;
         }
     }
@@ -50,10 +50,10 @@ class Account extends Login {
         if (!$paramFirstName || !$paramSurname || !$paramCity) {
             $validator = false;
             echo "All required fields must be filled" . "<br />";
-        }
-        else {
+        } else {
             $validator = true;
         }
+
         return $this->validator = $validator;
     }
 
@@ -63,7 +63,8 @@ class Account extends Login {
      * @param $paramAddress
      * @param $paramCity
      */
-    public function addDataToAccount ($paramFirstName, $paramSurname, $paramAddress, $paramCity) {
+    public function addDataToAccount ($paramFirstName, $paramSurname, $paramAddress, $paramCity)
+    {
         if ($this->validator) {
             $sql = "INSERT INTO user_account (user_id, first_name, surname, address, city) VALUES (?, ?, ?, ?, ?)";
             $tempArray = array("issss", "$this->id", "$paramFirstName", "$paramSurname", "$paramAddress", "$paramCity");
@@ -71,8 +72,7 @@ class Account extends Login {
             if (!isset($userAccountId['user_id'])) {
                 $this->myConn->executeSqlAndReturnArray($sql, $tempArray);
                 echo "Your account was updated successfully" . "<br />";
-            }
-            else {
+            } else {
                 echo "You have been already created an account" . "<br />";
             }
         }
@@ -83,7 +83,8 @@ class Account extends Login {
      * @param $paramConfirmNewPassword
      * @param $paramOldPassword
      */
-    public function changePassword ($paramNewPassword, $paramConfirmNewPassword, $paramOldPassword) {
+    public function changePassword ($paramNewPassword, $paramConfirmNewPassword, $paramOldPassword)
+    {
         $sql = "SELECT user_pass FROM users WHERE user_id = ?;";
         $id = $this->id;
         $tempArray = array("i", "$id");
@@ -97,13 +98,16 @@ class Account extends Login {
             var_dump($tempArray);
             $this->myConn->executeSqlAndReturnArray($sql, $tempArray);
             header("Location: http://localhost:8000/Authorization/SignIn.html");
-        }
-        else {
+        } else {
             echo "Your password have not been updated";
         }
     }
 
-    public function deleteAccount () {
+    /**
+     *
+     */
+    public function deleteAccount ()
+    {
         $sql1 = "DELETE FROM users WHERE user_id = ?";
         $sql2 = "DELETE FROM user_account WHERE user_id = ?";
         $tempArray = array("i", "$this->id");
