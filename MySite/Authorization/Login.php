@@ -35,21 +35,20 @@ class Login
      */
     public function regUser ($username, $password, $email)
     {
-
         if (!$username) {
-            echo "You must input username first";
+            echo "You must input username first" . "<br />";
         }
         elseif (!$password) {
-            echo "You must input password first";
+            echo "You must input password first" . "<br />";
         }
         elseif (!$email) {
-            echo "You must input email first";
+            echo "You must input email first" . "<br />";
         }
         $password = password_hash($password, PASSWORD_BCRYPT);
         $sqlName = "SELECT * FROM users WHERE user_name = ?;";
         $sqlEmail = "SELECT * FROM users WHERE user_email = ?;";
-        $tempArray1 = array("s", $username);
-        $tempArray2 = array("s", $password);
+        $tempArray1 = array("s", "$username");
+        $tempArray2 = array("s", "$password");
         $checkName = $this->myConn->executeSqlAndReturnArray($sqlName, $tempArray1);
         $checkEmail = $this->myConn->executeSqlAndReturnArray($sqlEmail, $tempArray2);
         $countRowName = $checkName->num_rows;
@@ -59,16 +58,16 @@ class Login
             $sql1 = "INSERT INTO users (user_name, user_pass, user_email) VALUES (?, ?, ?);";
             $array = array("sss", "$username", "$password", "$email");
             $this->myConn->executeSqlAndReturnArray($sql1, $array);
-            header("Location: http://localhost:8000/SignIn.html");
+            header("Location: http://localhost:8000/Authorization/SignIn.html");
         }
         elseif ($countRowName != 0) {
-            echo "Sorry but user with name = " . $username . " is already exists";
+            echo "Sorry but user with name = " . $username . " is already exists" . "<br />";
         }
         elseif ($countRowEmail != 0) {
-            echo "Sorry but user with email = " . $email . " is already exists";
+            echo "Sorry but user with email = " . $email . " is already exists" . "<br />";
         }
         elseif (!$validateEmail) {
-            echo "Sorry but you have input incorrect email";
+            echo "Sorry but you have input incorrect email" . "<br />";
         }
     }
 
@@ -80,10 +79,10 @@ class Login
     public function fieldsIsNotEmpty ($usrnm, $pass)
 	{
 		if (!$usrnm) {
-			$this->message = "You should input your username first";
+			$this->message = "You should input your username first" . "<br />";
 		}
 		elseif (!$pass) {
-			$this->message = "You should input your password first";
+			$this->message = "You should input your password first" . "<br />";
 		}
 		return $this->message;
 	}
@@ -102,14 +101,14 @@ class Login
 
         $session->set('user', $check);
         if (!$check) {
-        	echo "User with such username is not exists";
+        	echo "User with such username is not exists" . "<br />";
         }
         else {
 	        if (password_verify($pass, $check['user_pass']) == TRUE) {
-	        	header('Location: http://localhost:8000/account.html');
+	        	header('Location: http://localhost:8000/Account/account.html');
 	        }
 	        else {
-	        	echo "This is invalid password";
+	        	echo "This is invalid password" . "<br />";
 	        }
 	    }
 	}

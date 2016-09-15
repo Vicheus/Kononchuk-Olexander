@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h2>Personal information</h2>
-        <form name="accountForm" id="accountForm" method="post" action="Account.php">
+        <form name="accountForm" id="accountForm" method="post" action="account.php">
             <fieldset>
             <legend>Personal data</legend>
             <p><label for="firstName">First name*:</label></p>
@@ -26,7 +26,7 @@
             </fieldset>
             <fieldset>
             <legend>Want to change your password?</legend>
-            <p><label for="oldPassword">New password:</label></p>
+            <p><label for="oldPassword">Old password:</label></p>
             <p><input type="password" name="oldPassword" id="oldPassword" value=""></p>
             <p><label for="newPassword">New password:</label></p>
             <p><input type="password" name="newPassword" id="newPassword" value=""></p>
@@ -34,9 +34,10 @@
             <p><input type="password" name="confirmNewPassword" id="confirmNewPassword" value=""></p>
             </fieldset>
             <div class="row">
-                <div class="col-xs-4">
-                    <button class="btn btn-success" type="submit" id="submit" name="submit" value="submit"><i class="fa fa-save"></i> Submit</button>
-                    <button class="btn btn-danger" type="button" id="deleteAccount" name="deleteAccount" value=""><i class="fa fa-minus-circle"></i> Delete account</button>
+                <div class="col-xs-6">
+                    <button class="btn btn-success" type="submit" id="updateAccount" name="updateAccount" value=""><i class="fa fa-save"></i> Update account</button>
+                    <button class="btn btn-success" type="submit" id="changePassword" name="changePassword" value=""><i class="fa fa-save"></i> Change password</button>
+                    <button class="btn btn-danger" type="submit" id="deleteAccount" name="deleteAccount" value=""><i class="fa fa-minus-circle"></i> Delete account</button>
                 </div>
             </div>
 
