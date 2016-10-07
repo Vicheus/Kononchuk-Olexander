@@ -7,25 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="validation.js"></script>
+    <script src=""></script>
     </head>
 
 <body>
     <div class="container">
         <h1>Registration</h1>
-        <form name="signUp" method="POST" action="SignUp.php">
+        <form name="signUp" method="POST" action="../Authorization/signup.php">
             <ul style="list-style-type: none; padding: 0;">
             <li><label for="username">Username:</label></li>
-            <li><input id="username" type="text" name="username" width="25" size="25" placeholder="Please input your username"></li>
+            <li><input id="username" type="text" name="username" width="25" size="25" placeholder="Please input your username" value="{{ usernameValue }}"></li>
             <li style="color: #bd2c00">{{ username }}</li>
             <li><label for="password">Password:</label></li>
-            <li><input id="password" type="password" name="password" width="25" size="25" placeholder="Please input your password"></li>
+            <li><input id="password" type="password" name="password" width="25" size="25" placeholder="Please input your password" value=""></li>
             <li style="color: #bd2c00">{{ password }}</li>
             <li><label for="email">E-mail:</label></li>
-            <li><input id="email" type="text" name="email" width="45" size="45" placeholder="Please input your e-mail"></li>
+            <li><input id="email" type="text" name="email" width="45" size="45" placeholder="Please input your e-mail" value="{{ emailValue }}"></li>
             <li style="color: #bd2c00">{{ email }}</li>
             <li style="padding-top: 5px;"><button class="btn btn-success" type="submit" name="submit" value="submit"><i class="fa fa-save"></i> Submit</button></li>
-            <li><a id="link" href="{{ link }}">I've already had an account</a></li>
+            <li><a id="link" href="../Authorization/signin.html">I've already had an account</a></li>
+            <li style="color: #bd2c00">{{ errorMessage }}</li>
             </ul>
         </form>
     </div>

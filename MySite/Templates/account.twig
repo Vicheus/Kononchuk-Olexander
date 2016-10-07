@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="your personal account page on THIS site">
+    <meta name="keywords" content="Shura, web-development, php, javaScript, html5, css3"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Account page</title>
+</head>
+<body>
+<div class="container">
+    <h2>Personal information</h2>
+    <form name="accountForm" id="accountForm" method="post" action="../Account/account.php">
+        <fieldset>
+            <legend>Personal data</legend>
+            <p><label for="firstName">First name*:</label></p>
+            <p><input type="text" name="firstName" id="firstName" value="{{ firstNameValue }}"></p>
+            <p style="color: #bd2c00">{{ firstName }}</p>
+            <p><label for="surname">Surname*:</label></p>
+            <p><input type="text" name="surname" id="surname" value="{{ surnameValue }}"></p>
+            <p style="color: #bd2c00">{{ surname }}</p>
+            <p><label for="address">Address:</label></p>
+            <p><input type="text" name="address" id="address" value="{{ addressValue }}"></p>
+            <p><label for="city">City*:</label></p>
+            <p><input type="text" name="city" id="city" value="{{ cityValue }}"></p>
+            <p style="color: #bd2c00">{{ city }}</p>
+        </fieldset>
+        <fieldset>
+            <legend>Want to change your password?</legend>
+            <p><label for="oldPassword">Old password:</label></p>
+            <p><input type="password" name="oldPassword" id="oldPassword" value=""></p>
+            <p><label for="newPassword">New password:</label></p>
+            <p><input type="password" name="newPassword" id="newPassword" value=""></p>
+            <p><label for="confirmNewPassword">Confirm new password:</label></p>
+            <p><input type="password" name="confirmNewPassword" id="confirmNewPassword" value=""></p>
+        </fieldset>
+        <div class="row">
+            <div class="col-xs-6">
+                <button class="btn btn-success" type="submit" id="updateAccount" name="updateAccount" value=""><i class="fa fa-save"></i> Update account</button>
+                <button class="btn btn-success" type="submit" id="changePassword" name="changePassword" value=""><i class="fa fa-save"></i> Change password</button>
+                <button class="btn btn-danger" type="submit" id="deleteAccount" name="deleteAccount" value=""><i class="fa fa-minus-circle"></i> Delete account</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+</body>
+</html>

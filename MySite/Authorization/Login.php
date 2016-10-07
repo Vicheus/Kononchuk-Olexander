@@ -6,6 +6,7 @@ use CustomClasses\Session;
 require_once __DIR__ . '/../classes.php';
 
 use CustomClasses\MyDatabase;
+use Templates\Templates;
 
 class Login
 {
@@ -17,13 +18,8 @@ class Login
     public function __construct()
     {
         $this->myConn = new MyDatabase();
-        return $this->myConn;
+        $this->twig = new Templates();
     }
-
-    /**
-     * @var string
-     **/
-    public $message;
 
     /***
      * @param $password
@@ -33,18 +29,11 @@ class Login
      */
     public function regUser ($username, $password, $email)
     {
-        if (!$username) {
-            echo "You must input username first" . "<br />";
-        } elseif (!$password) {
-            echo "You must input password first" . "<br />";
-        } elseif (!$email) {
-            echo "You must input email first" . "<br />";
-        }
         $password = password_hash($password, PASSWORD_BCRYPT);
         $sqlName = "SELECT * FROM users WHERE user_name = ?;";
         $sqlEmail = "SELECT * FROM users WHERE user_email = ?;";
         $tempArray1 = array("s", "$username");
-        $tempArray2 = array("s", "$password");
+        $tempArray2 = array("s", "$email");
         $checkName = $this->myConn->executeSqlAndReturnArray($sqlName, $tempArray1);
         $checkEmail = $this->myConn->executeSqlAndReturnArray($sqlEmail, $tempArray2);
         $countRowName = $checkName->num_rows;
@@ -54,31 +43,19 @@ class Login
             $sql1 = "INSERT INTO users (user_name, user_pass, user_email) VALUES (?, ?, ?);";
             $array = array("sss", "$username", "$password", "$email");
             $this->myConn->executeSqlAndReturnArray($sql1, $array);
-            header("Location: http://localhost:8000/Authorization/SignIn.html");
+            echo $this->twig->environment->render('signin.twig', array());
         } elseif ($countRowName != 0) {
-            echo "Sorry but user with name = " . $username . " is already exists" . "<br />";
+            return $this->twig->environment->render('signup.twig', array('errorMessage' => "Sorry but user with name = " . $username . " is already exists",
+                                                                         'emailValue'   => $email));
         } elseif ($countRowEmail != 0) {
-            echo "Sorry but user with email = " . $email . " is already exists" . "<br />";
+            return $this->twig->environment->render('signup.twig', array('errorMessage' => "Sorry but user with email = " . $email . " is already exists",
+                                                                         'usernameValue' => $username));
         } elseif (!$validateEmail) {
-            echo "Sorry but you have input incorrect email" . "<br />";
+            return $this->twig->environment->render('signup.twig', array('errorMessage'  => "Sorry but you have input the wrong email",
+                                                                         'usernameValue' => $username,
+                                                                         'emailValue'    => $email));
         }
     }
-
-    /**
-     * @param $usrnm
-     * @param $pass
-     * @return string
-     */
-    public function fieldsIsNotEmpty ($usrnm, $pass)
-	{
-		if (!$usrnm) {
-			$this->message = "You should input your username first" . "<br />";
-		} elseif (!$pass) {
-			$this->message = "You should input your password first" . "<br />";
-		}
-
-		return $this->message;
-	}
 
     /**
      * @param $usrnm
@@ -91,14 +68,14 @@ class Login
         $sql = "SELECT user_name, user_pass, user_id FROM users WHERE user_name = ?";
         $a = array("s", "$usrnm");
         $check = $this->myConn->executeSqlAndReturnArray($sql, $a)->fetch_assoc();
-        $session->set('user', $check);
-        if (!$check) {
-        	echo "User with such username is not exists" . "<br />";
+        if ($check['user_name'] != $usrnm) {
+            return $this->twig->environment->render('signin.twig', array('errorMessage' => "User with $usrnm username is not exists"));
         } else {
-	        if (password_verify($pass, $check['user_pass']) == TRUE) {
-	        	header('Location: http://localhost:8000/Account/account.html');
+	        if (password_verify($pass, $check['user_pass']) === true) {
+                $session->set('user', $check);
+                return $this->twig->environment->render('account.twig', array());
 	        } else {
-	        	echo "This is invalid password" . "<br />";
+	            return $this->twig->environment->render('signin.twig', array('errorMessage' => "Sorry but you have input wrong password"));
 	        }
 	    }
 	}

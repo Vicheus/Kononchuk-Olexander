@@ -7,17 +7,21 @@
  */
 namespace Account;
 
+use CustomClasses\Validation;
+
 require_once __DIR__ . '/../classes.php';
 
-$a = new Account();
-$a->checkAuthorizationOfUser();
+$account = new Account();
+$validation = new Validation();
 if (isset($_POST['updateAccount'])) {
-    $a->formValidation($_POST['firstName'], $_POST['surname'], $_POST['city']);
-    $a->addDataToAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
-}
-elseif (isset($_POST['changePassword'])) {
-    $a->changePassword($_POST['newPassword'], $_POST['confirmNewPassword'], $_POST['oldPassword']);
-}
-elseif (isset($_POST['deleteAccount'])) {
-    $a->deleteAccount();
+    $account->checkAuthorizationOfUser();
+    if (!$_POST['firstName'] || !$_POST['surname'] || !$_POST['city']) {
+        echo $validation->validationAccount($_POST['firstName'], $_POST['surname'], $_POST['city']);
+    } else {
+        echo $account->addDataToAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
+    }
+} elseif (isset($_POST['changePassword'])) {
+    echo $account->changePassword($_POST['newPassword'], $_POST['confirmNewPassword'], $_POST['oldPassword']);
+} elseif (isset($_POST['deleteAccount'])) {
+    echo $account->deleteAccount();
 }

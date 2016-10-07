@@ -10,4 +10,5 @@ $autoloader = new \Autoloader();
 $autoloader->addNamespace('Authorization', __DIR__);
 $autoloader->addNamespace('CustomClasses', __DIR__);
 $autoloader->addNamespace('Account', __DIR__);
+$autoloader->addNamespace('Templates', __DIR__);
 $autoloader->register();

@@ -10,4 +10,4 @@ require_once __DIR__ . '/../classes.php';
 use Templates\Templates;
 
 $twig = new Templates();
-echo $twig->environment->render('signup.twig', array());
+echo $twig->environment->render('signup.twig', array());//redirect on signup.twig page
