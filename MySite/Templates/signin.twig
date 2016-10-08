@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign in page</title>
+    <meta name="description" content="sign in page for Shura's first site"/>
+    <meta name="keywords" content="Shura, web-development, php, javaScript, html5, css3"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src=""></script>
+</head>
+
+<body>
+<div class="container">
+    <h1>Authentication</h1>
+    <form name="signIn" method="post" action="../Authorization/signin.php">
+        <ul style="list-style-type: none; padding: 0;">
+            <li><label for="usernameLogin">Username:</label></li>
+            <li><input id="usernameLogin" type="text" name="usernameLogin" width="25" size="25" placeholder="Please input your username" value="{{ usernameValue }}"></li>
+            <li style="color: #bd2c00">{{ username }}</li>
+            <li><label for="passwordLogin">Password:</label></li>
+            <li><input id="passwordLogin" type="password" name="passwordLogin" width="25" size="25" placeholder="Please input your password" value=""></li>
+            <li style="color: #bd2c00">{{ password }}</li>
+            <li style="padding-top: 5px;"><button class="btn btn-success" type="submit" name="submit" value="submit"><i class="fa fa-save"></i> Submit</button></li>
+            <li><a href="../Authorization/signup.html">Create new account</a></li>
+            <li style="color: #bd2c00">{{ errorMessage }}</li>
+
+        </ul>
+    </form>
+</div>
+</body>
+
+</html>

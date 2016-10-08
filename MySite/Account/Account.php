@@ -32,9 +32,9 @@ class Account extends Login {
     public function checkAuthorizationOfUser ()
     {
         $session = new Session();
-        $this->id = (int) ($session->get('user', 'user_id'));
+        $this->id = ($session->get('user', 'user_id'));
         if (!$this->id) {
-            header("Location: http://localhost:8000/SignIn.html");
+            header("Location: http://localhost:8000/Authorization/signin.html");
         } else {
             return $this->id;
         }
@@ -43,25 +43,9 @@ class Account extends Login {
     /**
      * @param $paramFirstName
      * @param $paramSurname
-     * @param $paramCity
-     * @return bool
-     */
-    public function formValidation ($paramFirstName, $paramSurname, $paramCity) {
-        if (!$paramFirstName || !$paramSurname || !$paramCity) {
-            $validator = false;
-            echo "All required fields must be filled" . "<br />";
-        } else {
-            $validator = true;
-        }
-
-        return $this->validator = $validator;
-    }
-
-    /**
-     * @param $paramFirstName
-     * @param $paramSurname
      * @param $paramAddress
      * @param $paramCity
+     * @return string
      */
     public function addDataToAccount ($paramFirstName, $paramSurname, $paramAddress, $paramCity)
     {
@@ -71,9 +55,9 @@ class Account extends Login {
             $userAccountId = $this->myConn->conn->query("SELECT user_id FROM user_account WHERE user_id = {$this->id};")->fetch_assoc();
             if (!isset($userAccountId['user_id'])) {
                 $this->myConn->executeSqlAndReturnArray($sql, $tempArray);
-                echo "Your account was updated successfully" . "<br />";
+                return $this->twig->environment->render('account.twig', array('message' => "Your account was updated successfully"));
             } else {
-                echo "You have been already created an account" . "<br />";
+                return $this->twig->environment->render('account.twig', array('errorMessage' => "You have been already created an account"));
             }
         }
     }
@@ -82,6 +66,7 @@ class Account extends Login {
      * @param $paramNewPassword
      * @param $paramConfirmNewPassword
      * @param $paramOldPassword
+     * @return string
      */
     public function changePassword ($paramNewPassword, $paramConfirmNewPassword, $paramOldPassword)
     {
@@ -97,9 +82,9 @@ class Account extends Login {
             $tempArray = array("s", "$newPassword");
             var_dump($tempArray);
             $this->myConn->executeSqlAndReturnArray($sql, $tempArray);
-            header("Location: http://localhost:8000/Authorization/SignIn.html");
+            return $this->twig->environment->render('signin.twig', array());
         } else {
-            echo "Your password have not been updated";
+            return $this->twig->environment->render('account.twig', array('errorMessage' => "Your password have not been updated"));
         }
     }
 
@@ -116,12 +101,12 @@ class Account extends Login {
         $f = $this->myConn->conn->query("SELECT * FROM users WHERE user_id = $this->id")->fetch_assoc();
         $s = $this->myConn->conn->query("SELECT * FROM user_account WHERE user_id = $this->id")->fetch_assoc();
         if (!$f['user_id'] && !$s['user_id']) {
-            echo "Your account was deleted successfully" . "<br />";
             $session = new Session();
             $session->destroy();
+            return $this->twig->environment->render('account.twig', array('message' => "Your account was deleted successfully"));
         }
         else {
-            echo "Your account was not deleted" . "<br />";
+            return $this->twig->environment->render('account.twig', array('errorMessage' => "Your account was not deleted"));
         }
     }
 }
