@@ -115,8 +115,71 @@
 
 			return rezult;
 		}
-		document.write(combination());
+		//document.write(combination());
 
+//exercise 4 from 
+		function alphabetOrder () 
+		{
+			var userString = prompt("Please input your string here, only letters are allowed");
+			var alphabet = ["a", "b", "c", "d",	"e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+			var rezult = new Array ();
+			for (var i = 0; i <= alphabet.length - 1; i++) {
+				for (var j = 0; j <= userString.length - 1; j++) {
+					if (userString[j] == alphabet[i]) {
+						rezult.push(userString[j]);
+					}
+				}
+			}
+			outputString = rezult.join("");
+
+			return outputString;
+		}
+		//document.write(alphabetOrder());
+
+		function firstLetterEveryWordToUpperCase () 
+		{
+			var userString = prompt("Please input your string here, only letters are allowed");
+			var inputArray = userString.split(" ");
+			var rezultArray = new Array;
+			for (var i = 0; i < inputArray.length; i++) {
+			 	rezultArray[i] = inputArray[i].charAt(0).toUpperCase() + inputArray[i].slice(1);
+			 }
+
+			return rezultArray.join(" ");
+		}
+		//console.log(firstLetterEveryWordToUpperCase());
+
+		function findLongestWord ()
+		{
+			var userString = prompt("Please input your string here, only letters are allowed");
+			var inputArray = userString.split(" ");
+			var longestWord = "a";
+			for (var i = 0; i < inputArray.length; i++) {
+				if(inputArray[i].length >= longestWord.length) {
+					longestWord = inputArray[i];
+				}
+			}
+
+			return longestWord;
+		}
+		//console.log("the longest word in the sentence is: " + findLongestWord());
+
+		function countVowels () 
+		{
+			var userString = prompt("Please input your string here, only letters are allowed");
+			var vowelArray = ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'];
+			var count = 0;
+			for (var i = 0; i < userString.length; i++) {
+				for (var j = 0; j < vowelArray.length; j++) {
+					if(userString.charAt(i) == vowelArray[j]) {
+						count++;
+					}
+				}
+			}
+
+			 return count;
+		}
+		console.log("Count of vowels is: " + countVowels());
 
 		
 	</script>
