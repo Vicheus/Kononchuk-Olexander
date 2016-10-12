@@ -15,6 +15,8 @@
     <form name="accountForm" id="accountForm" method="post" action="../Account/account.php">
         <fieldset>
             <legend>Personal data</legend>
+            <p style="color: #228B22">{{ message }}</p>
+            <p style="color: #bd2c00">{{ errorMessage }}</p>
             <p><label for="firstName">First name*:</label></p>
             <p><input type="text" name="firstName" id="firstName" value="{{ firstNameValue }}"></p>
             <p style="color: #bd2c00">{{ firstName }}</p>
@@ -31,10 +33,13 @@
             <legend>Want to change your password?</legend>
             <p><label for="oldPassword">Old password:</label></p>
             <p><input type="password" name="oldPassword" id="oldPassword" value=""></p>
+            <p style="color: #bd2c00">{{ oldPassword }}</p>
             <p><label for="newPassword">New password:</label></p>
             <p><input type="password" name="newPassword" id="newPassword" value=""></p>
+            <p style="color: #bd2c00">{{ newPassword }}</p>
             <p><label for="confirmNewPassword">Confirm new password:</label></p>
             <p><input type="password" name="confirmNewPassword" id="confirmNewPassword" value=""></p>
+            <p style="color: #bd2c00">{{ confirmNewPassword }}</p>
         </fieldset>
         <div class="row">
             <div class="col-xs-6">

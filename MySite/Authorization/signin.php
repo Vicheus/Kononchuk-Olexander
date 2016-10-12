@@ -2,6 +2,7 @@
 
 namespace Authorization;
 
+use CustomClasses\Session;
 use CustomClasses\Validation;
 
 require_once __DIR__ . '/../classes.php';

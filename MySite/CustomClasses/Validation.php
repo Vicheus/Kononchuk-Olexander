@@ -8,26 +8,14 @@
 
 namespace CustomClasses;
 
+use Authorization\Login;
 use Templates\Templates;
 
 require_once __DIR__ . '/../classes.php';
 
 
-class Validation
+class Validation extends Login
 {
-    /**
-     * @var MyDatabase
-     */
-    public $myConn;
-
-    /**
-     * Validation constructor.
-     */
-    public function __construct()
-    {
-        $this->myConn = new MyDatabase();
-        $this->twig = new Templates();
-    }
 
     /**
      * @param $username
@@ -79,10 +67,11 @@ class Validation
     /**
      * @param $firstName
      * @param $surname
+     * @param $address
      * @param $city
      * @return string
      */
-    public function validationAccount ($firstName, $surname, $city)
+    public function validationAccount ($firstName, $surname, $address, $city)
     {
         $validator = array();
         if (!$firstName) {
@@ -99,6 +88,9 @@ class Validation
             $validator['city'] = 'You must input city first';
         } else {
             $validator['cityValue'] = $city;
+        }
+        if ($address) {
+            $validator['addressValue'] = $address;
         }
 
         return $this->twig->environment->render('account.twig', $validator);
