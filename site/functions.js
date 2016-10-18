@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>JS functions</title>
-	<script type="text/javascript">
-	'use strict';
+'use strict';
 //var number = +prompt("Please, input the number from 1 to 100");
 		function square (num) {
 			if (num) {
@@ -256,7 +251,7 @@
 		}
 		// console.log(isPerfectNumber());
 
-//exercise 13 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
+//exercise 12 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
 		function factorsOfNumber () 
 		{
 			var userNumber = +prompt("Input number you want to compute factors here");
@@ -268,18 +263,16 @@
 				}
 			}
 			var counter = 0;
-			for (var i = 0; i <= divisorsArray.length - 1; i++) {
-				if (divisorsArray[i] * divisorsArray[i] === userNumber) {
-					factorsArray[counter] = [divisorsArray[i], divisorsArray[i]];// creating pair of integers (a == b) multiplication of which is given an input number
-					counter++;
-				} else {
-					for (var j = 0; j <= divisorsArray.length - 1; j++) {
-						if (divisorsArray[i] * divisorsArray[j] === userNumber) {
-							factorsArray[counter] = [divisorsArray[i], divisorsArray[j]];// creating pair of integers (a != b) multiplication of which is given an input number
-							counter++;
-						}
+			for (var i = 0; i <= divisorsArray.length - 2; i++) {
+				for (var j = 1; j <= divisorsArray.length - 1; j++) {
+					 if (divisorsArray[i] * divisorsArray[i] === userNumber) {
+						factorsArray[counter] = [divisorsArray[i], divisorsArray[i]];
+						counter++;
+					} else if (divisorsArray[i] * divisorsArray[j] === userNumber) {
+						factorsArray[counter] = [divisorsArray[i], divisorsArray[j]];
+						counter++;
 					}
-				}	
+				}
 			}
 			if (factorsArray.length === 0) {
 				return "This nuber has not any factors";
@@ -287,7 +280,7 @@
 
 			return factorsArray;
 		}
-		//console.log(factorsOfNumber());
+		console.log(factorsOfNumber());
 
 //exercise 14 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
 		function amoutToCoins () 
@@ -317,7 +310,7 @@
 			
 		return rezult;
 		}
-		//console.log(amoutToCoins());
+		// console.log(amoutToCoins());
 
 //exercise 15 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
 		function exp () 
@@ -354,11 +347,3 @@
 			return rezult.join("");
 		}
 		// console.log(uniqueCharactersFromString());
-
-	</script>
-</head>
-<body>
-<h1 id="body"></h1>
-
-</body>
-</html>S
