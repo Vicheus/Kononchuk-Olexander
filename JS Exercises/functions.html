@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS functions</title>
+	<script type="text/javascript">
+		//var number = +prompt("Please, input the number from 1 to 100");
+		function square (num) {
+			if (num) {
+				var rezult = num*num;
+				document.write("Rezult is: " + rezult);
+			}
+			else {
+				document.write("You did not input correct number<br />");
+			}
+		}
+		//square(number);
+		function fio () {
+			arrayFio = ['first name', 'fathers name', 'last name'];
+			var rezult = new Array;
+			for (var i = 0; i <= (arrayFio.length -1); i++) {
+				var name = prompt("Please, input your " + arrayFio[i]);
+				if (name === null) {
+					rezult[0] = "You are fucking idiot, dude!";
+					break;
+				}
+				else if (name && !parseInt(name) && parseInt(name) !== 0) {
+					rezult[i] = name;
+				}
+				else {
+					i = i - 1;
+				}
+			}
+			fullName = rezult.join(" ");
+			return fullName;
+		}
+		//document.write("Your full name is: " + fio());
+
+//exercise 1 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
+		function reverseNumber () {
+			do {
+				var number = parseInt(prompt("Please insert a number"));
+			}
+			while (isNaN(number));
+			var userString = String(number);
+			var rezult = new Array(userString.length);
+			var j = 0;
+			for (var i = userString.length - 1; i >= 0; i--) {
+				rezult[j] = userString[i];
+				j++;
+			}
+			var newNumber = rezult.join("");
+			newNumber = parseInt(newNumber);
+			return newNumber;
+		}
+		//document.write("Reverse of your number is: " + reverseNumber() + "<br/>");
+
+//exercise 2 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
+		function polindrome () {
+			do {
+				var input = prompt("Please insert a string");
+			}
+			while (!input);
+			var rezult = new Array(input.length);
+			var rezult1 = new Array(input.length);
+			var j = 0;
+			for (var i = input.length - 1; i >= 0; i--) {
+				rezult[j] = input[i];
+				rezult1[i] = input[i];
+				j++;
+			}
+			var j = 0;
+			for (var i = 0; i <= rezult.length - 1; i++) {
+				if (rezult[i] == " ") {
+					rezult.splice(i,1);
+				}
+				if (rezult1[i] == " ") {
+					rezult1.splice(i,1);
+				}
+				j++;
+			}
+			var newString = rezult.join("");
+			var newString1 = rezult1.join("");
+			if (newString == newString1) {
+				var text = "String is polindrome";
+			}
+			else {
+				text = "String isn\'t polindrome";
+			}
+			return text;
+		}
+		//document.write(polindrome() + "<br/>");
+
+//exercise 3 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
+		function combination () {
+			var userString = prompt("Enter your word", "here");
+			var arrayOfCombinations = new Array;
+			var counter = 0;
+			var counter1 = userString.length; 
+			for (var i = 0; i <= userString.length - 1; i++) {
+				for (var j = 0; j <= userString.length - 1; j++) {
+					var userStringArray = new Array(userString.length);
+					for (var k = 0; k <= userString.length - 1; k++) {
+						userStringArray[k] = userString[k];
+					}
+					arrayOfCombinations[counter] = userStringArray.splice(i, counter1 - j).join("");
+					if (arrayOfCombinations[counter] == "") {
+						arrayOfCombinations.splice(counter, 1);
+						counter--;
+					}
+					counter++;
+				}
+				counter1--;
+			}
+			var rezult = arrayOfCombinations.join("<br/>");
+
+			return rezult;
+		}
+		document.write(combination());
+
+
+		
+	</script>
+</head>
+<body>
+<h1></h1>
+
+</body>
+</html>

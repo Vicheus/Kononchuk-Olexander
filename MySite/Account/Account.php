@@ -43,6 +43,14 @@ class Account extends Login {
     }
 
     /**
+     * @param $uploadFileparam
+     */
+    public function uploadFile($uploadFileparam)
+    {
+        move_uploaded_file($_FILES['uploadedFile']['tmp_name'], $uploadFileparam);
+    }
+
+    /**
      * @param $paramFirstName
      * @param $paramSurname
      * @param $paramAddress
@@ -94,7 +102,7 @@ class Account extends Login {
     }
 
     /**
-     *
+     * @return string
      */
     public function deleteAccount ()
     {

@@ -19,7 +19,12 @@ if (isset($_POST['updateAccount'])) {
     if (!$_POST['firstName'] || !$_POST['surname'] || !$_POST['city']) {
         echo $validation->validationAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
     } else {
-        $account->addDataToAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
+        $upload = $validation->validationUploadedFile();
+        if ($upload['uploadOK'] === true) {
+            $account->uploadFile($upload['uploadFile']);
+            $account->addDataToAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
+        }
+
     }
 } elseif (isset($_POST['changePassword'])) {
     echo $account->changePassword($_POST['newPassword'], $_POST['confirmNewPassword'], $_POST['oldPassword']);
