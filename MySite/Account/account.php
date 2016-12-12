@@ -13,12 +13,18 @@ require_once __DIR__ . '/../classes.php';
 
 $account = new Account();
 $validation = new Validation();
+
 if (isset($_POST['updateAccount'])) {
     $account->checkAuthorizationOfUser();
     if (!$_POST['firstName'] || !$_POST['surname'] || !$_POST['city']) {
-        echo $validation->validationAccount($_POST['firstName'], $_POST['surname'], $_POST['city']);
+        echo $validation->validationAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
     } else {
-        echo $account->addDataToAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
+        $upload = $validation->validationUploadedFile();
+        if ($upload['uploadOK'] === true) {
+            $account->uploadFile($upload['uploadFile']);
+            $account->addDataToAccount($_POST['firstName'], $_POST['surname'], $_POST['address'], $_POST['city']);
+        }
+
     }
 } elseif (isset($_POST['changePassword'])) {
     echo $account->changePassword($_POST['newPassword'], $_POST['confirmNewPassword'], $_POST['oldPassword']);

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/IbwJobeetBundle/Resources/config/doctrine/Affiliate.orm.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/IbwJobeetBundle/Resources/config/doctrine/Category.orm.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/IbwJobeetBundle/Resources/config/doctrine/Job.orm.yml" charset="UTF-8" />
+  </component>
+</project>

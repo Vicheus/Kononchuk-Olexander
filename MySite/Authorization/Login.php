@@ -15,10 +15,16 @@ class Login
      */
     public $myConn;
 
+    /**
+     * @var Session
+     */
+    public $session;
+
     public function __construct()
     {
         $this->myConn = new MyDatabase();
         $this->twig = new Templates();
+        $this->session = new Session();
     }
 
     /***

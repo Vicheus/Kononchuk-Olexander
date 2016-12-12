@@ -8,26 +8,14 @@
 
 namespace CustomClasses;
 
+use Authorization\Login;
 use Templates\Templates;
 
 require_once __DIR__ . '/../classes.php';
 
 
-class Validation
+class Validation extends Login
 {
-    /**
-     * @var MyDatabase
-     */
-    public $myConn;
-
-    /**
-     * Validation constructor.
-     */
-    public function __construct()
-    {
-        $this->myConn = new MyDatabase();
-        $this->twig = new Templates();
-    }
 
     /**
      * @param $username
@@ -79,10 +67,11 @@ class Validation
     /**
      * @param $firstName
      * @param $surname
+     * @param $address
      * @param $city
      * @return string
      */
-    public function validationAccount ($firstName, $surname, $city)
+    public function validationAccount ($firstName, $surname, $address, $city)
     {
         $validator = array();
         if (!$firstName) {
@@ -100,8 +89,50 @@ class Validation
         } else {
             $validator['cityValue'] = $city;
         }
+        if ($address) {
+            $validator['addressValue'] = $address;
+        }
 
         return $this->twig->environment->render('account.twig', $validator);
+    }
+
+    /**
+     * @return array
+     */
+    public function validationUploadedFile()
+    {
+        $targetDir = 'uploads/';
+        $uploadFile = $targetDir . basename($_FILES['uploadedFile']['name']);
+        $fileExtension = pathinfo($uploadFile, PATHINFO_EXTENSION);
+        var_dump($fileExtension);
+        var_dump($_FILES['uploadedFile']['tmp_name']);
+        $uploadOK = true;
+        //check if file has been uploaded
+        if (empty($_FILES['uploadedFile']['size'])) {
+            echo $this->twig->environment->render('account.twig', array('uploadedFile' => "Sorry, but your file has not been uploaded"));
+            $uploadOK = false;
+        }
+        //check if file is already exists
+        if (file_exists($uploadFile)) {
+            echo $this->twig->environment->render('account.twig', array('uploadedFile' => "Sorry, but file is already exists"));
+            $uploadOK = false;
+        }
+        //check whether the file is not larger than 900000
+        if ($_FILES['uploadedFile']['size'] > 900000) {
+            echo $this->twig->environment->render('account.twig', array('uploadedFile' => "Sorry, but file is larger than 900000"));
+            $uploadOK = false;
+        }
+        // Allow certain file formats
+        if($fileExtension != "jpg" && $fileExtension != "png" && $fileExtension != "jpeg"
+            && $fileExtension != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOK = false;
+        }
+
+        return [
+            'uploadOK' => $uploadOK,
+            'uploadFile' => $uploadFile
+        ];
     }
 
 }
