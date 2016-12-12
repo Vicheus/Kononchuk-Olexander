@@ -355,10 +355,36 @@
 		}
 		// console.log(uniqueCharactersFromString());
 
+//exercise 18 from http://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php
+		function binarySearch(inputArray, element) 
+		{
+			var sortedArray = inputArray.sort(function(a, b){return a-b});
+			var first = 0;
+			var last = sortedArray.length - 1;
+			var result = -1;
+			while(result == -1) {
+				var mid = first + Math.floor(last - first)/2;
+				var x = sortedArray[mid];
+				if(x == element) {
+					result = mid;
+				} else if(sortedArray[mid] > element) {
+					last = mid - 1;
+				} else {
+					first = mid + 1;
+				}
+			}
+			result = mid + ' => ' + sortedArray[mid];
+
+			return result;
+		}
+
+		console.log(binarySearch([1, 1, 1, 1, 1, 24, 16, 15, 19, 78, 64, 37, 93, 1, 34, 2, 5, 47, 4], 1));
+
+
 	</script>
 </head>
 <body>
 <h1 id="body"></h1>
 
 </body>
-</html>S
+</html>
