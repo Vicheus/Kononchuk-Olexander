@@ -64,8 +64,20 @@ header{
 	padding: 0 20px;
 	text-transform: uppercase;
 	color: #000;
-	letter-spacing: 2.5px;
+	letter-spacing: 2px;
 	font-weight: 700;
+}
+
+
+.main_block{
+	height: 350px;
+}
+.main_block__content{
+	display: inline-block;
+	width: 33.3%;
+}
+.main_block__content>img{
+	width: 33.3%;
 }
 /*!!!!!!!!*/
 
