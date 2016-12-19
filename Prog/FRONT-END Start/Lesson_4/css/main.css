@@ -18,7 +18,7 @@ a{
 }
 
 .margin-right{
-	margin-right: 12px;
+	margin-right: 18px;
 }
 
 .container{
@@ -79,14 +79,18 @@ header{
 
 .main_block{
 	display: block;
+	font-size: 0;
 }
 .main_block__header{
 	margin: 30px auto;
+	font-size: 24px;
+	font-weight: bold;
 }
 .main_block__content{
 	height: 100%;
 	width: 378px;
 	display: inline-block;
+	font-size: 16px;
 }
 .main_block__content>img{
 	width: 378px;
