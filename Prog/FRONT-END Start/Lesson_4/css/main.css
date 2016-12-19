@@ -13,6 +13,14 @@ a{
 	text-decoration: none;
 }
 
+.center{
+	text-align: center;
+}
+
+.margin-right{
+	margin-right: 12px;
+}
+
 .container{
 	width: 1170px;
 	margin: 0 auto;
@@ -70,19 +78,20 @@ header{
 
 
 .main_block{
-	height: 350px;
 	display: block;
+}
+.main_block__header{
+	margin: 30px auto;
 }
 .main_block__content{
 	height: 100%;
-	width: 33%;
+	width: 378px;
 	display: inline-block;
 }
 .main_block__content>img{
-	width: 380px;
+	width: 378px;
 }
-.main_block__content>p{
-}
+
 /*!!!!!!!!*/
 
 
