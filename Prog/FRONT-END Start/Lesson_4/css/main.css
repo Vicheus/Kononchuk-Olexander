@@ -71,13 +71,17 @@ header{
 
 .main_block{
 	height: 350px;
+	display: block;
 }
 .main_block__content{
+	height: 100%;
+	width: 33%;
 	display: inline-block;
-	width: 33.3%;
 }
 .main_block__content>img{
-	width: 33.3%;
+	width: 380px;
+}
+.main_block__content>p{
 }
 /*!!!!!!!!*/
 
