@@ -1,0 +1,99 @@
+.box1{
+  width: 300px;
+  height: 200px;
+  background-color: aqua;
+  float: left;
+  margin-right: 50px;
+}
+
+/*.box1:hover{
+  background-color: red;
+}
+
+.box1:hover >p{
+  background-color: red;
+}*/
+
+
+/*.link1:active{
+  color: gold;
+}*/
+
+/*input:focus{
+  color: gold;
+}*/
+/*input:invalid{
+  border: 2px solid red;
+}*/
+
+
+
+
+/*.box1:first-child{
+  background-color: red;
+}
+.box1:last-child{
+  background-color: red;
+}*/
+/*.box1:nth-child(2){
+  background-color: red;
+}*/
+/*.box1:nth-child(odd){
+  background-color: red;
+}*/
+/*.box1:nth-child(even){
+  background-color: red;
+}*/
+
+
+@keyframes example {
+  /*0%{
+    width: 500px;
+  }
+  50%{
+    width: 900px;
+    height: 300px;
+  }
+  70%{
+    height: 100px;
+  }
+  100%{
+    width: 500px;
+  }*/
+  from{
+    width: 500px;
+    height: 300px;
+  }
+  to{
+    width: 900px;
+    height: 100px;
+  }
+}
+
+
+.box2{
+  width: 500px;
+  height: 300px;
+  background-color: gold;
+  transition: all .5s;
+  animation: example 1s 2s infinite alternate linear;
+  /*animation-name: example;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;*/
+}
+.box2:hover{
+  background-color: red;
+  height: 500px;
+  width: 500px;
+  /*transition: all .5s;*/
+  /*transform: translate(100px, 100px);*/
+  /*transform: skew(-25deg);*/
+  /*transform: scale( 2 );*/
+  /*transform: rotateX(180deg)*/
+  /*PERSPECTIVE*/
+  /*PERSPECTIVE*/
+  /*PERSPECTIVE*/
+  /*PERSPECTIVE*/
+}
