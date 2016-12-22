@@ -1,0 +1,28 @@
+body {
+	margin: 0;
+}
+.box {
+	margin: 100px;
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	position: relative;
+	overflow: hidden;
+}
+
+.overlay {
+	position: absolute;
+	top: -100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.box:hover .overlay{
+	transition: top 1s;
+	top: 0;
+}

@@ -80,6 +80,7 @@ h2{
 
 .galleryBox .item img{
   width: 100%;
+  z-index: 1;
 }
 
 .item-overlay {

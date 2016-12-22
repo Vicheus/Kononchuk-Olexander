@@ -1,0 +1,41 @@
+@import "vars"
+nav
+	background-color: #000
+	ul
+		color: #fff
+		li
+			display: inline-block
+			a
+				display: block
+				&:hover
+					color: $mainColor
+
+
+.box1
+	background-color: $mainColor
+
+
+.s_1
+	button
+		+btn( red, 10px 30px, 2px solid #000 )
+
+
+.s_2
+	button
+		+btn( aqua, 20px 50px, 1px solid #fff )
+
+
+
+
+.btn_green, .btn_pink
+	font-size: 18px
+	text-transform: uppercase
+	border: 2px solid #000
+
+.btn_green
+	background-color: green
+	color: #fff
+
+.btn_pink
+	background-color: pink
+	color: #000

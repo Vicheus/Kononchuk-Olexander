@@ -1,0 +1,45 @@
+body {
+  margin: 0; }
+
+nav {
+  background-color: #000; }
+  nav ul {
+    color: #fff; }
+    nav ul li {
+      display: inline-block; }
+      nav ul li a {
+        display: block; }
+        nav ul li a:hover {
+          color: gold; }
+
+.box1 {
+  background-color: gold; }
+
+.s_1 button {
+  background-color: red;
+  padding: 10px 30px;
+  border: 2px solid #000;
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.s_2 button {
+  background-color: aqua;
+  padding: 20px 50px;
+  border: 1px solid #fff;
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.btn_green, .btn_pink {
+  font-size: 18px;
+  text-transform: uppercase;
+  border: 2px solid #000; }
+
+.btn_green {
+  background-color: green;
+  color: #fff; }
+
+.btn_pink {
+  background-color: pink;
+  color: #000; }
+
+/*# sourceMappingURL=main.css.map */

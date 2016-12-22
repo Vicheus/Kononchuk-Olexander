@@ -1,0 +1,42 @@
+.parent
+	margin: 10px 100px
+	width: 100px	
+	height: 100px
+	perspective: 500px
+	.box
+		margin: 10px
+		position: relative
+		display: flex
+		justify-content: center
+		align-items: center
+		text-transform: uppercase
+		letter-spacing: 2px
+		font-family: Helvetica,Arial,sans-serif
+		color: #fff
+		width: 100%
+		height: 100%
+		background-color: red
+		animation: anim 1s 2s 5 alternate linear
+		z-index: 1
+		&:before
+			content: ''
+			width: 100%
+			height: 100%
+			position: absolute
+			top: 0
+			left: 0
+			background-color: rgba(0, 0, 0, .2)
+			z-index: -1
+	&:hover
+		.box
+			transition: all .5s
+			transform: rotateX(75deg)
+			
+
+@keyframes anim
+	0%
+		transform: rotateX(0)
+	50%
+		transform: rotateX(60deg)
+	100%
+		transform: rotateX(0)
