@@ -44,7 +44,7 @@ a
 .menu_right_element
   display: flex
   justify-content: space-between
-  line-height: 0
+  //line-height: 0
   
 .menu_right_element_items
   display: flex
@@ -52,7 +52,20 @@ a
   align-items: center
 
 .menu_right_element_item
+  width: 100%
   margin-left: 55px
+  color: #fff
+  font-size: 12px
+  text-transform: uppercase
+  &:after
+    height: 3px
+    width: 0
+    color: #fce38a
+  &:hover
+    color: #fce38a
+  &:hover &:after
+    width: 100%
+
 
 .header_title
   margin-top: -81px
@@ -66,10 +79,10 @@ a
   text-align: center
   width: 805px
   >h1
-    font-size: 32px
+    font-size: 48px
     margin-bottom: 45px
+    color: #fff
   >button
-    display: block
     margin-top: 50px
     background: rgba(0, 0, 0, 0)
     border: #fff solid 3px
