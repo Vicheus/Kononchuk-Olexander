@@ -34,6 +34,9 @@ header
 	top: 0
 	left: 0
 	width: 100%
+	//!!!!
+	//background-color: transparentize(#e98382, .5)
+	//!!!!
 
 .header_nav
 	float: right
@@ -76,6 +79,7 @@ header
 	align-items: center
 	justify-content: center
 	color: #fff
+	margin-bottom: 92px
 
 .s_title_block
 	width: 800px
@@ -107,7 +111,7 @@ header
 .section_header
 	width: 960px
 	text-align: center
-	margin: 90px auto
+	margin: 0 auto
 
 .section_header__title
 	font-family: $handWritenFont
@@ -126,6 +130,7 @@ header
 	width: 60px
 	height: 2px
 	background-color: $mainColor2
+	border: none
 	
 .section_header__desc
 	color: #a0a0a0
@@ -136,6 +141,7 @@ header
 	position: relative
 	transition: all .4s
 	line-height: 0
+	margin-top: 100px
 	&:after
 		content: ''
 		position: absolute
@@ -209,17 +215,58 @@ header
 .service_block
 	display: flex
 
-.service_block_content
-	background-image: url(../img/clock.jpg)
-	background-repeat: no-repeat
-	margin-left: 30px
-	width: 33%
+.service_block_content_top, .service_block_content_bottom
+	background: url(../img/clock.jpg) no-repeat 32px 0
+	width: 30%
 
-.service_top_content__header, .service_top_content__desc
-	margin-left: 58px
+.service_block_content_bottom
+	margin-bottom: 122px
+
+.service_block_content_top__header, .service_block_content_top__desc, .service_block_content_bottom__header, .service_block_content_bottom__desc
+	padding-left: 92px
+	font-size: 14px
+
+.service_block_content_top__header, .service_block_content_bottom__header
+	font-family: $titleFont
+	text-transform: uppercase
+	margin-bottom: 20px
+
+.service_block_content_top__desc, .service_block_content_bottom__desc
+	font-family: $mainFont
+	line-height: 1.5
+	color: #999999
 
 .service_block_line
 	width: 100%
-	margin: 20px 0
+	margin: 50px 0
+	color: #999999
+
+.features
+	height: 856px
+	background: url(../img/features_bg.jpg) no-repeat -500px center
+	position: relative
+	z-index: -1
+	padding-top: 110px
+	&:before
+		content: ''
+		height: 100%
+		width: 100%
+		background-color: transparentize(#fff, .15)
+		position: absolute
+		top: 0
+		left: 0
+		z-index: -1
+
+.features_images
+	height: 100%
+	overflow: hidden
+	text-align: center
+	.features_images_laptop
+		width: 530px
+
+.features_images_phone
+	width: 308px
+	transform: translate(750px, -450px)
+
 
 
