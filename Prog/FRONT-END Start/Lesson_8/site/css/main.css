@@ -276,38 +276,46 @@ header {
     background-size: cover; }
   .service2_content .service2_content__services {
     width: 50%; }
-    .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__desc {
+    .service2_content .service2_content__services .service2_content__services__desc {
+      margin-top: -1px;
+      border: 1px solid #cccccc;
       display: block;
-      margin-left: 50px; }
-    .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name {
+      padding: 20px;
+      color: #cccccc; }
+    .service2_content .service2_content__services .service2_content__services__name {
+      margin-top: -1px;
+      border: 1px solid #cccccc;
       height: 50px;
-      background: url(../img/photo.png) no-repeat 10px 10px; }
-      .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__title {
+      background: url(../img/photo.png) no-repeat 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .service2_content .service2_content__services .service2_content__services__name .service2_content__services__name__title {
         margin-left: 50px;
         text-transform: uppercase;
         font-family: "Montserrat", sans-serif;
         color: #000;
-        font-size: 10px; }
-      .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__show_more {
+        font-size: 14px; }
+      .service2_content .service2_content__services .service2_content__services__name .service2_content__services__name__show_more {
         position: relative; }
-        .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__show_more:before {
+        .service2_content .service2_content__services .service2_content__services__name .service2_content__services__name__show_more:before {
           content: "";
           width: 25px;
           height: 4px;
           background-color: #cccccc;
           position: absolute;
-          top: 10px;
-          right: 25px;
+          top: 0;
+          right: 35px;
           transform: rotateZ(-45deg);
           z-index: 1; }
-        .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__show_more:after {
+        .service2_content .service2_content__services .service2_content__services__name .service2_content__services__name__show_more:after {
           content: "";
           width: 25px;
           height: 4px;
           background-color: #cccccc;
           position: absolute;
-          top: 10px;
-          right: 10px;
+          top: 0;
+          right: 20px;
           transform: rotateZ(45deg);
           z-index: 1; }
 
