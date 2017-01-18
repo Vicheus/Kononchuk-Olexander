@@ -85,8 +85,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  margin-bottom: 92px; }
+  color: #fff; }
 
 .s_title_block {
   width: 800px;
@@ -113,7 +112,7 @@ header {
 .section_header {
   width: 960px;
   text-align: center;
-  margin: 0 auto; }
+  margin: 110px auto 0 auto; }
 
 .section_header__title {
   font-family: "Kaushan", sans-serif;
@@ -187,7 +186,7 @@ header {
 .facts {
   background-color: #95e1d3;
   height: 270px;
-  margin: 110px 0; }
+  margin-top: 110px; }
   .facts > .flex_container:first-of-type {
     border-left: 1px solid #fff; }
 
@@ -245,8 +244,7 @@ header {
   height: 856px;
   background: url(../img/features_bg.jpg) no-repeat -500px center;
   position: relative;
-  z-index: -1;
-  padding-top: 110px; }
+  z-index: -1; }
   .features:before {
     content: "";
     height: 100%;
@@ -266,6 +264,51 @@ header {
 
 .features_images_phone {
   width: 308px;
-  transform: translate(750px, -450px); }
+  transform: translate(1050px, -430px); }
+
+.service2_content {
+  display: flex;
+  justify-content: center; }
+  .service2_content .service2_content__image {
+    width: 50%;
+    background-image: url(../img/pic.png);
+    -webkit-background-size: cover;
+    background-size: cover; }
+  .service2_content .service2_content__services {
+    width: 50%; }
+    .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__desc {
+      display: block;
+      margin-left: 50px; }
+    .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name {
+      height: 50px;
+      background: url(../img/photo.png) no-repeat 10px 10px; }
+      .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__title {
+        margin-left: 50px;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif;
+        color: #000;
+        font-size: 10px; }
+      .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__show_more {
+        position: relative; }
+        .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__show_more:before {
+          content: "";
+          width: 25px;
+          height: 4px;
+          background-color: #cccccc;
+          position: absolute;
+          top: 10px;
+          right: 25px;
+          transform: rotateZ(-45deg);
+          z-index: 1; }
+        .service2_content .service2_content__services .service2_content__service__top_block .service2_content__services__name .service2_content__services__name__show_more:after {
+          content: "";
+          width: 25px;
+          height: 4px;
+          background-color: #cccccc;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          transform: rotateZ(45deg);
+          z-index: 1; }
 
 /*# sourceMappingURL=main.css.map */
