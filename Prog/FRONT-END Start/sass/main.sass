@@ -1,0 +1,256 @@
+@import "vars"
+@import "reset"
+
+//general
+
+body
+	font-family: $mainFont
+	font-weight: normal
+	overflow-x: hidden
+	line-height: 1
+	color: $textDark
+
+.section
+	padding: 90px 0
+
+.section--gray
+	background-color: $lightGray
+
+.my_btn
+	font-size: 14px
+	font-weight: 700
+	color: #fff
+	width: 180px
+	height: 45px
+	line-height: 45px
+	border: 2px solid #fff
+	border-radius: 45px
+	display: block
+	text-align: center
+
+.my_btn--accent
+	background-color: $accent
+	border: 2px solid $accent
+	color: #fff
+
+.section_title
+	text-align: center
+	margin-bottom: 80px
+	@media only screen and (max-width : 480px)
+		padding: 0 15px
+
+.section_title__title
+	font-size: 60px
+	font-weight: 100
+	@media only screen and (max-width : 480px)
+		font-size: 40px
+
+.section_title__line
+	width: 40px
+	height: 1px
+	background-color: $accent
+	display: inline-block
+	margin: 20px 0
+	@media only screen and (max-width : 480px)
+		margin: 10px 0
+
+.section_title__text
+	font-size: 18px
+	@media only screen and (max-width : 480px)
+		font-size: 16px
+
+.centered_block
+	margin: 0 auto
+
+//!!!!!!!!!!!!!!!!!!!!
+
+//header
+
+header
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	padding: 50px 0 0 0
+	z-index: 100
+	@media only screen and (max-width : 480px)
+		padding: 20px 0
+		background-color: transparentize(#000, .2)
+	a
+		color: #fff
+		&:hover
+			color: #fff
+
+.header__logo
+	float: left
+	font-weight: 700
+	font-size: 30px
+	@media only screen and (max-width : 480px)
+		height: 40px
+		line-height: 40px
+
+nav
+	float: right
+	@media only screen and (max-width : 480px)
+		display: none
+
+.nav__element
+	display: inline-block
+
+.nav__element__link
+	font-weight: 700
+	font-size: 14px
+	text-transform: uppercase
+	margin-left: 50px
+
+.nav_btn
+	border: none
+	padding: 0
+	float: right
+	width: 40px
+	height: 40px
+	border-radius: 50%
+	background-color: $accent
+	display: none
+	@media only screen and (max-width : 480px)
+		display: block
+	>img
+		width: 60%
+
+//!!!!!!!!!!!!!!!!!!!!
+
+//start_s
+.start_s
+	height: 100vh
+	display: flex
+	align-items: center
+	justify-content: center
+	color: #fff
+	background-image: url('../img/start_bg.png')
+	background-size: cover
+	position: relative
+	z-index: 1
+	&:after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background-color: transparentize(#000, .55)
+		z-index: -1
+
+.start_s__title_block
+	width: 70%
+	text-align: center
+	@media only screen and (max-width : 480px)
+		width: 95%
+
+.start_s__title_block__title
+	font-size: 60px
+	font-weight: 100
+	@media only screen and (max-width : 480px)
+		font-size: 30px
+	span
+		font-weight: 700
+
+.start_s__title_block__description
+	font-size: 24px
+	font-weight: 100
+	margin: 30px 0 40px 0
+	@media only screen and (max-width : 480px)
+		font-size: 18px
+		margin: 20px 0 30px 0
+
+
+//about_s
+
+.about_s
+	padding: 90px 0
+
+.about__item
+	text-align: center
+	@media only screen and (min-width : 992px)
+		&:hover
+			.about__item__icon
+				background-color: $accent
+				>i
+					color: #fff
+
+.about__item__icon
+	width: 180px
+	height: 180px
+	line-height: 210px
+	background-color: $lightGray
+	border-radius: 50%
+	margin: 0 auto
+	transition: all .4s
+	>i
+		font-size: 50px
+		transition: all .4s
+
+.about_item__text
+	margin: 30px 0
+	line-height: 2
+	letter-spacing: 1px
+
+//!!!!!
+
+
+//half_content
+
+.half_content__title
+	font-size: 60px
+	font-weight: 100
+	@media only screen and (max-width : 480px)
+		font-size: 30px
+
+.half_content__text
+	line-height: 2
+	letter-spacing: 1px
+	margin: 30px 0
+
+//!!!!!!!!!!!
+
+
+//team_s
+
+.section_title--team_s
+	margin-bottom: 90px
+
+.team
+	display: flex
+	flex-wrap: wrap
+
+.team__member
+	width: 20%
+	height: 230px
+	background-size: cover
+	position: relative
+	overflow: hidden
+	@media only screen and (max-width : 480px)
+		width: 50%
+	&:hover
+		.team__member__overlay
+			transform: none
+
+.team__member__overlay
+	height: 100%
+	width: 100%
+	background-color: transparentize($accent, .5)
+	position: absolute
+	top: 0
+	left: 0
+	transform: translateY(-100%)
+	transition: all .4s
+	display: flex
+	align-items: center
+	justify-content: center
+
+.team__member__name
+	font-size: 30px
+	color: #fff
+	font-weight: 100
+	text-align: center
+
+//!!!!!
