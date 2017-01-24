@@ -1,0 +1,45 @@
+{{ form_start(project_request_form, {'attr': {'class': 'center formStart form-block', 'novalidate': 'novalidate', 'id':'project-request-form', 'enctype':'multipart/form-data'}}) }}
+<h1>your project starts here</h1>
+<div class="thankYou">
+    Thank you for your interest in working with Grossum.<br>
+    Get a free riskless project quote right now - fill in the blanks below and we'll get back with you within one working day.
+</div>
+{{ form_errors(project_request_form) }}
+<div class="screen clearfix info">
+    <div class="column2">
+        <div class="formStart_row">
+            {% if project_request_form.name.vars.errors|length %}
+            <div class="error">
+                {{ form_errors(project_request_form.name) }}
+            </div>
+            {% endif %}
+            {{ form_widget(project_request_form.name, {'attr': {'placeholder': 'Your name*' } }) }}
+        </div>
+    </div>
+    <div class="column2 left">
+        <div class="formStart_row">
+            {% if project_request_form.email.vars.errors|length %}
+            <div class="error">
+                {{ form_errors(project_request_form.email) }}
+            </div>
+            {% endif %}
+            {{ form_widget(project_request_form.email, {'attr': {'placeholder': 'Email address*' } }) }}
+        </div>
+    </div>
+</div>
+<div class="timeAbout form-block">
+    <h3>about the project</h3>
+    <div class="formStart_row">
+        <p class="hint">Describe the project, requirements and objectives. Is there a specific timeframe or deadline for the project?</p>
+        {% if project_request_form.description.vars.errors|length %}
+        <div class="error">
+            {{ form_errors(project_request_form.description) }}
+        </div>
+        {% endif %}
+        {{ form_widget(project_request_form.description) }}
+    </div>
+</div>
+<div class="formBott">
+    {{ form_widget(project_request_form.save) }}
+</div>
+{{ form_end(project_request_form) }}
