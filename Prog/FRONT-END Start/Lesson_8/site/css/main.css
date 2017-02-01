@@ -701,6 +701,31 @@ footer {
 
 .footer_s__blogs {
   width: 26.6%; }
+  .footer_s__blogs .footer_s__blogs__title {
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 50px; }
+  .footer_s__blogs .footer_s__blogs_post {
+    display: flex;
+    margin-top: 30px; }
+    .footer_s__blogs .footer_s__blogs_post .footer_s__blogs_post_image {
+      margin-right: 20px; }
+      .footer_s__blogs .footer_s__blogs_post .footer_s__blogs_post_image .footer_s__blogs_post_img {
+        width: 100%;
+        line-height: 0; }
+    .footer_s__blogs .footer_s__blogs_post .footer_s__blogs_post_info .footer_s__blogs_post_info_title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 30px 0 10px 0; }
+    .footer_s__blogs .footer_s__blogs_post .footer_s__blogs_post_info .footer_s__blogs_post_info_date {
+      font-family: "Roboto", sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 12px;
+      color: #cccccc; }
 
 .footer_s__instagram {
   width: 22.5%; }
