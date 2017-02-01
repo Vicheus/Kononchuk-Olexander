@@ -553,8 +553,153 @@ header
 				font-family: $mainFont
 				font-size: 14px
 
+.flex_center
+	display: flex
+	align-items: center
+	justify-content: center
 
+.blog_s_block
+	width: 30%
+	margin-bottom: 114px
+	.blog_s_block__img
+		position: relative
+		.blog_s_block__img__main
+			height: 240px
+		.blog_s_block__overlay
+			width: 60px
+			height: 70px
+			position: absolute
+			top: 160px
+			left: -10px
+			color: #fff
+			background-color: $mainColor
+			.blog_s_block__overlay__center
+				text-align: center
+				>span
+					line-height: 24px
+					font-family: $titleFont
+					font-size: 24px
+					font-weight: bold
+				>p
+					font-family: $mainFont
+					font-size: 20px
+					font-style: italic
+					margin-top: 8px
+	.blog_s_block_title
+		text-transform: uppercase
+		font-family: $titleFont
+		font-size: 14px
+		font-weight: normal
+		margin: 20px 0
+	.blog_s_block_desc
+		font-family: $mainFont
+		font-size: 14px
+		font-weight: normal
+		color: #b3b3b3
+	.blog_s_block_line
+		width: 100%
+		height: 1px
+		border: none
+		background-color: $lightGrey
+		margin: 20px 0
+	.blog_s_block_info
+		text-align: left
+		.blog_s_block_info__img
+			margin-right: 4px
+		>span
+			margin-right: 20px
+			color: $lightGrey
+			font-style: italic
+		
+.map_s
+	width: 100%
+	height: 200px
+	background: url(../img/map_bg.png) no-repeat 0 0
+	position: relative
+	z-index: 1
+	&:before
+		content: ''
+		width: 100%
+		height: 100%
+		position: absolute
+		top: 0
+		left: 0
+		z-index: -1
+		background-color: transparentize(#fff, .2)
+	.map_s__content
+		width: 200px
+		color: $mainColor2
+		text-align: center
+		.map_s__content_title
+			text-transform: uppercase
+			font-family: $titleFont
+			font-weight: bold
+			font-size: 24px
+			margin: 18px auto
+		.section_header__line
+			margin: 0 auto
 
+footer
+	margin-top: 75px
 
+.footer_s__mogo
+	width: 40.16%
+	color: #b3b3b3
+	.footer_s__mogo__logo
+		font-family: $titleFont
+		font-weight: bold
+		font-size: 46px
+	.footer_s__mogo__text
+		margin: 46px 0
+		font-family: $mainFont
+		font-size: 15px
+		font-weight: normal
+	.footer_s__mogo__followers
+		color: #000
+		font-family: $titleFont
+		font-size: 12px
+		font-weight: normal
+		margin-bottom: 20px
+		>span
+			font-size: 15px
+			font-weight: bold
+	.footer_s__mogo__follow_us
+		margin-top: 20px
+		line-height: 0
+		>span
+			font-family: $mainFont
+			font-weight: 300
+			font-style: italic
+			font-size: 15px
+			margin-right: 22px
+		.footer_s__mogo__follow_us_img
+			margin-right: 20px
+			height: 15px
+	.footer_s__mogo__subscribe
+		margin-top: 38px
+		display: flex
+		.footer_s__mogo__subscribe__mail
+			padding-left: 10px
+			width: 228px
+			height: 34px
+			border: 1px solid $lightGrey
+			display: block
+			&::-webkit-input-placeholder
+				font-family: $mainFont
+				font-weight: 300
+				font-style: normal
+				font-size: 15px
+				color: $lightGrey
+		.footer_s__mogo__subscribe__button
+			display: block
+			text-transform: uppercase
+			color: #fff
+			width: 228px
+			height: 38px
+			line-height: 0
 
+.footer_s__blogs
+	width: 26.6%
 
+.footer_s__instagram
+	width: 22.5%

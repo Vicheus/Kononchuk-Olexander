@@ -554,4 +554,155 @@ header {
         font-family: "Roboto", sans-serif;
         font-size: 14px; }
 
+.flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.blog_s_block {
+  width: 30%;
+  margin-bottom: 114px; }
+  .blog_s_block .blog_s_block__img {
+    position: relative; }
+    .blog_s_block .blog_s_block__img .blog_s_block__img__main {
+      height: 240px; }
+    .blog_s_block .blog_s_block__img .blog_s_block__overlay {
+      width: 60px;
+      height: 70px;
+      position: absolute;
+      top: 160px;
+      left: -10px;
+      color: #fff;
+      background-color: #95e1d3; }
+      .blog_s_block .blog_s_block__img .blog_s_block__overlay .blog_s_block__overlay__center {
+        text-align: center; }
+        .blog_s_block .blog_s_block__img .blog_s_block__overlay .blog_s_block__overlay__center > span {
+          line-height: 24px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 24px;
+          font-weight: bold; }
+        .blog_s_block .blog_s_block__img .blog_s_block__overlay .blog_s_block__overlay__center > p {
+          font-family: "Roboto", sans-serif;
+          font-size: 20px;
+          font-style: italic;
+          margin-top: 8px; }
+  .blog_s_block .blog_s_block_title {
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 20px 0; }
+  .blog_s_block .blog_s_block_desc {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #b3b3b3; }
+  .blog_s_block .blog_s_block_line {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: #cccccc;
+    margin: 20px 0; }
+  .blog_s_block .blog_s_block_info {
+    text-align: left; }
+    .blog_s_block .blog_s_block_info .blog_s_block_info__img {
+      margin-right: 4px; }
+    .blog_s_block .blog_s_block_info > span {
+      margin-right: 20px;
+      color: #cccccc;
+      font-style: italic; }
+
+.map_s {
+  width: 100%;
+  height: 200px;
+  background: url(../img/map_bg.png) no-repeat 0 0;
+  position: relative;
+  z-index: 1; }
+  .map_s:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.8); }
+  .map_s .map_s__content {
+    width: 200px;
+    color: #f38181;
+    text-align: center; }
+    .map_s .map_s__content .map_s__content_title {
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      margin: 18px auto; }
+    .map_s .map_s__content .section_header__line {
+      margin: 0 auto; }
+
+footer {
+  margin-top: 75px; }
+
+.footer_s__mogo {
+  width: 40.16%;
+  color: #b3b3b3; }
+  .footer_s__mogo .footer_s__mogo__logo {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 46px; }
+  .footer_s__mogo .footer_s__mogo__text {
+    margin: 46px 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: normal; }
+  .footer_s__mogo .footer_s__mogo__followers {
+    color: #000;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 20px; }
+    .footer_s__mogo .footer_s__mogo__followers > span {
+      font-size: 15px;
+      font-weight: bold; }
+  .footer_s__mogo .footer_s__mogo__follow_us {
+    margin-top: 20px;
+    line-height: 0; }
+    .footer_s__mogo .footer_s__mogo__follow_us > span {
+      font-family: "Roboto", sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 15px;
+      margin-right: 22px; }
+    .footer_s__mogo .footer_s__mogo__follow_us .footer_s__mogo__follow_us_img {
+      margin-right: 20px;
+      height: 15px; }
+  .footer_s__mogo .footer_s__mogo__subscribe {
+    margin-top: 38px;
+    display: flex; }
+    .footer_s__mogo .footer_s__mogo__subscribe .footer_s__mogo__subscribe__mail {
+      padding-left: 10px;
+      width: 228px;
+      height: 34px;
+      border: 1px solid #cccccc;
+      display: block; }
+      .footer_s__mogo .footer_s__mogo__subscribe .footer_s__mogo__subscribe__mail::-webkit-input-placeholder {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 15px;
+        color: #cccccc; }
+    .footer_s__mogo .footer_s__mogo__subscribe .footer_s__mogo__subscribe__button {
+      display: block;
+      text-transform: uppercase;
+      color: #fff;
+      width: 228px;
+      height: 38px;
+      line-height: 0; }
+
+.footer_s__blogs {
+  width: 26.6%; }
+
+.footer_s__instagram {
+  width: 22.5%; }
+
 /*# sourceMappingURL=main.css.map */
