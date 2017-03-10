@@ -1,0 +1,42 @@
+version: '2'
+services:
+  codecept:
+      image: vicheus/codeception
+      depends_on:
+        - chrome
+        - firefox
+        - mysql
+      environment:
+        - TEST_MOGWAI_USER=${TEST_MOGWAI_USER}
+        - TEST_MOGWAI_PASS=${TEST_MOGWAI_PASS}
+        - TEST_MOGWAI_LIMIT=${TEST_MOGWAI_LIMIT}
+      volumes:
+          - './htdocs:/project/'
+          - './htdocs/codeception.yml:/project/codeception.yml'
+          - './htdocs/tests:/project/tests'
+  chrome:
+      image: 'selenium/standalone-chrome-debug:2.53.1'
+      ports:
+          - '5900'
+      # workaround for Docker for Mac, see https://github.com/SeleniumHQ/docker-selenium/issues/227#issuecomment-224865735
+      dns: 8.8.4.4
+      environment:
+        - no_proxy=localhost
+  firefox:
+      image: 'selenium/standalone-firefox-debug:2.53.1'
+      ports:
+          - '5900'
+      # workaround for Docker for Mac, see https://github.com/SeleniumHQ/docker-selenium/issues/227#issuecomment-224865735
+      dns: 8.8.4.4
+      environment:
+        - no_proxy=localhost
+  mysql:
+      image: mysql/mysql-server:5.5
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=erp
+        - MYSQL_USER=root
+        - MYSQL_PASSWORD=root
+      ports:
+        - '1029:22'
+
