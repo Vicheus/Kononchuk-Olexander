@@ -41,7 +41,7 @@ figure = '';
 for (i = 0; i < z; i++) {
     row = '';
     for (j = 0; j < z; j++) {
-        row += (aster + whitespace);
+        row += (aster + whitespace + whitespace);
     }
     figure += row + "</br>";
 }
