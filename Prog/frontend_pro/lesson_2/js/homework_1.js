@@ -32,51 +32,57 @@ document.write("<h3>Exercise 3</h3>");
 var aster = '*',
     whitespace = '&nbsp',
     j,
-    z = 5;
+    z = 5,
+    row,
+    figure;
   //rectangle
 document.write("<p>Rectangle</p>");
+figure = '';
 for (i = 0; i < z; i++) {
+    row = '';
     for (j = 0; j < z; j++) {
-        document.write(aster + whitespace);
+        row += (aster + whitespace);
     }
-    document.write("</br>");
+    figure += row + "</br>";
 }
+document.write(figure);
   //triangle
 document.write("<p>Triangle</p>");
+figure = '';
 for (i = 0; i < z; i++) {
+    row = '';
     for (j = i; j >= 0; j--) {
-        document.write(aster + whitespace);
+        row += (aster + whitespace);
     }
-    document.write("</br>");
+    figure += row + "</br>";
 }
+document.write(figure);
   //equilateral triangle
 document.write("<p>Equilateral triangle</p>");
+figure = '';
 for (i = 0; i < z; i++) {
-    for (j = i; j < z; j++) {
-        document.write(whitespace + whitespace);
+    row = '';
+    for (j = 0; j <= z; j++) {
+        (j < z - i) ? row += (whitespace + whitespace) : row += (aster + whitespace + whitespace);
     }
-    for (j = i; j >= 0; j--) {
-        document.write(aster + whitespace + whitespace);
-    }
-    document.write("</br>");
+    figure += row + "</br>";
 }
+document.write(figure);
   //rhomb
 document.write("<p>Rhomb</p>");
-for (i = 0; i < z; i++) {
-    for (j = i; j < z; j++) {
-        document.write(whitespace + whitespace);
+figure = '';
+for (i = 0; i <= 2 * z; i++) {
+    row = '';
+    if (i <= z) {
+        for (j = 0; j <= z; j++) {
+            (j < z - i) ? row += (whitespace + whitespace) : row += (aster + whitespace + whitespace);
+        }
+        figure += row + "</br>";
+    } else {
+        for (j = z; j >= 0; j--) {
+            (j <= 2 * z - i) ? row += (aster + whitespace + whitespace) : row += (whitespace + whitespace);
+        }
+        figure += row + "</br>";
     }
-    for (j = i; j >= 0; j--) {
-        document.write(aster + whitespace + whitespace);
-    }
-    document.write("</br>");
 }
-for (i = 1; i < z; i++) {
-    for (j = i; j >= 0; j--) {
-        document.write(whitespace + whitespace);
-    }
-    for (j = i; j < z; j++) {
-        document.write(aster + whitespace + whitespace);
-    }
-    document.write("</br>");
-}
+document.write(figure);
