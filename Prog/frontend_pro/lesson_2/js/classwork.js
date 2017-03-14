@@ -134,3 +134,6 @@
 //					randomNumbers.push(random);
 //				}
 //				console.log(randomNumbers);
+
+Math.min(1, 4, 8, 18, -4);//min value
+Math.max(1, 2, 47, 8, 46, -8); //max value
