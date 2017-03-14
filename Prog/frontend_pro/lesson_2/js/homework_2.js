@@ -150,35 +150,60 @@ for (i = 0; i < swapElementArray.length; i++) {
 swapElementArray[mini].splice(minj, 1, maxValue);
 swapElementArray[maxi].splice(maxj, 1, minValue);
 
+for (i = 0; i < swapElementArray.length; i++) {
+    document.write(swapElementArray[i].join(", ") + "</br>");
+}
+
 //task 7
 document.write("<h3>Exercise 7</h3>");
-var swapRowsArray = [
+var sourceArray = [
         [4, 5, 2],
         [4, 6, 7],
         [3, 9, 8]
     ],
-    sourceArray = new Array(swapRowsArray.length);
+    resultArray = new Array(sourceArray.length);
 mini = 0;
 maxi = 0;
-minValue = swapRowsArray[0][0];
-maxValue = swapRowsArray[0][0];
-for (i = 0; i < swapRowsArray.length; i++) {
-    sourceArray[i] = new Array(swapRowsArray.length);
-    for (j = 0; j < swapRowsArray[i].length; j++) {
-        sourceArray[i][j] = swapRowsArray[i][j];
-        if (swapRowsArray[i][j] > maxValue) {
-            maxValue = swapRowsArray[i][j];
+minValue = sourceArray[0][0];
+maxValue = sourceArray[0][0];
+for (i = 0; i < sourceArray.length; i++) {
+    resultArray[i] = new Array(sourceArray[i].length);
+    for (j = 0; j < sourceArray[i].length; j++) {
+        resultArray[i][j] = sourceArray[i][j];
+        if (sourceArray[i][j] > maxValue) {
+            maxValue = sourceArray[i][j];
             maxi = i;
         }
-        if (swapRowsArray[i][j] < minValue) {
-            minValue = swapRowsArray[i][j];
+        if (sourceArray[i][j] < minValue) {
+            minValue = sourceArray[i][j];
             mini = i;
         }
     }
 }
 
-for (i = 0; i < swapRowsArray.length; i++) {
-    sourceArray[maxi][i] = swapRowsArray[mini][i];
-    sourceArray[mini][i] = swapRowsArray[maxi][i];
+for (i = 0; i < sourceArray.length; i++) {
+    resultArray[maxi][i] = sourceArray[mini][i];
+    resultArray[mini][i] = sourceArray[maxi][i];
 }
-console.log(sourceArray);
+for (i = 0; i < swapElementArray.length; i++) {
+    document.write(resultArray[i].join(", ") + "</br>");
+}
+
+//task 8
+document.write("<h3>Exercise 8</h3>");
+
+var x1 = [2, 4, 5, -2, 8, 10],
+    x2 = [4, 1, 8, 2, 11, -2],
+    x1min = x1[0],
+    x2min = x2[0],
+    z;
+for (i = 0; i < x1.length; i++) {
+    (x1[i] < x1min) ? x1min = x1[i] : x1min;
+    (x2[i] < x2min) ? x2min = x2[i] : x2min;
+}
+
+z = (x1min + x2min) / 2;
+document.write("<p>First array: " + x1.join(", ") + "</p>");
+document.write("<p>Second array: " + x2.join(", ") + "</p>");
+document.write("<p>First array min element: " + x1min + "</p>");
+document.write("<p>Second array min element: " + x2min + "</p>");

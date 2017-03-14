@@ -11,9 +11,9 @@ services:
         - TEST_MOGWAI_PASS=${TEST_MOGWAI_PASS}
         - TEST_MOGWAI_LIMIT=${TEST_MOGWAI_LIMIT}
       volumes:
-          - './htdocs:/project/'
-          - './htdocs/codeception.yml:/project/codeception.yml'
-          - './htdocs/tests:/project/tests'
+          - '/home/shura/projects/erp/htdocs:/project/'
+          - '/home/shura/projects/erp/htdocs/codeception.yml:/project/codeception.yml'
+          - '/home/shura/projects/erp/htdocs/tests:/project/tests'
   chrome:
       image: 'selenium/standalone-chrome-debug:2.53.1'
       ports:
