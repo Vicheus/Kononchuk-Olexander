@@ -122,8 +122,63 @@ document.write(
 
 //task 6
 document.write("<h3>Exercise 6</h3>");
-var rearrangeElementArray = [
+var swapElementArray = [
     [4, 5, 2],
     [4, 6, 7],
     [3, 9, 8]
-];
+],
+    mini = 0,
+    minj = 0,
+    maxi = 0,
+    maxj = 0;
+minValue = swapElementArray[0][0];
+maxValue = swapElementArray[0][0];
+for (i = 0; i < swapElementArray.length; i++) {
+    for (j = 0; j < swapElementArray[i].length; j++) {
+        if (swapElementArray[i][j] > maxValue) {
+            maxValue = swapElementArray[i][j];
+            maxi = i;
+            maxj = j;
+        }
+        if (swapElementArray[i][j] < minValue) {
+            minValue = swapElementArray[i][j];
+            mini = i;
+            minj = j;
+        }
+    }
+}
+swapElementArray[mini].splice(minj, 1, maxValue);
+swapElementArray[maxi].splice(maxj, 1, minValue);
+
+//task 7
+document.write("<h3>Exercise 7</h3>");
+var swapRowsArray = [
+        [4, 5, 2],
+        [4, 6, 7],
+        [3, 9, 8]
+    ],
+    sourceArray = new Array(swapRowsArray.length);
+mini = 0;
+maxi = 0;
+minValue = swapRowsArray[0][0];
+maxValue = swapRowsArray[0][0];
+for (i = 0; i < swapRowsArray.length; i++) {
+    sourceArray[i] = new Array(swapRowsArray.length);
+    for (j = 0; j < swapRowsArray[i].length; j++) {
+        sourceArray[i][j] = swapRowsArray[i][j];
+        if (swapRowsArray[i][j] > maxValue) {
+            maxValue = swapRowsArray[i][j];
+            maxi = i;
+        }
+        if (swapRowsArray[i][j] < minValue) {
+            minValue = swapRowsArray[i][j];
+            mini = i;
+        }
+    }
+}
+
+for (i = 0; i < swapRowsArray.length; i++) {
+    sourceArray[maxi][i] = swapRowsArray[mini][i];
+    sourceArray[mini][i] = swapRowsArray[maxi][i];
+}
+console.log(sourceArray);
