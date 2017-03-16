@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+}
+h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+.animal {
+    padding: 0 20px;
+    background-color: #eff0f1;
+    border: 1px solid black;
+}
+.zoo {
+    display: flex;
+    justify-content: center;
+}
+.key {
+    font-weight:bold;
+}
