@@ -100,14 +100,5 @@ document.write("<p> \"" +
     addressResults.address_components[4].long_name + ", " +
     addressResults.address_components[7].long_name +
     "\"</p>");
-// for (var key in addressResults) {
-//     var addressComponents = addressResults[key];
-//     for (var i = 0; i < addressComponents.length; i++) {
-//         var eduName,
-//
-//         (addressComponents[i].long_name === "Kyiv Politechnical Institute") ? eduName = addressComponents[i].long_name : null;
-//         (addressComponents[i].long_name === "Kyiv Politechnical Institute") ? eduName = addressComponents[i].long_name : null;
-//         console.log(addressComponents[i], "</br>");
-//     }
-//     // console.log(addressComponents);
-// }
+document.write("<p>Latitude: " + addressResults.geometry.location.lat +
+    ", longitude: " + addressResults.geometry.location.lng + "</p>");
