@@ -102,3 +102,15 @@ document.write("<p> \"" +
     "\"</p>");
 document.write("<p>Latitude: " + addressResults.geometry.location.lat +
     ", longitude: " + addressResults.geometry.location.lng + "</p>");
+
+var houseColor =
+    {
+        h1: "White",
+        h2: "Green",
+        h3: "Grey",
+        h4: "Black",
+        h5: "Pink"
+    };
+for (var key in houseColor) {
+    document.write("<p>" + houseColor[key] +"</p>");
+}
