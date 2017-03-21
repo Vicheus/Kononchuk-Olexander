@@ -18,7 +18,7 @@ function newTransaction() {
             }
 
             return {
-                typeId: type,
+                type: type,
                 cash: Math.abs(cash),
                 date: (new Date()).toDateString()
             }
@@ -28,7 +28,7 @@ function newTransaction() {
 
 function createTransaction(transaction) {
     for (let key in transaction) {
-        if (key === 'typeId') {
+        if (key === 'type') {
             switch (transaction[key]) {
                 case 1:
                     privat.addCash(transaction);
@@ -37,10 +37,10 @@ function createTransaction(transaction) {
                     privat.getCash(transaction);
                     break;
                 case 3:
-                    privat.lastTransaction();
+                    privat.lastTransaction(transaction);
                     break;
                 case 4:
-                    privat.allTransactions();
+                    privat.allTransactions(transaction);
                     break;
             }
         }
@@ -50,11 +50,13 @@ function createTransaction(transaction) {
 
 let terminal = {
     addCash: function (transaction) {
+        transaction.type = 'input';
         this.transactions.push(transaction);
         this.balance += transaction.cash;
     },
     getCash: function (transaction) {
         if (this.balance >= transaction.cash) {
+            transaction.type = 'output';
             this.transactions.push(transaction);
             this.balance -= transaction.cash;
         } else {
@@ -62,32 +64,42 @@ let terminal = {
         }
 
     },
-    lastTransaction: function () {
+    lastTransaction: function (transaction) {
+        this.outprint.push("<h5>Outprint last transaction" + transaction.date + "</h5>");
         if (this.transactions.length) {
             for (let val in this.transactions[this.transactions.length - 1]) {
-                console.log("<p>" + val + ": " + this.transactions[this.transactions.length - 1][val] + "</p>");
+                this.outprint.push("<p>" +val + ": " + this.transactions[this.transactions.length - 1][val] + "</p>");
             }
-            console.log("<p>balance: " + this.balance + "</p>");
+            this.outprint.push("<h5>Current balance: " + this.balance + "</h5>");
+            this.outprint.push("------------------------------------------");
         } else {
-            console.log("<p>There is no previous executed transactions</p>");
+            this.outprint.push("<p>There is no previous executed transactions</p>");
+            this.outprint.push("<hr>");
         }
     },
-    allTransactions: function () {
+    allTransactions: function (transaction) {
+        this.outprint.push("<h5>Outprint all transactions" + transaction.date + "</h5>");
         if (this.transactions.length) {
             for (let i = 0; i < this.transactions.length; i++) {
                 for (let val in this.transactions[i]) {
-                    console.log("<p>" + val + ": " + this.transactions[i][val] + "</p>");
+                    this.outprint.push("<p>" + val + ": " + this.transactions[i][val] + "</p>");
                 }
+                this.outprint.push("<hr>");
             }
+            this.outprint.push("<h5>Current balance: " + this.balance + "</h5>");
         } else {
-            console.log("<p>There is no previous executed transactions</p>");
+            this.outprint.push("<p>There is no previous executed transactions</p>");
+            this.outprint.push("<hr>");
         }
-        console.log("<p>balance: " + this.balance + "</p>");
+    },
+    print: function () {
+        document.write(this.outprint.join(""));
     }
 };
 
 let privat = Object.create(terminal);
 privat.transactions = [];
+privat.outprint = [];
 privat.balance = null;
 
 let todo = true;
@@ -96,5 +108,6 @@ while (todo) {
     createTransaction(currentTransaction);
     todo = confirm("Do you want to continue?");
 }
+privat.print();
 
 console.log(privat);
