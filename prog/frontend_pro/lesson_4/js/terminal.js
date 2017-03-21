@@ -7,7 +7,7 @@ function newTransaction() {
         let type = parseInt(prompt("Please choose transaction: 1 - input cash, 2 - get cash," +
             " 3 - last transaction, 4 - list of all transactions")),
             cash = null;
-        if (type != 1 && type != 2 && type != 3 && type != 4) {
+        if ([1, 2, 3, 4].indexOf(type) === -1) {
             alert("You have input wrong operation type");
         } else {
             if (type === 1 || type === 2) {
