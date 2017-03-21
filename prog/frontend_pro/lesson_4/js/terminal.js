@@ -4,54 +4,26 @@
 
 function newTransaction() {
 
-        let type = +prompt("Please choose transaction: 1 - input cash, 2 - get cash," +
-            " 3 - last transaction, 4 - list of all transactions"),
-            value;
-        switch (type) {
-            case 1:
-                value = +prompt("Please input value of cash");
-                if (typeof value === 'number') {
-                    return {
-                        typeId: 1,
-                        type: 'input',
-                        value: Math.abs(value),
-                        date: (new Date()).toDateString()
-                    }
-                } else {
-                    value = +prompt("Please input value of cash");
+        let type = parseInt(prompt("Please choose transaction: 1 - input cash, 2 - get cash," +
+            " 3 - last transaction, 4 - list of all transactions")),
+            cash = null;
+        if (type != 1 && type != 2 && type != 3 && type != 4) {
+            alert("You have input wrong operation type");
+        } else {
+            if (type === 1 || type === 2) {
+                cash = parseFloat(prompt("Please input cash value"));
+                if (typeof cash !== 'number') {
+                    alert("Please input cash value in format of number");
                 }
-                break;
-            case 2:
-                value = +prompt("Please input value of cash");
-                if (typeof value === 'number') {
-                    return {
-                        typeId: 2,
-                        type: 'output',
-                        value: Math.abs(value),
-                        date: (new Date()).toDateString()
-                    }
-                } else {
-                    value = +prompt("Please input value of cash");
-                }
-                break;
-            case 3:
-                return {
-                    typeId: 3,
-                    type: "print last transaction",
-                    date: (new Date()).toDateString()
-                };
-                break;
-            case 4:
-                return {
-                    typeId: 4,
-                    type: "print all transactions",
-                    date: (new Date()).toDateString()
-                };
-                break;
-            default:
-                alert("You have input wrong operation type");
+            }
 
+            return {
+                typeId: type,
+                cash: Math.abs(cash),
+                date: (new Date()).toDateString()
+            }
         }
+
     }
 
 function createTransaction(transaction) {
@@ -79,36 +51,44 @@ function createTransaction(transaction) {
 let terminal = {
     addCash: function (transaction) {
         this.transactions.push(transaction);
+        this.balance += transaction.cash;
     },
     getCash: function (transaction) {
-        for (let i = this.transactions.length - 1; i >= 0; i--) {
-            if (this.transactions[i].value && this.transactions[i].value >= transaction.value) {
-                transaction.value = this.transactions[i].value - transaction.value;
-                this.transactions.push(transaction);
-                break;
-            } else {
-                alert("Your balance less than you want to get");
-            }
+        if (this.balance >= transaction.cash) {
+            this.transactions.push(transaction);
+            this.balance -= transaction.cash;
+        } else {
+            alert("Your balance = " + this.balance + " less than you want to get");
         }
+
     },
     lastTransaction: function () {
-        (this.transactions[this.transactions.length - 1]) ?
-            document.write("<p>" + this.transactions[this.transactions.length - 1] + "</p>") :
-            document.write("<p>There is no previous transactions</p>");
+        if (this.transactions.length) {
+            for (let val in this.transactions[this.transactions.length - 1]) {
+                console.log("<p>" + val + ": " + this.transactions[this.transactions.length - 1][val] + "</p>");
+            }
+            console.log("<p>balance: " + this.balance + "</p>");
+        } else {
+            console.log("<p>There is no previous executed transactions</p>");
+        }
     },
     allTransactions: function () {
-        for (let i = 0; i < this.transactions.length; i++) {
-            for (let key in this.transactions[i]) {
-                (this.transactions[i][key]) ?
-                    document.write("<p>" + this.transactions[i][key] + "</p>") :
-                    document.write("<p>There is no previous transactions</p>");
+        if (this.transactions.length) {
+            for (let i = 0; i < this.transactions.length; i++) {
+                for (let val in this.transactions[i]) {
+                    console.log("<p>" + val + ": " + this.transactions[i][val] + "</p>");
+                }
             }
+        } else {
+            console.log("<p>There is no previous executed transactions</p>");
         }
+        console.log("<p>balance: " + this.balance + "</p>");
     }
 };
 
 let privat = Object.create(terminal);
 privat.transactions = [];
+privat.balance = null;
 
 let todo = true;
 while (todo) {
