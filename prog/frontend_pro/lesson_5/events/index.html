@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Events</title>
+
+  <style>
+    #area{
+      width: 500px;
+      height: 500px;
+      border: 3px solid #ff0000;
+      position: relative;
+      overflow: hidden;
+    }
+    .circle{
+      border-radius: 50%;
+      position: absolute;
+    }
+    .square{
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- <button onclick="alert('Clicked')" id="btn1">Clicker 1</button> -->
+  <!-- <button id="btn1" onclick="foo()">Clicker</button> -->
+  <!-- <button id="btn1" >Clicker</button> -->
+  <!-- <button id="btn">Clicker 2</button> -->
+
+  <!-- <a href="#s1" id="link">Link</a>
+  <section id="s1"></section> -->
+
+  <div class="editor">
+    <input type="number" id="newWidth" placeholder="WIdth"> <br><br>
+    <input type="number" id="newHeight" placeholder="height"> <br><br>
+    <input type="color" id="newColor"> <br><br>
+    <label>Круг
+      <input type="radio" name="figure" value="circle">
+    </label>
+    <label>Квадрат
+      <input type="radio" name="figure" value="square" checked>
+    </label>
+  </div>
+  <div id="area">
+
+  </div>
+
+  <div class="newEditor">
+    <input type="number" id="newEditorWidth" placeholder="Width"> <br><br>
+    <input type="number" id="newEditorHeight" placeholder="height"> <br><br>
+    <input type="color" id="newEditorColor"> <br><br>
+    <label>Круг
+      <input type="radio" id="newEditorCircle" name="figure" value="circle">
+    </label>
+    <label>Квадрат
+      <input type="radio" id="newEditorSquare" name="figure" value="square" checked>
+    </label>
+    <button id="save">Save</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
