@@ -20,6 +20,14 @@
     .square{
       position: absolute;
     }
+    .newEditor{
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border:1px solid green;
+    }
   </style>
 </head>
 <body>
@@ -52,10 +60,10 @@
     <input type="number" id="newEditorHeight" placeholder="height"> <br><br>
     <input type="color" id="newEditorColor"> <br><br>
     <label>Круг
-      <input type="radio" id="newEditorCircle" name="figure" value="circle">
+      <input type="radio" id="newEditorCircle" name="newFigure" value="circle">
     </label>
     <label>Квадрат
-      <input type="radio" id="newEditorSquare" name="figure" value="square" checked>
+      <input type="radio" id="newEditorSquare" name="newFigure" value="square" checked>
     </label>
     <button id="save">Save</button>
   </div>
