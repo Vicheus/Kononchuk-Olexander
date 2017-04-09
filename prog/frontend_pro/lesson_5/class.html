@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    function sequence(x = 0, y) {
+        let result = x;
+        let step = y;
+        return function () {
+            (!step) ? result++ : result += step;
+
+            return result;
+        }
+    }
+
+    function take(gen, n) {
+        let arr = [];
+        for (let i = 0; i < n; i++) {
+            let result = gen();
+            arr.push(result);
+        }
+        return arr;
+    }
+
+//    sequence(1, 5)();
+    let xx = take(sequence(2, 4), 4);
+    console.log( xx );
+
+//////////////////////////////////////
+
+    function map(fn, arr) {
+        let resArr = [];
+        for (let i = 0; i < arr.length; i++){
+            resArr.push(fn(arr[i]));
+        }
+
+        return console.log(resArr);
+    }
+
+    function sum(x) {
+        return ++x;
+    }
+
+    map(sum, [1, 2, 3, 4]);
+</script>
+
+</body>
+</html>

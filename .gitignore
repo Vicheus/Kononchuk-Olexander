@@ -1,1 +1,3 @@
-Twig/
+vendor/
+angular/angular-app/node_modules
+prog/node_modules

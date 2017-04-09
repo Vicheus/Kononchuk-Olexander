@@ -1,30 +1,3 @@
-// var btns = document.getElementsByTagName('button');
-// console.log( btns );
-// var btn = document.getElementById('btn');
-// console.log( btn );
-// console.log( btn1 );
-//
-//
-// function foo(){
-//   alert('Clicker');
-// }
-
-
-// btn1.onclick = function(){
-//   alert('Clicked')
-// }
-
-
-// btn1.addEventListener('click', function(event){
-//   console.log( event );
-// })
-
-// link.addEventListener('click', function(e){
-//   e.preventDefault()
-// })
-
-// var saveButton = document.getElementById('save');
-
 function Figure() {
     var width;
     var height;
@@ -32,6 +5,8 @@ function Figure() {
     var bgc;
     var figure;
     var newFigure;
+    var currentElement;
+    var deletedElement;
     var newWidth = document.getElementById('newWidth');
     var newHeight = document.getElementById('newHeight');
     var newColor = document.getElementById('newColor');
@@ -57,6 +32,16 @@ function Figure() {
     function setCoordinates(e) {
         top = ( e.offsetY - (height / 2) ) + 'px';
         left = ( e.offsetX - (width / 2) ) + 'px';
+    }
+
+    function setNewCoordinates() {
+        if (newEditorWidth.value > parseInt(currentElement.style.width)) {
+            top = parseInt(currentElement.style.top) - (newEditorWidth.value - parseInt(currentElement.style.width)) / 2 + 'px';
+            left = parseInt(currentElement.style.left) - (newEditorWidth.value - parseInt(currentElement.style.width)) / 2 + 'px';
+        }else if (newEditorWidth.value < parseInt(currentElement.style.width)) {
+            top = parseInt(currentElement.style.top) + (parseInt(currentElement.style.width) - newEditorWidth.value) / 2 + 'px';
+            left = parseInt(currentElement.style.left) + (parseInt(currentElement.style.width) - newEditorWidth.value) / 2 + 'px';
+        }
     }
 
     function setColor() {
@@ -129,7 +114,7 @@ function Figure() {
     }
 
     this.create = function (e) {
-        if (!isClickedOnFigure(e)) {
+
             setSize();
             setCoordinates(e);
             setColor();
@@ -141,10 +126,14 @@ function Figure() {
             element.style.height = height + 'px';
             element.style.top = top;
             element.style.left = left;
+        if (!isClickedOnFigure(e)) {
             element.style.backgroundColor = bgc;
-            if (figureColorIn(bgc, 200, 200, 200)) {
+            if (figureColorIn(bgc, 183,137,137)) {
                 element.style.border = "1px solid #0000FF";
             }
+        }else {
+            element.style.backgroundColor = bgc;
+            element.style.border = "1px solid #0000FF";
         }
     };
 
@@ -162,18 +151,28 @@ function Figure() {
             }
         unsetDataAttributes();
         e.target.dataset.id = 'current';
+        currentElement = document.querySelector('[data-id = "current"]');
         }
     }
 
     this.setNewValuesFromEditor = function (e) {
         setNewFigure();
-        var currentElement = document.querySelector('[data-id = "current"]');
+        setNewCoordinates();
+        currentElement.style.top = top;
+        currentElement.style.left = left;
         currentElement.style.width = newEditorWidth.value + 'px';
         currentElement.style.height = newEditorWidth.value + 'px';
         currentElement.style.backgroundColor = newEditorColor.value;
         currentElement.className = newFigure;
-        if (figureColorIn(newEditorColor.value, 200, 200, 200)) {
+        if (figureColorIn(newEditorColor.value, 183,137,137)) {
             currentElement.style.border = "1px solid #0000FF";
+        }
+    }
+
+    this.detachElement = function (e) {
+        let confirmation = confirm('Are you sure, you want to delete element?');
+        if (confirmation) {
+            deletedElement = currentElement.remove();
         }
     }
 
@@ -184,9 +183,4 @@ var c = new Figure();
 area.addEventListener('click', c.create);
 area.addEventListener('contextmenu', c.getFigureProps);
 save.addEventListener('click', c.setNewValuesFromEditor);
-
-
-
-
-
-// !!!!!!!!!!!!
+remove.addEventListener('click', c.detachElement);

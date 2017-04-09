@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Plugin 2</title>
+
+  <style>
+    body{
+      margin: 0;
+    }
+    .section1{
+      height: 100vh;
+      display: flex;
+      -ms-align-items: center;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
+    }
+    .box{
+      height: 70%;
+      width: 70%;
+      background-image: url('1.jpg');
+      background-size: cover;
+    }
+  </style>
+  <link rel="stylesheet" href="filterbg.css">
+</head>
+<body>
+
+  <div class="section1">
+    <div class="box"></div>
+  </div>
+
+  <script src="../jquery.min.js"></script>
+  <script src="jquery.filterbg.js"></script>
+
+  <script>
+    $('.box').filterBg({
+      filter: 'gs'
+    });
+  </script>
+</body>
+</html>

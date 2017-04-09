@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    padding-top: 100px;
+    background-color: #e1e1e1;
+    text-align: center;
+}
+.slider_container{
+    width: 500px;
+    height: 300px;
+    border-bottom: 4px solid #ff0000;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+}
+.slides{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100%;
+}
+.slide{
+    padding-top: 200px;
+    float: left;
+    font-size: 40px;
+    height: 100%;
+}
+.points{
+    text-align: center;
+    margin-top: 20px;
+}
+.point{
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 1px solid red;
+    display: inline-block;
+    cursor: pointer;
+}
+.my_btn{
+    width: 150px;
+    height: 35px;
+    cursor: pointer;
+    background-color: rgba(208, 20, 20, 1);
+    border: none;
+    border-radius: 5%;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    color: #fff;
+    box-shadow: 0 3px 5px rgba(150, 10, 10, 1);
+}
+.active{
+    background-color: red;
+}
+.content_block{
+    width: 500px;
+    height: 700px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+.content_block__ul{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    list-style: none;
+}
+.content_block__li{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    text-align: center;
+    z-index: 0;
+}
