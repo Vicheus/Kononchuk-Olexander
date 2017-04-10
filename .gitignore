@@ -1,3 +1,7 @@
 vendor/
 angular/angular-app/node_modules
+angular_test/dist
+angular_test/node_modules
+angular_test/typings
 prog/node_modules
+Twig/
