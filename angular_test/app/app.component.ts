@@ -2,24 +2,16 @@
  * Created by shura on 10.04.17.
  */
 import {Component} from "@angular/core";
-import {User} from "./shared/models/user";
 
 @Component({
-    selector: 'my-app',
+    selector: 'app',
     templateUrl: `./app/app.component.html`,
-    styleUrls: [`./app/app.component.css`]
+    styles: [`
+        .active {
+            color: #000;
+        }
+    `]
 })
 export class AppComponent {
-    message: string = 'Hello!';
-    users: User[] = [
-        {id: 25, name: 'Chris', username: 'sevilayha'},
-        {id: 26, name: 'Nick', username: 'nicky'},
-        {id: 27, name: 'Holly', username: 'good-holly'}
-    ];
-    activeUser: User;
-
-    selectUser(user) {
-        this.activeUser = user;
-        console.log(this.activeUser);
-    }
+    message: string = 'This is the sample message';
 }
