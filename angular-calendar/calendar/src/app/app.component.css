@@ -1,0 +1,14 @@
+.calendar_header {
+    text-align: center;
+}
+
+.calendar_header__nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.calendar_header__nav_date {
+    font-family: "Kaushan", sans-serif;
+    font-size: 30px;
+}

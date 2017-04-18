@@ -2,7 +2,7 @@
  * Created by shura on 11.04.17.
  */
 import {Component} from "@angular/core";
-import {User} from "../shared/models/user";
+import {User1} from "../shared/models/user";
 
 @Component({
     selector: 'user-app',
@@ -11,12 +11,12 @@ import {User} from "../shared/models/user";
 })
 export class UserComponent {
     message: string = 'Hello!';
-    users: User[] = [
+    users: User1[] = [
         {id: 25, name: 'Chris', username: 'sevilayha'},
         {id: 26, name: 'Nick', username: 'nicky'},
         {id: 27, name: 'Holly', username: 'good-holly'}
     ];
-    activeUser: User;
+    activeUser: User1;
 
     selectUser(user) {
         this.activeUser = user;

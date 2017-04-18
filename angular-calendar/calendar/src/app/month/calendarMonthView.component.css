@@ -1,0 +1,25 @@
+.monthCell {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dayCell {
+    width: 167px;
+    height: 167px;
+    border: 1px solid grey;
+    position: relative;
+}
+
+.dayNumber {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: red;
+}
+
+.dayHead {
+    width: 167px;
+    height: 30px;
+    font-weight: bold;
+    text-align: center;
+}

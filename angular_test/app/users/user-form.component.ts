@@ -2,7 +2,7 @@
  * Created by shura on 11.04.17.
  */
 import {Component, EventEmitter, Output} from "@angular/core";
-import {User} from "../shared/models/user";
+import {User1} from "../shared/models/user";
 
 @Component({
     selector: 'user-form',
@@ -44,14 +44,14 @@ import {User} from "../shared/models/user";
 
 export class UserFormComponent {
     @Output() userCreated = new EventEmitter();
-    newUser: User = new User();
+    newUser: User1 = new User1();
     active: boolean = true;
 
     onSubmit() {
         //show the event that user was created
         this.userCreated.emit({user: this.newUser});
 
-        this.newUser = new User();
+        this.newUser = new User1();
         this.active = false;
         setTimeout(() => this.active = true, 0);
     }

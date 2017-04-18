@@ -2,7 +2,7 @@
  * Created by shura on 11.04.17.
  */
 import {Component, Input} from "@angular/core";
-import {User} from "../shared/models/user";
+import {User1} from "../shared/models/user";
 
 @Component({
     selector: 'user-profile',
@@ -18,5 +18,5 @@ import {User} from "../shared/models/user";
 })
 
 export class UserProfileComponent {
-    @Input() user: User;
+    @Input() user: User1;
 }

@@ -1,5 +1,6 @@
 vendor/
 angular/angular-app/node_modules
+angular-calendar/calendar/node_modules
 angular_test/dist
 angular_test/node_modules
 angular_test/typings
