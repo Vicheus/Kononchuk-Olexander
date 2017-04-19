@@ -7,18 +7,32 @@ import {Component, OnInit} from "@angular/core";
 })
 export class MonthViewComponent implements OnInit {
 
-    date: Date = new Date();
+    currentDate: Date = new Date();
 
-    dayOfWeek: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    dayOfWeek: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     dateArray: Date[] = [];
 
-    firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+    previousMonthDateArray: Date[] = [];
+
+    getDaysFromPreviousMonth() {
+        let startDayCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
+        let previousMonthCountDays = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 0).getDate();
+        let diffDays = startDayCurrentMonth - 1;
+        let startDayPreviousMonth = previousMonthCountDays - 6 + diffDays;
+
+        for (let i = startDayPreviousMonth; i <= previousMonthCountDays; i++) {
+            let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, i);
+            this.previousMonthDateArray.push(day);
+        }
+
+        return previousMonthCountDays;
+    }
 
     getDateArray(): void {
-        let daysCount = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
+        let daysCount = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
         for (let i = 1; i <= daysCount; i++) {
-            let day = new Date(this.date.getFullYear(), this.date.getMonth(), i);
+            let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), i);
             this.dateArray.push(day);
         }
     }
@@ -28,6 +42,7 @@ export class MonthViewComponent implements OnInit {
 
     ngOnInit() {
         this.getDateArray();
+        this.getDaysFromPreviousMonth();
     }
 
 }

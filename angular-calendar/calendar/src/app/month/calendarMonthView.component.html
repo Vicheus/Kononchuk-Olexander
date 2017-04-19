@@ -1,17 +1,22 @@
 <section class="section_dates container">
 
     <div class="row">
-        {{ firstDay.getDay() }}
+        {{ getDaysFromPreviousMonth() }}
         <div class="col-sm-12">
             <div class="monthCell row">
                 <div class="dayHead" *ngFor="let name of dayOfWeek">
                     {{ name }}
                 </div>
+                <div class="dayCell grey" *ngFor="let day of previousMonthDateArray">
+                <span class="dayNumber">
+                    {{ day.getDate() }}
+                </span>
+                </div>
+
                 <div class="dayCell" *ngFor="let day of dateArray">
                 <span class="dayNumber">
                     {{ day.getDate() }}
                 </span>
-                    {{ week }}
                 </div>
             </div>
         </div>
