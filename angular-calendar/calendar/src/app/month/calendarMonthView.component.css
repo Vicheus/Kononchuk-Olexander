@@ -4,7 +4,7 @@
 }
 
 .dayCell {
-    width: 167px;
+    width: 166.85px;
     height: 167px;
     border: 1px solid grey;
     position: relative;
@@ -26,4 +26,24 @@
 
 .grey {
     background-color: #e6e6e6;
+}
+
+.nonthCellDateContainer {
+    border: 1px solid grey;
+}
+
+/*////////////////////*/
+.calendar_header {
+    text-align: center;
+}
+
+.calendar_header__nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.calendar_header__nav_date {
+    font-family: "Kaushan", sans-serif;
+    font-size: 30px;
 }
