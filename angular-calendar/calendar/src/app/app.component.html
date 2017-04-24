@@ -9,7 +9,7 @@
       </div>
 
       <div class="calendar_header__nav_date">
-        <!--{{ date.toLocaleString(locale, { month: "long", year: "numeric" }) }}-->
+        {{ currentDate.toLocaleString(locale, { month: "long", year: "numeric" }) }}
       </div>
 
       <div class="calendar_header__nav_btns">
@@ -22,4 +22,5 @@
   </div>
 </header>
 
-<month-view></month-view>
+<month-view
+        [cD]="currentDate"></month-view>

@@ -9,17 +9,17 @@
             </div>
 
             <div class="nonthCellDateContainer monthCell row">
-                <div class="dayCell grey" *ngFor="let day of month.prevMonthDateArray">
+                <div class="dayCell grey" *ngFor="let day of prevMonthDateArray">
                     <span class="dayNumber">
                         {{ day.getDate() }}
                     </span>
                 </div>
-                <div class="dayCell" *ngFor="let day of month.currMonthDateArray">
+                <div class="dayCell" *ngFor="let day of currMonthDateArray">
                     <span class="dayNumber">
                         {{ day.getDate() }}
                     </span>
                 </div>
-                <div class="dayCell grey" *ngFor="let day of month.nextMonthDateArray">
+                <div class="dayCell grey" *ngFor="let day of nextMonthDateArray">
                     <span class="dayNumber">
                         {{ day.getDate() }}
                     </span>

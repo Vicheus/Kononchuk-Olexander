@@ -2,7 +2,7 @@
  * Created by shura on 21.04.17.
  */
 export class Month {
-  currentDate: Date = new Date();
+
   daysOfWeek: string[] = [
     'Monday',
     'Tuesday',
@@ -12,9 +12,6 @@ export class Month {
     'Saturday',
     'Sunday'
   ];
-  prevMonthDateArray: Date[] = [];
-  nextMonthDateArray: Date[] = [];
-  currMonthDateArray: Date[] = [];
 
   constructor() {}
 
