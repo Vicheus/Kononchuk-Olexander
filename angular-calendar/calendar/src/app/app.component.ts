@@ -31,10 +31,10 @@ export class AppComponent implements OnInit {
     this.setDefaultCurrentDate();
   }
 
-  constructor(
-  ) {}
+  constructor() {
+  }
 
   ngOnInit() {
-    this.currentDate = new Date()
+    this.setDefaultCurrentDate();
   }
 }
