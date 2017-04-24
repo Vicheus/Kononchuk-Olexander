@@ -14,6 +14,8 @@ export class MonthViewComponent implements OnInit, OnChanges {
 
   currentDate: Date;
 
+  today = new Date();
+
   prevMonthDateArray: Date[];
   nextMonthDateArray: Date[];
   currMonthDateArray: Date[];

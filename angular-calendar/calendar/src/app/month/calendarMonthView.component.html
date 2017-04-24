@@ -14,7 +14,9 @@
                         {{ day.getDate() }}
                     </span>
                 </div>
-                <div class="dayCell" *ngFor="let day of currMonthDateArray">
+                <div class="dayCell"
+                     *ngFor="let day of currMonthDateArray"
+                     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()">
                     <span class="dayNumber">
                         {{ day.getDate() }}
                     </span>
