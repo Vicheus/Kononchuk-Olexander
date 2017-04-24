@@ -1,49 +1,25 @@
-<header class="calendar_header container">
-    <div class="row">
-        <nav class="calendar_header__nav">
-
-            <div class="calendar_header__nav_btns">
-                <button class="btn btn-primary" (click)="previousMonthButton()">Previous</button>
-                <button class="btn btn-primary" (click)="todayButton()">Today</button>
-                <button class="btn btn-primary" (click)="nextMonthButton()">Next</button>
-            </div>
-
-            <div class="calendar_header__nav_date">
-                <!--{{ date.toLocaleString(locale, { month: "long", year: "numeric" }) }}-->
-            </div>
-
-            <div class="calendar_header__nav_btns">
-                <button class="btn btn-primary">Month</button>
-                <button class="btn btn-primary">Week</button>
-                <button class="btn btn-primary">Day</button>
-            </div>
-
-        </nav>
-    </div>
-</header>
-
 <section class="section_dates container">
 
     <div class="row">
         <div class="col-sm-12">
             <div class="monthCell row">
-                <div class="dayHead" *ngFor="let name of dayOfWeek">
-                    {{ name }}
+                <div class="dayHead" *ngFor="let day of month.daysOfWeek">
+                    {{ day }}
                 </div>
             </div>
 
             <div class="nonthCellDateContainer monthCell row">
-                <div class="dayCell grey" *ngFor="let day of previousMonthDateArray">
+                <div class="dayCell grey" *ngFor="let day of month.prevMonthDateArray">
                     <span class="dayNumber">
                         {{ day.getDate() }}
                     </span>
                 </div>
-                <div class="dayCell" *ngFor="let day of dateArray">
+                <div class="dayCell" *ngFor="let day of month.currMonthDateArray">
                     <span class="dayNumber">
                         {{ day.getDate() }}
                     </span>
                 </div>
-                <div class="dayCell grey" *ngFor="let day of nextMonthDateArray">
+                <div class="dayCell grey" *ngFor="let day of month.nextMonthDateArray">
                     <span class="dayNumber">
                         {{ day.getDate() }}
                     </span>
