@@ -1,30 +1,36 @@
 <section class="section_dates container">
-
     <div class="row">
-        <div class="col-sm-12">
-            <div class="monthCell row">
-                <div class="dayHead" *ngFor="let day of month.daysOfWeek">
-                    {{ day }}
-                </div>
-            </div>
 
-            <div class="nonthCellDateContainer monthCell row">
-                <div class="dayCell grey" *ngFor="let day of prevMonthDateArray">
-                    <span class="dayNumber">
-                        {{ day.getDate() }}
-                    </span>
+        <div class="daysOfWeek">
+            <div class="dayHead" *ngFor="let day of month.daysOfWeek">
+                {{ day }}
+            </div>
+        </div>
+
+        <div class="dates_block">
+
+            <div class="nonthCellDateContainer monthCell">
+                <div class="dayCell grey"
+                     *ngFor="let day of prevMonthDateArray">
+                            <span class="dayNumber"
+                                  [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
+                                {{ day.getDate() }}
+                            </span>
                 </div>
                 <div class="dayCell"
                      *ngFor="let day of currMonthDateArray"
                      [class.active]="day.toLocaleDateString() === today.toLocaleDateString()">
-                    <span class="dayNumber">
-                        {{ day.getDate() }}
-                    </span>
+                            <span class="dayNumber"
+                                  [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
+                                {{ day.getDate() }}
+                            </span>
                 </div>
-                <div class="dayCell grey" *ngFor="let day of nextMonthDateArray">
-                    <span class="dayNumber">
-                        {{ day.getDate() }}
-                    </span>
+                <div class="dayCell grey"
+                     *ngFor="let day of nextMonthDateArray">
+                            <span class="dayNumber"
+                                  [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
+                                {{ day.getDate() }}
+                            </span>
                 </div>
             </div>
         </div>

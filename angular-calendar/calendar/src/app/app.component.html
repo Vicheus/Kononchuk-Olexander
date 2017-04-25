@@ -1,26 +1,29 @@
-<header class="calendar_header container">
-  <div class="row">
-    <nav class="calendar_header__nav">
+<header class="calendar_header">
+  <div class="container">
+    <div class="row">
+      <nav class="calendar_header__nav">
 
-      <div class="calendar_header__nav_btns">
-        <button class="btn btn-primary" (click)="previousMonthButton()">Previous</button>
-        <button class="btn btn-primary" (click)="todayButton()">Today</button>
-        <button class="btn btn-primary" (click)="nextMonthButton()">Next</button>
-      </div>
+        <div class="calendar_header__nav_btns">
+          <button class="btn btn-primary" (click)="previousMonthButton()">Previous</button>
+          <button class="btn btn-primary" (click)="todayButton()">Today</button>
+          <button class="btn btn-primary" (click)="nextMonthButton()">Next</button>
+        </div>
 
-      <div class="calendar_header__nav_date">
-        {{ currentDate.toLocaleString(locale, { month: "long", year: "numeric" }) }}
-      </div>
+        <div class="calendar_header__nav_date">
+          {{ currentDate.toLocaleString(locale, { month: "long", year: "numeric" }) }}
+        </div>
 
-      <div class="calendar_header__nav_btns">
-        <button class="btn btn-primary">Month</button>
-        <button class="btn btn-primary">Week</button>
-        <button class="btn btn-primary">Day</button>
-      </div>
+        <div class="calendar_header__nav_btns">
+          <button class="btn btn-primary">Month</button>
+          <button class="btn btn-primary">Week</button>
+          <button class="btn btn-primary">Day</button>
+        </div>
 
-    </nav>
+      </nav>
+    </div>
   </div>
 </header>
 
 <month-view
-        [cD]="currentDate"></month-view>
+        [cD]="currentDate">
+</month-view>

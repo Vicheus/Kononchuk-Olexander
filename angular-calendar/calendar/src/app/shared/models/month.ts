@@ -13,6 +13,8 @@ export class Month {
     'Sunday'
   ];
 
+  weekendDays: number[] = [0, 6];
+
   constructor() {}
 
 }

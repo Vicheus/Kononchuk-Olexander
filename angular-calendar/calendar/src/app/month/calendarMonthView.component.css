@@ -1,37 +1,53 @@
-.monthCell {
-    display: flex;
-    flex-wrap: wrap;
+.daysOfWeek {
 }
 
-.dayCell {
-    width: 166.85px;
-    height: 167px;
-    border: 1px solid grey;
-    position: relative;
-}
-
-.dayNumber {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: red;
+.dates_block {
+  height: 80vh;
 }
 
 .dayHead {
-    width: 167px;
-    height: 30px;
-    font-weight: bold;
-    text-align: center;
+  float: left;
+}
+
+.monthCell {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.dayCell {
+  width: 14.285%;
+  height: 16.68%;
+  border: 1px solid grey;
+  position: relative;
+}
+
+.dayNumber {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: black;
+}
+
+.dayHead {
+  width: 14.285%;
+  height: 30px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .grey {
-    background-color: #e6e6e6;
+  background-color: #e6e6e6;
 }
 
 .nonthCellDateContainer {
-    border: 1px solid grey;
+  border: 1px solid grey;
 }
 
 .active {
   background-color: rgba(46,167,9,0.6);
+}
+
+.weekend {
+  color: red;
 }

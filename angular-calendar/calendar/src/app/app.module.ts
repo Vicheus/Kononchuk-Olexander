@@ -6,11 +6,13 @@ import {AlertModule} from "ng2-bootstrap";
 
 import {AppComponent} from "./app.component";
 import {MonthViewComponent} from "./month/calendarMonthView.component";
+import {WeekViewComponent} from "./week/weekView.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    MonthViewComponent
+    MonthViewComponent,
+    WeekViewComponent
   ],
   imports: [
     BrowserModule,
