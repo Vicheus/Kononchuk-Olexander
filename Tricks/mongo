@@ -5,3 +5,5 @@
 .find({ "redirectUrlParam": {$elemMatch:{"parameterName": "{TRACKER_ID}", "parameterValue": "rb7obieygggc408"}}, "evC": 1 }).limit(1)
 
 .find({"cD": {$gte: new Date(ISODate().getTime() - 1000 * 60 * 50)}, "evC": {$exists: true}})
+
+.find({ "redirectUrlParam": {$elemMatch:{"parameterName": "{TRACKER_ID}", "parameterValue": "rb7obieygggc408"}}, "evC": 1 }).limit(1)

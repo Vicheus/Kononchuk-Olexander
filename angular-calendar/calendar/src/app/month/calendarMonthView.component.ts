@@ -6,7 +6,7 @@ import {Month} from "app/shared/models/month";
     selector: 'month-view',
   providers: [CalendarService, Month],
     templateUrl: './calendarMonthView.component.html',
-    styleUrls: ['./calendarMonthView.component.css']
+  styleUrls: ['./calendarMonthView.component.sass']
 })
 export class MonthViewComponent implements OnInit, OnChanges {
 
