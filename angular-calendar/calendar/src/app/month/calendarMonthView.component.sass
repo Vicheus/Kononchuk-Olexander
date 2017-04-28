@@ -4,9 +4,6 @@
 .daysOfWeek
   height: 5vh
 
-.dates_block
-  //height: 80vh
-
 .monthCell
   display: flex
   flex-wrap: wrap
@@ -21,23 +18,6 @@
   &:hover .overlay
     display: block
 
-.overlay
-  position: absolute
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  background-color: $lightAccent
-  //transform: translateY(-100%)
-  display: none
-  transition: all
-
-.dayNumber
-  position: absolute
-  top: 10px
-  left: 10px
-  color: $mainBlue
-
 .dayHead
   float: left
   width: 14.285%
@@ -46,14 +26,11 @@
   font-weight: bold
   text-align: center
 
+.active
+  background-color: $accent
+
 .grey
   background-color: $lightGray
 
 .nonthCellDateContainer
   border: 1px solid grey
-
-.active
-  background-color: $accent
-
-.weekend
-  color: red

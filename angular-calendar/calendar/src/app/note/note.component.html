@@ -1,0 +1,12 @@
+<!--<div class="container">-->
+<!--<div class="row">-->
+<div class="dayCell"
+     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()">
+    <div class="overlay"></div>
+    <span class="dayNumber"
+          [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
+    {{ day.getDate() }}
+  </span>
+</div>
+<!--</div>-->
+<!--</div>-->

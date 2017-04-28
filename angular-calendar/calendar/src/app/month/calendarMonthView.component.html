@@ -7,38 +7,15 @@
             </div>
         </div>
 
-        <div class="dates_block">
-
-            <div class="nonthCellDateContainer monthCell">
-                <div class="dayCell grey"
-                     *ngFor="let day of prevMonthDateArray"
-                     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()">
-                    <div class="overlay"></div>
-                    <span class="dayNumber"
-                          [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
-                        {{ day.getDate() }}
-                    </span>
-                </div>
-                <div class="dayCell"
-                     *ngFor="let day of currMonthDateArray"
-                     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()">
-                    <div class="overlay"></div>
-                    <span class="dayNumber"
-                          [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
-                        {{ day.getDate() }}
-                    </span>
-                </div>
-                <div class="dayCell grey"
-                     *ngFor="let day of nextMonthDateArray"
-                     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()">
-                    <div class="overlay"></div>
-                    <span class="dayNumber"
-                          [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
-                        {{ day.getDate() }}
-                    </span>
-                </div>
-            </div>
+        <div class="nonthCellDateContainer monthCell">
+            <note *ngFor="let day of prevMonthDateArray"
+                  [day]="day" class="dayCell grey"></note>
+            <note *ngFor="let day of currMonthDateArray"
+                  [day]="day" class="dayCell"></note>
+            <note *ngFor="let day of nextMonthDateArray"
+                  [day]="day" class="dayCell grey"></note>
         </div>
+
     </div>
 
 </section>
