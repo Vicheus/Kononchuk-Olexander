@@ -7,6 +7,11 @@
           [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
     {{ day.getDate() }}
   </span>
+    <div class="notes" *ngFor="let n of note">
+        <span>
+            {{ n.title }}
+        </span>
+    </div>
 </div>
 <!--</div>-->
 <!--</div>-->

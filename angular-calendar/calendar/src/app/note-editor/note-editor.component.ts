@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {CalendarService} from "../_services/calendar.service";
 import {Note} from "../shared/models/note";
 
@@ -10,11 +10,13 @@ import {Note} from "../shared/models/note";
 })
 export class NoteEditorComponent implements OnInit {
 
+  @Output() noteCreated = new EventEmitter();
+
   noteTypes;
 
   newNote: Note = new Note();
 
-  notes;
+  active: boolean = true;
 
   constructor(private _cs: CalendarService) {
   }
@@ -24,7 +26,12 @@ export class NoteEditorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log()
+    this.noteCreated.emit({note: this.newNote});
+    // console.log(this.newNote);
+
+    this.newNote = new Note();
+    this.active = false;
+    setTimeout(() => this.active = true, 0);
   }
 
 }

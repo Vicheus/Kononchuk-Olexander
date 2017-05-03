@@ -1,2 +1,16 @@
 gcloud compute --project "tracktica-143815" ssh --zone "us-central1-b" "tracking-dev"
 
+///////BIG QUERY////////
+-- SELECT partition_id FROM [tracktica-143815:analytics_dev.tracking_event$__PARTITIONS_SUMMARY__];
+
+SELECT t1.*, t2.name FROM (
+  SELECT * FROM [tracktica-143815:analytics_dev.tracking_event] t1
+  WHERE t1._PARTITIONTIME = TIMESTAMP('2017-04-26')
+) t1 INNER JOIN [tracktica-143815:analytics_dev.placement_dim] t2 ON t1.placement_id = t2.id
+  WHERE t1.placement_id = 524;
+
+SELECT _PARTITIONTIME as pt, * from [tracktica-143815:analytics_dev.tracking_event] t1 where t1.placement_id = 524;
+
+SELECT * FROM [tracktica-143815:analytics_dev.tracking_event] ORDER BY event_timestamp DESC;
+
+SELECT _PARTITIONTIME as pt, * from [tracktica-143815:analytics_prod.tracking_event];

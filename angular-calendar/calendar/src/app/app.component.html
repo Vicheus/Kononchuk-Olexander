@@ -25,7 +25,8 @@
 </header>
 
 <month-view
-        [cD]="currentDate">
+        [cD]="currentDate"
+        [notes]="notes">
 </month-view>
 
-<note-editor></note-editor>
+<note-editor (noteCreated)="onNoteCreated($event)"></note-editor>

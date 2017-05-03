@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {CalendarService} from "app/_services/calendar.service";
 import {Month} from "app/shared/models/month";
+import {Note} from "app/shared/models/note";
 
 @Component({
     selector: 'month-view',
@@ -11,6 +12,7 @@ import {Month} from "app/shared/models/month";
 export class MonthViewComponent implements OnInit, OnChanges {
 
   @Input() cD: Date;
+  @Input() notes: Note[];
 
   currentDate: Date;
 

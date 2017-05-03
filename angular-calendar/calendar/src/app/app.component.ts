@@ -1,15 +1,18 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {CalendarService} from "app/_services/calendar.service";
+import {Note} from "app/shared/models/note";
 
 @Component({
-    selector: 'calendar',
-    providers: [ CalendarService ],
-    templateUrl: './app.component.html',
+  selector: 'calendar',
+  providers: [CalendarService],
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
 
   currentDate: Date;
+
+  notes: Note[];
 
   setNewCurrentDate(y = null, m = null, d = null) {
     this.currentDate = new Date(y, m, d);
@@ -31,10 +34,19 @@ export class AppComponent implements OnInit {
     this.setDefaultCurrentDate();
   }
 
-  constructor() {
+  constructor(private _cs: CalendarService) {
   }
 
   ngOnInit() {
     this.setDefaultCurrentDate();
+    this.notes = this._cs.getNotes();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+  }
+
+  onNoteCreated(event) {
+    this._cs.addNewNote(event);
   }
 }
