@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="form-group" [ngClass]="{'has-error': title.invalid && title.touched}">
                     <input type="text" class="form-control"
-                           [(ngModel)]="newNote.title"
+                           [(ngModel)]="noteTitle"
                            name="title" placeholder="Title" required
                            #title>
 
@@ -53,8 +53,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="apply()">OK</button>
-                <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+                <button type="button" class="my_btn--popup" (click)="apply()">Create new note</button>
             </div>
 
         </form>

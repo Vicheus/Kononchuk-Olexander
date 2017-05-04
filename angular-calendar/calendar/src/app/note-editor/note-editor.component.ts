@@ -6,7 +6,7 @@ import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
 export interface FormModel {
   titleMessage: string;
   id: number;
-  title: string;
+  noteTitle: string;
   color: string;
   type: string;
   text: string;
@@ -22,7 +22,7 @@ export interface FormModel {
 export class NoteEditorComponent extends DialogComponent<FormModel, any> implements OnInit, OnChanges, FormModel {
   titleMessage: string;
   id: number;
-  title: string;
+  noteTitle: string;
   color: string;
   type: string;
   text: string;
@@ -53,13 +53,13 @@ export class NoteEditorComponent extends DialogComponent<FormModel, any> impleme
     // this.clicked = changes.c.currentValue;
   }
 
-  onSubmit() {
-    this.noteCreated.emit({note: this.newNote});
-
-    this.newNote = new Note();
-    this.active = false;
-    setTimeout(() => this.active = true, 0);
-  }
+  // onSubmit() {
+  //   this.noteCreated.emit({note: this.newNote});
+  //
+  //   this.newNote = new Note();
+  //   this.active = false;
+  //   setTimeout(() => this.active = true, 0);
+  // }
 
   // removeForm() {
   //   this.clicked = true;
@@ -68,6 +68,11 @@ export class NoteEditorComponent extends DialogComponent<FormModel, any> impleme
   // }
 
   apply() {
+    this.newNote = new Note();
+    this.active = false;
+    setTimeout(() => this.active = true, 0);
+    console.log(this.noteTitle);
+
     this.close();
   }
 

@@ -1,0 +1,19 @@
+@import "../assets/vars"
+
+.my_btn
+  font-family: $mainFont
+  font-style: normal
+  font-size: 20px
+  color: #fff
+  line-height: 40px
+  background-color: $mainBlue
+  border: 1px solid $mainBlue
+  display: inline-block
+  text-align: center
+  transition: all 0.3s
+  &:active
+    box-shadow: inset 0 0 20px 0 $mainBlue
+  &:hover
+    background-color: $lightAccent
+    border: 1px solid $lightGray
+    color: $mainBlue

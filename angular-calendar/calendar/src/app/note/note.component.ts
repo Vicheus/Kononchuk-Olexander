@@ -41,7 +41,7 @@ export class NoteComponent implements OnInit, OnChanges {
   showPopup() {
     this.dialogService.addDialog(NoteEditorComponent,
       {titleMessage: 'Name dialog'},
-      {autoCloseTimeout: 10000, closeByClickingOutside: true}
+      {closeByClickingOutside: true}
     ).subscribe((message) => {
       //We get dialog result
       this.promptMessage = message;
