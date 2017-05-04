@@ -1,7 +1,8 @@
 <!--<div class="container">-->
 <!--<div class="row">-->
 <div class="dayCell"
-     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()">
+     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()"
+     (click)="showPopup()">
     <div class="overlay"></div>
     <span class="dayNumber"
           [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
@@ -13,5 +14,11 @@
         </span>
     </div>
 </div>
+
+<!--<div class="my_popup">-->
+<!--<note-editor-->
+<!--(noteCreated)="onNoteCreated($event)">-->
+<!--</note-editor>-->
+<!--</div>-->
 <!--</div>-->
 <!--</div>-->

@@ -46,7 +46,4 @@ export class AppComponent implements OnInit, OnChanges {
 
   }
 
-  onNoteCreated(event) {
-    this._cs.addNewNote(event);
-  }
 }
