@@ -6,11 +6,11 @@
         </div>
 
         <form #form="ngForm" *ngIf="active">
-
+            {{form.valid}}
             <div class="modal-body">
                 <div class="form-group" [ngClass]="{'has-error': title.invalid && title.touched}">
                     <input type="text" class="form-control"
-                           [(ngModel)]="noteTitle"
+                           [(ngModel)]="newNote.noteTitle"
                            name="title" placeholder="Title" required
                            #title>
 
@@ -53,7 +53,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="my_btn--popup" (click)="apply()">Create new note</button>
+                <button type="button" class="my_btn--popup" [disabled]="form.invalid"
+                        (click)="apply()">
+                    Create new note
+                </button>
             </div>
 
         </form>

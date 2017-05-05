@@ -11,16 +11,12 @@ import {DialogService} from "ng2-bootstrap-modal";
 })
 export class NoteComponent implements OnInit, OnChanges {
 
-  promptMessage: string = '';
-
   @Input() day: Date;
   @Input() notes: Note[];
 
   note: Note[];
 
   today = new Date();
-
-  // clicked = false;
 
   constructor(public _cs: CalendarService,
               public dialogService: DialogService) {
@@ -40,19 +36,16 @@ export class NoteComponent implements OnInit, OnChanges {
 
   showPopup() {
     this.dialogService.addDialog(NoteEditorComponent,
-      {titleMessage: 'Name dialog'},
+      {titleMessage: 'Enter the task please'},
       {closeByClickingOutside: true}
-    ).subscribe((message) => {
+    ).subscribe((result) => {
       //We get dialog result
-      this.promptMessage = message;
+      if (result && result instanceof Note) {
+        this.note.push(result);
+        this._cs.addNewNote(result);
+      }
+      console.log(this._cs.notes);
     });
   }
-
-  // showPopup() {
-  //   this.clicked = false;
-  //   setTimeout(() => this.c = false, 2);
-  //
-  //   setTimeout(() => this.clicked = true, 0);
-  // }
 
 }

@@ -2,8 +2,9 @@
  * Created by shura on 28.04.17.
  */
 export class Note {
+  titleMessage: string;
   id: number;
-  title: string;
+  noteTitle: string;
   color: string;
   type: string;
   text: string;

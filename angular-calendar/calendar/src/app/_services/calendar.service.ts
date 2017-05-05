@@ -7,9 +7,145 @@ export class CalendarService {
 
   notes: Note[] = [
     {
+      titleMessage: '',
       id: 1,
-      title: 'string',
-      color: 'string',
+      noteTitle: 'string',
+      color: 'red',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
+      type: 'string',
+      text: 'string',
+      date: new Date()
+    },
+    {
+      titleMessage: '',
+      id: 1,
+      noteTitle: 'string',
+      color: 'blue',
       type: 'string',
       text: 'string',
       date: new Date()

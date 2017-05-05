@@ -1,5 +1,3 @@
-<!--<div class="container">-->
-<!--<div class="row">-->
 <div class="dayCell"
      [class.active]="day.toLocaleDateString() === today.toLocaleDateString()"
      (click)="showPopup()">
@@ -8,17 +6,14 @@
           [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
     {{ day.getDate() }}
   </span>
-    <div class="notes" *ngFor="let n of note">
-        <span>
-            {{ n.title }}
-        </span>
-    </div>
-</div>
 
-<!--<div class="my_popup">-->
-<!--<note-editor-->
-<!--(noteCreated)="onNoteCreated($event)">-->
-<!--</note-editor>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+    <div class="notes">
+        <div *ngFor="let n of note">
+            <div class="note"
+                 *ngIf="n.date.toLocaleDateString() === day.toLocaleDateString()"
+                 [ngStyle]="{ 'background-color': n.color }">
+            </div>
+        </div>
+    </div>
+
+</div>
