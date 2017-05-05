@@ -1,4 +1,4 @@
-<div class="dayCell"
+<div class="day"
      [class.active]="day.toLocaleDateString() === today.toLocaleDateString()"
      (click)="showPopup()">
     <div class="overlay"></div>
@@ -11,7 +11,11 @@
         <div *ngFor="let n of note">
             <div class="note"
                  *ngIf="n.date.toLocaleDateString() === day.toLocaleDateString()"
-                 [ngStyle]="{ 'background-color': n.color }">
+                 [ngStyle]="{ 'background-color': n.color }"
+                 (click)="editNote(n, $event)">
+                <div class="note_info">
+                    {{ n.noteTitle }}
+                </div>
             </div>
         </div>
     </div>

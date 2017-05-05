@@ -36,7 +36,9 @@ export class NoteComponent implements OnInit, OnChanges {
 
   showPopup() {
     this.dialogService.addDialog(NoteEditorComponent,
-      {titleMessage: 'Enter the task please'},
+      {
+        titleMessage: 'Enter the task please'
+      },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
       //We get dialog result
@@ -46,6 +48,11 @@ export class NoteComponent implements OnInit, OnChanges {
       }
       console.log(this._cs.notes);
     });
+  }
+
+  editNote(n, event) {
+    event.stopPropagation();
+    console.log(n);
   }
 
 }

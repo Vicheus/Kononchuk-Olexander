@@ -28,7 +28,7 @@ export class CalendarService {
       titleMessage: '',
       id: 1,
       noteTitle: 'string',
-      color: 'blue',
+      color: 'green',
       type: 'string',
       text: 'string',
       date: new Date()
@@ -37,7 +37,7 @@ export class CalendarService {
       titleMessage: '',
       id: 1,
       noteTitle: 'string',
-      color: 'blue',
+      color: 'aqua',
       type: 'string',
       text: 'string',
       date: new Date()

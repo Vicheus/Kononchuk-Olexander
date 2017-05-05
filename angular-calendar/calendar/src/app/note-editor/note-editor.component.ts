@@ -9,9 +9,11 @@ import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
   templateUrl: './note-editor.component.html',
   styleUrls: ['./note-editor.component.sass']
 })
-export class NoteEditorComponent extends DialogComponent<Note, any> implements OnInit, OnChanges {
+export class NoteEditorComponent extends DialogComponent<Note, Note> implements OnInit, OnChanges {
 
   noteTypes;
+
+  defaultColor = "#337ab7";
 
   newNote: Note = new Note();
 
@@ -29,14 +31,16 @@ export class NoteEditorComponent extends DialogComponent<Note, any> implements O
   ngOnChanges(changes: SimpleChanges) {
   }
 
-  apply() {
-    this.result = this.newNote;
+  apply(form) {
+    if (form.valid) {
+      this.result = this.newNote;
 
-    this.newNote = new Note();
-    this.active = false;
-    setTimeout(() => this.active = true, 0);
+      this.newNote = new Note();
+      this.active = false;
+      setTimeout(() => this.active = true, 0);
 
-    this.close();
+      this.close();
+    }
   }
 
 }

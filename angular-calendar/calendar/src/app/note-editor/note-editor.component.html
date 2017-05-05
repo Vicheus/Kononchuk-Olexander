@@ -6,21 +6,27 @@
         </div>
 
         <form #form="ngForm" *ngIf="active">
-            {{form.valid}}
             <div class="modal-body">
                 <div class="form-group" [ngClass]="{'has-error': title.invalid && title.touched}">
                     <input type="text" class="form-control"
                            [(ngModel)]="newNote.noteTitle"
-                           name="title" placeholder="Title" required
+                           name="title"
+                           placeholder="Title"
+                           required
                            #title>
 
                     <span class="help-block" *ngIf="title.invalid && title.touched">Title is required</span>
                 </div>
 
                 <div class="form-group" [ngClass]="{'has-error': type.invalid && type.touched}">
-                    <select type="text" class="form-control" [(ngModel)]="newNote.type"
-                            name="type" #type="ngModel" required>
-                        <option *ngFor="let nt of noteTypes" value="{{ nt.name }}">
+                    <select type="text" class="form-control"
+                            [(ngModel)]="newNote.type"
+                            name="type"
+                            #type="ngModel"
+                            required>
+                        <option *ngFor="let nt of noteTypes"
+                                [value]="nt.name"
+                                [attr.selected]="nt.name === 'Home' ? nt.name : null">
                             {{ nt.name }}
                         </option>
                     </select>
@@ -29,17 +35,27 @@
                 </div>
 
                 <div class="form-group" [ngClass]="{'has-error': color.invalid && color.touched}">
-                    <input [(colorPicker)]="newNote.color" [style.background]="newNote.color" [ngModel]="newNote.color"
+                    <input [(colorPicker)]="newNote.color"
+                           [style.background]="defaultColor"
+                           [ngModel]="newNote.color"
+                           [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
                            [value]="newNote.color"
-                           name="color" #color="ngModel" required readonly/>
+                           [cpFallbackColor]="defaultColor"
+                           name="color" #color="ngModel"
+                           required
+                           readonly/>
 
                     <span class="help-block" *ngIf="color.invalid && color.touched">Color is required</span>
                 </div>
 
                 <div class="form-group" [ngClass]="{'has-error': date.invalid && date.touched}">
-                    <input [ngModel]="newNote.date | date: 'short'" [(dateTimePicker)]="newNote.date" readonly
+                    <input [ngModel]="newNote.date | date: 'short'"
+                           [(dateTimePicker)]="newNote.date"
                            name="date"
-                           #date="ngModel" required placeholder="Date"/>
+                           #date="ngModel"
+                           required
+                           readonly
+                           placeholder="Date"/>
 
                     <span class="help-block" *ngIf="date.invalid && date.touched">Date is required</span>
                 </div>
@@ -53,8 +69,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="my_btn--popup" [disabled]="form.invalid"
-                        (click)="apply()">
+                <button type="button" class="my_btn--popup"
+                        (click)="apply(form)">
                     Create new note
                 </button>
             </div>

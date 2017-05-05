@@ -1,4 +1,3 @@
- 1990  usbmuxd
- 1991  idevice_id -l
- 1992  sudo ldconfig
- 1993  ios_webkit_debug_proxy
+usbmuxd
+idevice_id -l
+sudo ldconfig && ios_webkit_debug_proxy
