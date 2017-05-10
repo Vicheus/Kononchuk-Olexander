@@ -10,146 +10,146 @@ export class CalendarService {
       titleMessage: '',
       id: 1,
       noteTitle: 'string',
-      color: 'red',
-      type: 'string',
+      color: '#e920e9',
+      type: 'Home',
       text: 'string',
-      date: new Date()
+      currentDate: new Date()
     },
     {
       titleMessage: '',
-      id: 1,
+      id: 2,
       noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
+      color: '#fff500',
+      type: 'Home',
       text: 'string',
-      date: new Date()
+      currentDate: new Date()
     },
     {
       titleMessage: '',
-      id: 1,
+      id: 3,
       noteTitle: 'string',
-      color: 'green',
-      type: 'string',
+      color: '#2889e9',
+      type: 'Home',
       text: 'string',
-      date: new Date()
+      currentDate: new Date()
     },
     {
       titleMessage: '',
-      id: 1,
+      id: 4,
       noteTitle: 'string',
-      color: 'aqua',
-      type: 'string',
+      color: '#e920e9',
+      type: 'Home',
       text: 'string',
-      date: new Date()
+      currentDate: new Date()
     },
     {
       titleMessage: '',
-      id: 1,
+      id: 5,
       noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
+      color: '#2889e9',
+      type: 'Home',
       text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
-    },
-    {
-      titleMessage: '',
-      id: 1,
-      noteTitle: 'string',
-      color: 'blue',
-      type: 'string',
-      text: 'string',
-      date: new Date()
+      currentDate: new Date()
     }
+    // {
+    //   titleMessage: '',
+    //   id: 6,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 7,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 8,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 9,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 10,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 11,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 12,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 13,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 14,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 15,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // },
+    // {
+    //   titleMessage: '',
+    //   id: 16,
+    //   noteTitle: 'string',
+    //   color: 'blue',
+    //   type: 'string',
+    //   text: 'string',
+    //   currentDate: new Date()
+    // }
   ];
 
   getNoteTypes() {
@@ -162,6 +162,10 @@ export class CalendarService {
 
   addNewNote(note) {
     this.notes.push(note);
+  }
+
+  editNote(posFrom, posTo, note) {
+    this.notes.splice(posFrom, posTo, note);
   }
 
   constructor() {

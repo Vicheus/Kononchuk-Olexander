@@ -8,5 +8,6 @@ export class Note {
   color: string;
   type: string;
   text: string;
-  date: Date;
+  currentDate: Date;
+  deleteNote?: boolean;
 }

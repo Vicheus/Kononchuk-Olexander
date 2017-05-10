@@ -37,22 +37,46 @@ export class NoteComponent implements OnInit, OnChanges {
   showPopup() {
     this.dialogService.addDialog(NoteEditorComponent,
       {
-        titleMessage: 'Enter the task please'
+        titleMessage: 'Create',
+        currentDate: this.day
       },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
       //We get dialog result
       if (result && result instanceof Note) {
+        result.id = this.note[this.note.length - 1].id + 1;
         this.note.push(result);
         this._cs.addNewNote(result);
       }
-      console.log(this._cs.notes);
+      // console.log(this._cs.notes);
+      console.log(result);
     });
   }
 
   editNote(n, event) {
-    event.stopPropagation();
     console.log(n);
+    event.stopPropagation();
+    this.dialogService.addDialog(NoteEditorComponent,
+      {
+        titleMessage: 'Edit',
+        id: n.id,
+        currentDate: n.currentDate,
+        noteTitle: n.noteTitle,
+        color: n.color,
+        type: n.type,
+        text: n.text
+      },
+      {closeByClickingOutside: true}
+    ).subscribe((result) => {
+      //We get dialog result
+      if (result && result instanceof Note) {
+        let positionFrom = result.id - 1;
+        let positionTo = result.id;
+        this.note.splice(positionFrom, positionTo, result);
+        this._cs.editNote(positionFrom, positionTo, result);
+        console.log(this._cs.notes);
+      }
+    });
   }
 
 }

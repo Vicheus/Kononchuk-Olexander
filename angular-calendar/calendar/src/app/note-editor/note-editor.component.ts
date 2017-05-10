@@ -11,6 +11,15 @@ import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
 })
 export class NoteEditorComponent extends DialogComponent<Note, Note> implements OnInit, OnChanges {
 
+  titleMessage: string;
+  id: number;
+  noteTitle: string;
+  color: string;
+  type: string;
+  text: string;
+  currentDate: Date;
+  deleteNote: boolean;
+
   noteTypes;
 
   defaultColor = "#337ab7";
@@ -26,6 +35,14 @@ export class NoteEditorComponent extends DialogComponent<Note, Note> implements 
 
   ngOnInit() {
     this.noteTypes = this._cs.getNoteTypes();
+    this.newNote.titleMessage = this.titleMessage;
+    this.newNote.id = this.id;
+    this.newNote.noteTitle = this.noteTitle;
+    this.newNote.color = this.color;
+    this.newNote.type = this.type;
+    this.newNote.text = this.text;
+    this.newNote.currentDate = this.currentDate;
+    this.newNote.deleteNote = this.deleteNote;
   }
 
   ngOnChanges(changes: SimpleChanges) {
