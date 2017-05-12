@@ -9,5 +9,5 @@ export class Note {
   type: string;
   text: string;
   currentDate: Date;
-  deleteNote?: boolean;
+  deleteNote: boolean;
 }

@@ -13,7 +13,8 @@ export class CalendarService {
       color: '#e920e9',
       type: 'Home',
       text: 'string',
-      currentDate: new Date()
+      currentDate: new Date(),
+      deleteNote: false
     },
     {
       titleMessage: '',
@@ -22,7 +23,8 @@ export class CalendarService {
       color: '#fff500',
       type: 'Home',
       text: 'string',
-      currentDate: new Date()
+      currentDate: new Date(),
+      deleteNote: false
     },
     {
       titleMessage: '',
@@ -31,7 +33,8 @@ export class CalendarService {
       color: '#2889e9',
       type: 'Home',
       text: 'string',
-      currentDate: new Date()
+      currentDate: new Date(),
+      deleteNote: false
     },
     {
       titleMessage: '',
@@ -40,7 +43,8 @@ export class CalendarService {
       color: '#e920e9',
       type: 'Home',
       text: 'string',
-      currentDate: new Date()
+      currentDate: new Date(),
+      deleteNote: false
     },
     {
       titleMessage: '',
@@ -49,7 +53,8 @@ export class CalendarService {
       color: '#2889e9',
       type: 'Home',
       text: 'string',
-      currentDate: new Date()
+      currentDate: new Date(),
+      deleteNote: false
     }
     // {
     //   titleMessage: '',
@@ -166,6 +171,10 @@ export class CalendarService {
 
   editNote(posFrom, posTo, note) {
     this.notes.splice(posFrom, posTo, note);
+  }
+
+  deleteNote(posFrom, count) {
+    this.notes.splice(posFrom, count);
   }
 
   constructor() {

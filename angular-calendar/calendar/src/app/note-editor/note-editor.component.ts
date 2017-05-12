@@ -9,7 +9,7 @@ import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
   templateUrl: './note-editor.component.html',
   styleUrls: ['./note-editor.component.sass']
 })
-export class NoteEditorComponent extends DialogComponent<Note, Note> implements OnInit, OnChanges {
+export class NoteEditorComponent extends DialogComponent<Note, Note | boolean> implements OnInit, OnChanges {
 
   titleMessage: string;
   id: number;
@@ -42,7 +42,7 @@ export class NoteEditorComponent extends DialogComponent<Note, Note> implements 
     this.newNote.type = this.type;
     this.newNote.text = this.text;
     this.newNote.currentDate = this.currentDate;
-    this.newNote.deleteNote = this.deleteNote;
+    this.newNote.deleteNote = false;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -58,6 +58,17 @@ export class NoteEditorComponent extends DialogComponent<Note, Note> implements 
 
       this.close();
     }
+  }
+
+  remove() {
+    this.newNote.deleteNote = true;
+    this.result = this.newNote;
+
+    this.newNote = new Note();
+    this.active = false;
+    setTimeout(() => this.active = true, 0);
+
+    this.close();
   }
 
 }

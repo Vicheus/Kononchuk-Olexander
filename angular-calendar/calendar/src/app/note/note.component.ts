@@ -34,7 +34,7 @@ export class NoteComponent implements OnInit, OnChanges {
     this._cs.addNewNote(event);
   }
 
-  showPopup() {
+  createNote() {
     this.dialogService.addDialog(NoteEditorComponent,
       {
         titleMessage: 'Create',
@@ -64,16 +64,24 @@ export class NoteComponent implements OnInit, OnChanges {
         noteTitle: n.noteTitle,
         color: n.color,
         type: n.type,
-        text: n.text
+        text: n.text,
+        deleteNote: true
       },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
       //We get dialog result
-      if (result && result instanceof Note) {
+      if (result && result instanceof Note && !result.deleteNote) {
         let positionFrom = result.id - 1;
         let positionTo = result.id;
         this.note.splice(positionFrom, positionTo, result);
         this._cs.editNote(positionFrom, positionTo, result);
+        console.log(this._cs.notes);
+      } else if (result && result instanceof Note && result.deleteNote === true) {
+        console.log('deleted');
+        let positionFrom = result.id - 1;
+        // let positionTo = result.id;
+        this.note.splice(positionFrom, 1);
+        this._cs.deleteNote(positionFrom, 1);
         console.log(this._cs.notes);
       }
     });

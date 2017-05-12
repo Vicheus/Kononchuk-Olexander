@@ -1,6 +1,6 @@
 <div class="day"
      [class.active]="day.toLocaleDateString() === today.toLocaleDateString()"
-     (click)="showPopup()">
+     (click)="createNote()">
     <div class="overlay"></div>
     <span class="dayNumber"
           [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
