@@ -34,10 +34,12 @@
 
 .notes
   position: absolute
+  width: 100%
+  height: 15px
   display: flex
   align-items: center
   flex-wrap: wrap
-  padding: 5px
+  padding: 0 5px
   bottom: 0
   left: 0
 
@@ -46,7 +48,7 @@
   height: 10px
   border-radius: 50%
   margin-right: 5px
-  margin-top: 5px
+  margin-bottom: 5px
   position: relative
   overflow: hidden
   &:hover
@@ -54,11 +56,23 @@
 
 .note_info
   position: absolute
-  bottom: 100%
-  left: 100%
+  width: 100px
+  height: 50px
+  bottom: 150%
+  left: -70%
+  margin-left: 50%
   padding: 0 5px
-  background-color: $mainBlue
+  border-radius: 3px
+  text-align: center
+  background-color: $accent
   color: #fff
   z-index: 1
-
+  &:after
+    content: ""
+    position: absolute
+    top: 100%
+    left: 2%
+    border-width: 5px
+    border-style: solid
+    border-color: $accent transparent transparent transparent
 

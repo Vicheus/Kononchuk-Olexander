@@ -17,3 +17,19 @@
     background-color: $lightAccent
     border: 1px solid $lightGray
     color: $mainBlue
+
+$laptop-width: 1024px
+$tablet-width: 768px
+$phone-width: 425px
+
+@mixin laptop
+  @media (min-width: $tablet-width) and (max-width: $laptop-width - 1)
+    @content
+
+@mixin tablet
+  @media (min-width: $phone-width) and (max-width: $tablet-width -1)
+    @content
+
+@mixin phone
+  @media (max-width: $phone-width - 1)
+    @content
