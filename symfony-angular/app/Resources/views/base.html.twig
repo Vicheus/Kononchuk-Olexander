@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if app.environment != 'dev' %}
+        <base href="/">
+    {% else %}
+        <base href="/app_dev.php/">
+    {% endif %}
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}
+        {% if app.environment != 'dev' %}
+            <link rel="stylesheet" href="/dist/app.css" type="text/css">
+        {% else %}
+            {#<link rel="stylesheet" href="http://localhost:4200/static/app.css">#}
+        {% endif %}
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+    {% if app.environment == 'dev' %}
+        <script type="text/javascript" src="http://127.0.0.1:4200/inline.bundle.js"></script>
+        <script type="text/javascript" src="http://127.0.0.1:4200/polyfills.bundle.js"></script>
+        <script type="text/javascript" src="http://127.0.0.1:4200/styles.bundle.js"></script>
+        <script type="text/javascript" src="http://127.0.0.1:4200/vendor.bundle.js"></script>
+        <script type="text/javascript" src="http://127.0.0.1:4200/main.bundle.js"></script>
+    {% else %}
+        <script src="/dist/inline.bundle.js"></script>
+        <script src="/dist/polyfills.bundle.js"></script>
+        <script src="/dist/styles.bundle.js"></script>
+        <script src="/dist/vendor.bundle.js"></script>
+        <script src="/dist/main.bundle.js"></script>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

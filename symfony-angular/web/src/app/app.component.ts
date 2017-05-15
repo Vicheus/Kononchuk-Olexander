@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {CalendarService} from "app/_services/calendar.service";
-import {Note} from "app/shared/models/note";
+import {CalendarService} from "./_services/calendar.service";
+import {Note} from "./shared/models/note";
 
 @Component({
   selector: 'calendar',

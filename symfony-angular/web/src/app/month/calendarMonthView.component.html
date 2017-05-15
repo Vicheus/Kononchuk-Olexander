@@ -1,0 +1,25 @@
+<section class="section_dates container">
+    <div class="row">
+
+        <div class="daysOfWeek">
+            <div class="dayHead" *ngFor="let day of month.daysOfWeek">
+                {{ day }}
+            </div>
+        </div>
+
+        <div class="nonthCellDateContainer monthCell">
+            <note *ngFor="let day of prevMonthDateArray"
+                  [day]="day" class="dayCell grey"
+                  [notes]="notes"></note>
+            <note *ngFor="let day of currMonthDateArray"
+                  [day]="day" class="dayCell"
+                  [notes]="notes"></note>
+            <note *ngFor="let day of nextMonthDateArray"
+                  [day]="day" class="dayCell grey"
+                  [notes]="notes"></note>
+        </div>
+
+    </div>
+
+</section>
+<br><br><br>

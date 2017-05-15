@@ -1,0 +1,23 @@
+<div class="day"
+     [class.active]="day.toLocaleDateString() === today.toLocaleDateString()"
+     (click)="createNote()">
+    <div class="overlay"></div>
+    <span class="dayNumber"
+          [class.weekend]="day.getDay() === 6 || day.getDay() === 0">
+    {{ day.getDate() }}
+  </span>
+
+    <div class="notes">
+        <div *ngFor="let n of note">
+            <div class="note"
+                 *ngIf="n.currentDate.toLocaleDateString() === day.toLocaleDateString()"
+                 [ngStyle]="{ 'background-color': n.color }"
+                 (click)="editNote(n, $event)">
+                <div class="note_info">
+                    {{ n.noteTitle }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

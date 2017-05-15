@@ -1,0 +1,78 @@
+@import "../../assets/reset"
+@import "../../assets/vars"
+
+.day
+  width: 100%
+  height: 100%
+  margin: 0
+  position: relative
+  &:hover .overlay
+    display: block
+
+.overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: $lightAccent
+  //transform: translateY(-100%)
+  display: none
+  transition: all 0.3s
+
+.dayNumber
+  position: absolute
+  top: 10px
+  left: 10px
+  color: $mainBlue
+
+.active
+  background-color: $accent
+
+.weekend
+  color: red
+
+.notes
+  position: absolute
+  width: 100%
+  height: 15px
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  padding: 0 5px
+  bottom: 0
+  left: 0
+
+.note
+  width: 10px
+  height: 10px
+  border-radius: 50%
+  margin-right: 5px
+  margin-bottom: 5px
+  position: relative
+  overflow: hidden
+  &:hover
+    overflow: visible
+
+.note_info
+  position: absolute
+  width: 100px
+  height: 50px
+  bottom: 150%
+  left: -70%
+  margin-left: 50%
+  padding: 0 5px
+  border-radius: 3px
+  text-align: center
+  background-color: $accent
+  color: #fff
+  z-index: 1
+  &:after
+    content: ""
+    position: absolute
+    top: 100%
+    left: 2%
+    border-width: 5px
+    border-style: solid
+    border-color: $accent transparent transparent transparent
+
