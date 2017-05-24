@@ -3,6 +3,7 @@ import {Note} from "../shared/models/note";
 import {CalendarService} from "../_services/calendar.service";
 import {NoteEditorComponent} from "../note-editor/note-editor.component";
 import {DialogService} from "ng2-bootstrap-modal";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'note',
@@ -12,9 +13,9 @@ import {DialogService} from "ng2-bootstrap-modal";
 export class NoteComponent implements OnInit, OnChanges {
 
   @Input() day: Date;
-  @Input() notes: Note[];
 
   note: Note[];
+  subscription: Subscription;
 
   today = new Date();
 
@@ -23,12 +24,18 @@ export class NoteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.note = this.notes;
+    this.subscription = this._cs.noteItem$.subscribe(data => {
+      this.note = data
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
+
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   onNoteCreated(event) {
     this._cs.addNewNote(event);
@@ -37,8 +44,7 @@ export class NoteComponent implements OnInit, OnChanges {
   createNote() {
     this.dialogService.addDialog(NoteEditorComponent,
       {
-        titleMessage: 'Create',
-        currentDate: this.day
+        date: this.day
       },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
@@ -48,7 +54,6 @@ export class NoteComponent implements OnInit, OnChanges {
         this.note.push(result);
         this._cs.addNewNote(result);
       }
-      // console.log(this._cs.notes);
       console.log(result);
     });
   }
@@ -58,25 +63,24 @@ export class NoteComponent implements OnInit, OnChanges {
     event.stopPropagation();
     this.dialogService.addDialog(NoteEditorComponent,
       {
-        titleMessage: 'Edit',
         id: n.id,
-        currentDate: n.currentDate,
-        noteTitle: n.noteTitle,
+        date: n.currentDate,
+        note_title: n.note_title,
         color: n.color,
         type: n.type,
         text: n.text,
-        deleteNote: true
+        deletedAt: true
       },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
       //We get dialog result
-      if (result && result instanceof Note && !result.deleteNote) {
+      if (result && result instanceof Note && !result.deletedAt) {
         let positionFrom = result.id - 1;
         let positionTo = result.id;
         this.note.splice(positionFrom, positionTo, result);
         this._cs.editNote(positionFrom, positionTo, result);
         console.log(this._cs.notes);
-      } else if (result && result instanceof Note && result.deleteNote === true) {
+      } else if (result && result instanceof Note && result.deletedAt === true) {
         console.log('deleted');
         let positionFrom = result.id - 1;
         // let positionTo = result.id;

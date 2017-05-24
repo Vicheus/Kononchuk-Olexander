@@ -10,11 +10,11 @@
     <div class="notes">
         <div *ngFor="let n of note">
             <div class="note"
-                 *ngIf="n.currentDate.toLocaleDateString() === day.toLocaleDateString()"
+                 *ngIf="n.date.substring(0, 10) === day.toISOString().substring(0, 10)"
                  [ngStyle]="{ 'background-color': n.color }"
                  (click)="editNote(n, $event)">
                 <div class="note_info">
-                    {{ n.noteTitle }}
+                    {{ n.note_title }}
                 </div>
             </div>
         </div>

@@ -4,7 +4,6 @@ import {Note} from "./shared/models/note";
 
 @Component({
   selector: 'calendar',
-  providers: [CalendarService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
@@ -12,7 +11,23 @@ export class AppComponent implements OnInit {
 
   currentDate: Date;
 
-  notes: Note[];
+  notes: Note[] = null;
+
+  getApiNotes(data) {
+    this._cs.changeNote(data);
+  }
+
+  getNewNotes() {
+    let result;
+    this._cs.getNewNotes()
+      .subscribe(
+        res => result = res,
+        error => console.log("Error happened" + error),
+        () => {
+          this.getApiNotes(result);
+        }
+      );
+  }
 
   setNewCurrentDate(y = null, m = null, d = null) {
     this.currentDate = new Date(y, m, d);
@@ -39,7 +54,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.setDefaultCurrentDate();
-    this.notes = this._cs.getNotes();
+    this.getNewNotes();
   }
 
 }

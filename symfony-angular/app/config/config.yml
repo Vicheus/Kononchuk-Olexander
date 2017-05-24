@@ -48,7 +48,10 @@ doctrine:
         dbname: '%database_name%'
         user: '%database_user%'
         password: '%database_password%'
-        charset: UTF8
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/../var/data/data.sqlite"
@@ -60,6 +63,8 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        mappings:
+            AppBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -68,3 +73,51 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+# Nelmio CORS
+nelmio_cors:
+    defaults:
+        allow_origin:  ["%cors_allow_origin%"]
+        allow_methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
+        allow_headers: ["content-type", "authorization"]
+        max_age:       3600
+    paths:
+        '^/api': ~
+
+# Nelmio API Doc
+nelmio_api_doc:
+    sandbox:
+        accept_type:        "application/json"
+        body_format:
+            formats:        [ "json" ]
+            default_format: "json"
+        request_format:
+            formats:
+                json:       "application/json"
+
+
+# FOS REST Bundle
+fos_rest:
+    body_listener: true
+    param_fetcher_listener: true
+    view:
+        view_response_listener: 'force'
+        exception_wrapper_handler:  null
+        formats:
+            jsonp: true
+            json: true
+            xml: false
+            rss: false
+        mime_types:
+            json: ['application/json', 'application/x-json']
+            jpg: 'image/jpeg'
+            png: 'image/png'
+        jsonp_handler: ~
+    routing_loader:
+        default_format:  json
+        include_format:  false
+    format_listener:
+        rules:
+            - { path: '^/', priorities: [ json, html, jsonp ], fallback_format: ~, prefer_extension: true }
+    exception:
+        enabled: true

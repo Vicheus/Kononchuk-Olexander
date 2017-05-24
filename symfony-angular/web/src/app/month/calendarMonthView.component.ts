@@ -1,27 +1,30 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {CalendarService} from "../_services/calendar.service";
 import {Month} from "../shared/models/month";
-import {Note} from "../shared/models/note";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'month-view',
-  providers: [CalendarService, Month],
+  providers: [Month],
   templateUrl: './calendarMonthView.component.html',
   styleUrls: ['./calendarMonthView.component.sass']
 })
 export class MonthViewComponent implements OnInit, OnChanges {
 
   @Input() cD: Date;
-  @Input() notes: Note[];
 
   currentDate: Date;
+
+  subscription: Subscription;
 
   prevMonthDateArray: Date[];
   nextMonthDateArray: Date[];
   currMonthDateArray: Date[];
 
-  constructor(private month: Month) {
+  constructor(private month: Month,
+              private _cs: CalendarService) {
   }
+
 
   getDaysFromPreviousMonth() {
     let prevMonthDateArray: Date[] = [];
@@ -77,6 +80,9 @@ export class MonthViewComponent implements OnInit, OnChanges {
     this.getDaysFromCurrentMonth();
     this.getDaysFromPreviousMonth();
     this.getDaysFromNextMonth();
+  }
+
+  ngOnDestroy() {
   }
 
 }

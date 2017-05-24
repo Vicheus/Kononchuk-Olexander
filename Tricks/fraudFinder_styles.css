@@ -1,0 +1,31 @@
+/*custom.css*/
+
+.page-header .page-header-menu .hor-menu.hor-menu-light .navbar-nav > li.open > a, .page-header .page-header-menu .hor-menu.hor-menu-light .navbar-nav > li:hover > a {
+  background-color: #12d1e8 !important;
+  color: #ffffff !important;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+  background-color: #00bed5 !important;
+  color: #ffffff !important;
+}
+
+.page-header .page-header-menu .hor-menu.hor-menu-light .navbar-nav > li .dropdown-menu {
+  background-color: #12d1e8;
+  border: none;
+  box-shadow: 5px 5px rgba(0, 176, 196, 1);
+}
+
+.page-header .page-header-menu .hor-menu.hor-menu-light .navbar-nav > li .dropdown-menu li > a {
+  color: #FFFFFF;
+}
+
+.page-header .page-header-menu .hor-menu.hor-menu-light .navbar-nav > li .dropdown-menu li:hover > a {
+  background-color: #12d1e8;
+  color: #FFFFFF;
+}
+
+.page-header .page-header-menu .hor-menu.hor-menu-light .navbar-nav > li .dropdown-menu li.active > a {
+  background-color: #12d1e8;
+  color: #FFFFFF;
+}

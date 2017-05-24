@@ -6,6 +6,7 @@ import {AlertModule} from "ng2-bootstrap";
 import {DateTimePickerModule} from "ng2-date-time-picker";
 import {ColorPickerModule} from "ngx-color-picker";
 import {BootstrapModalModule} from "ng2-bootstrap-modal";
+import {CalendarService} from "./_services/calendar.service";
 
 import {AppComponent} from "./app.component";
 import {MonthViewComponent} from "./month/calendarMonthView.component";
@@ -33,7 +34,7 @@ import {NoteEditorComponent} from "./note-editor/note-editor.component";
   entryComponents: [
     NoteEditorComponent
   ],
-  providers: [],
+  providers: [CalendarService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

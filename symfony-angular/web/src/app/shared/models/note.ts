@@ -2,12 +2,15 @@
  * Created by shura on 28.04.17.
  */
 export class Note {
-  titleMessage: string;
+
+  constructor() {
+  }
+
   id: number;
-  noteTitle: string;
+  note_title: string;
   color: string;
-  type: string;
   text: string;
-  currentDate: Date;
-  deleteNote: boolean;
+  date: Date;
+  deletedAt: boolean;
+  type: string;
 }

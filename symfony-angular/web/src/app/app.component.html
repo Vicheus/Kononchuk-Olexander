@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="calendar_header__nav_btns">
-                    <button class="my_btn--header">Month</button>
+                    <button class="my_btn--header" (click)="getNewNotes()">Month</button>
                     <button class="my_btn--header">Week</button>
                     <button class="my_btn--header">Day</button>
                 </div>
@@ -25,7 +25,6 @@
 </header>
 
 <month-view
-        [cD]="currentDate"
-        [notes]="notes">
+        [cD]="currentDate">
 </month-view>
 
