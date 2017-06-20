@@ -27,7 +27,9 @@ class NoteType extends AbstractType
             ->add('color', TextType::class)
             ->add('type', TextType::class)
             ->add('text', TextType::class)
-            ->add('date', DateType::class);
+            ->add('date', DateType::class, [
+                'format' => 'd / m / Y , h : i : s A'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

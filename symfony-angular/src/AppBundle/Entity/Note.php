@@ -56,22 +56,6 @@ class Note
     private $deletedAt;
 
     /**
-     * @return mixed
-     */
-    function jsonSerialize()
-    {
-        return [
-            'id' => $this->getId(),
-            'note_title' => $this->getNoteTitle(),
-            'color' => $this->getColor(),
-            'type' => $this->getType(),
-            'text' => $this->getText(),
-            'date' => $this->getDate()->format('d/m/Y'),
-            'deleted_at' => $this->getDeletedAt(),
-        ];
-    }
-
-    /**
      * @return int
      */
     public function getId()

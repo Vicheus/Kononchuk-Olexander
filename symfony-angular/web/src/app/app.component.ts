@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     let result;
     this._cs.getNewNotes()
       .subscribe(
-        res => result = res,
+        (res) => { result = res },
         error => console.log("Error happened" + error),
         () => {
           this.getApiNotes(result);

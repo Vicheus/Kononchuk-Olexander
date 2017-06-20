@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Note} from "../shared/models/note";
 import {NoteTypes} from "../shared/models/noteTypes";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs/Rx";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
@@ -12,10 +12,11 @@ import "rxjs/add/operator/catch";
 @Injectable()
 export class CalendarService {
 
-  private _notesSource = new BehaviorSubject<Note[]>(null);
+  private _notesSource = new BehaviorSubject<any>(null);
 
-  private baseUrl: string = environment.production ? 'http://localhost:8000' : 'http://localhost:8000/app_dev.php';
-  private notesUrl: string = '/notes';
+  private baseUrl: string = environment.production ? document.location.origin : document.location.origin + '/app_dev.php';
+  private getNotesUrl: string = '/notes';
+  private createNewNoteUrl: string = '/notes';
 
   constructor(private http: Http) {
   }
@@ -23,7 +24,7 @@ export class CalendarService {
   notes: Note[] = [
     {
       id: 1,
-      note_title: 'string',
+      noteTitle: 'string',
       color: '#e920e9',
       type: 'Home',
       text: 'string',
@@ -32,7 +33,7 @@ export class CalendarService {
     },
     {
       id: 2,
-      note_title: 'string',
+      noteTitle: 'string',
       color: '#fff500',
       type: 'Home',
       text: 'string',
@@ -41,7 +42,7 @@ export class CalendarService {
     },
     {
       id: 3,
-      note_title: 'string',
+      noteTitle: 'string',
       color: '#2889e9',
       type: 'Home',
       text: 'string',
@@ -50,7 +51,7 @@ export class CalendarService {
     },
     {
       id: 4,
-      note_title: 'string',
+      noteTitle: 'string',
       color: '#e920e9',
       type: 'Home',
       text: 'string',
@@ -59,7 +60,7 @@ export class CalendarService {
     },
     {
       id: 5,
-      note_title: 'string',
+      noteTitle: 'string',
       color: '#2889e9',
       type: 'Home',
       text: 'string',
@@ -68,7 +69,7 @@ export class CalendarService {
     },
     {
       id: 6,
-      note_title: 'string',
+      noteTitle: 'string',
       color: '#2889e9',
       type: 'Home',
       text: 'string',
@@ -102,13 +103,32 @@ export class CalendarService {
 
   getNewNotes() {
 
-    return this.http.get(this.baseUrl + this.notesUrl)
+    return this.http.get(this.baseUrl + this.getNotesUrl)
       .map((res: Response) => res.json())
       .catch(this.handleError);
   }
 
-  addNewNote(note) {
-    this.notes.push(note);
+  addNewNote(note: Note) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let formattedNote = {
+      'color': note.color,
+      'date': note.date.toLocaleString(),
+      'note_title': note.noteTitle,
+      'text': note.text,
+      'type': note.type
+    };
+    let body = JSON.stringify(formattedNote);
+    let url = this.baseUrl + this.createNewNoteUrl;
+
+    console.log(body);
+    return this.http.post(url, body, options)
+                    .map((res: Response) => {res.json(); console.log(res.json())})
+                    .subscribe(
+                      (data) => console.log(data),
+                      (err)  => this.handleError,
+                      ()     => console.log('complete')
+                    );
   }
 
   editNote(posFrom, posTo, note) {

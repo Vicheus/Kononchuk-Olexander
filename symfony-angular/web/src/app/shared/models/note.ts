@@ -7,7 +7,7 @@ export class Note {
   }
 
   id: number;
-  note_title: string;
+  noteTitle: string;
   color: string;
   text: string;
   date: Date;

@@ -25,7 +25,10 @@ export class NoteComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.subscription = this._cs.noteItem$.subscribe(data => {
-      this.note = data
+      if (data) {
+        data.map( (val) => { val.date = new Date(val.date) } );
+      };
+      this.note = data;
     });
   }
 
@@ -37,9 +40,9 @@ export class NoteComponent implements OnInit, OnChanges {
     this.subscription.unsubscribe();
   }
 
-  onNoteCreated(event) {
-    this._cs.addNewNote(event);
-  }
+  // onNoteCreated(event) {
+  //   this._cs.addNewNote(event);
+  // }
 
   createNote() {
     this.dialogService.addDialog(NoteEditorComponent,
@@ -50,11 +53,14 @@ export class NoteComponent implements OnInit, OnChanges {
     ).subscribe((result) => {
       //We get dialog result
       if (result && result instanceof Note) {
+        console.log(result);
         result.id = this.note[this.note.length - 1].id + 1;
-        this.note.push(result);
+        this._cs.noteItem$.subscribe(data => {
+          data.push(result);
+        });
         this._cs.addNewNote(result);
       }
-      console.log(result);
+      console.log(this._cs.noteItem$);
     });
   }
 
@@ -64,8 +70,8 @@ export class NoteComponent implements OnInit, OnChanges {
     this.dialogService.addDialog(NoteEditorComponent,
       {
         id: n.id,
-        date: n.currentDate,
-        note_title: n.note_title,
+        noteTitle: n.noteTitle,
+        date: n.date,
         color: n.color,
         type: n.type,
         text: n.text,

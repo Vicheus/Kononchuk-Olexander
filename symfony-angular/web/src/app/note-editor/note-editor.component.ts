@@ -12,7 +12,7 @@ import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
 export class NoteEditorComponent extends DialogComponent<Note, Note | boolean> implements OnInit, OnChanges {
 
   id: number;
-  note_title: string;
+  noteTitle: string;
   color: string;
   type: string;
   text: string;
@@ -36,7 +36,7 @@ export class NoteEditorComponent extends DialogComponent<Note, Note | boolean> i
     this.noteTypes = this._cs.getNoteTypes();
 
     this.newNote.id = this.id;
-    this.newNote.note_title = this.note_title;
+    this.newNote.noteTitle = this.noteTitle;
     this.newNote.color = this.color;
     this.newNote.type = this.type;
     this.newNote.text = this.text;

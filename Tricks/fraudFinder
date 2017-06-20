@@ -1,2 +1,6 @@
 docker-compose exec --user docker php bash
 docker-compose up -d
+
+db.getCollection('WebTrackerVisitorConversion').find({"cD": {$gte: new Date(ISODate().getTime() - 1000 * 60 * 120)}, "trI": "p7owoe96mhwwg4o"})
+
+db.getCollection('WebTrackerVisitorAction').find({"cD": {$gte: new Date(ISODate().getTime() - 1000 * 60 * 5)}, "cI": 3655, "evC": 1})

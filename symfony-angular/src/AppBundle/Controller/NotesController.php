@@ -68,7 +68,15 @@ class NotesController extends FOSRestController implements ClassResourceInterfac
      */
     public function cgetAction()
     {
-        return $this->getDoctrine()->getRepository('AppBundle:Note')->findAll();
+        $notes = $this->getDoctrine()->getRepository('AppBundle:Note')->findAll();
+        $data = [];
+        foreach ($notes as $note) {
+            $data[] = $this->jsonSerialize($note);
+        }
+
+        $response = new Response(json_encode($data), 200);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
@@ -229,5 +237,21 @@ class NotesController extends FOSRestController implements ClassResourceInterfac
         $em->flush();
 
         return new View(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * @return mixed
+     */
+    function jsonSerialize(Note $note)
+    {
+        return [
+            'id' => $note->getId(),
+            'noteTitle' => $note->getNoteTitle(),
+            'color' => $note->getColor(),
+            'type' => $note->getType(),
+            'text' => $note->getText(),
+            'date' => $note->getDate()->format('m/d/Y H:i:s'),
+            'deletedAt' => $note->getDeletedAt(),
+        ];
     }
 }
