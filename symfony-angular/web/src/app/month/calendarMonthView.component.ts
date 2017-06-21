@@ -41,7 +41,7 @@ export class MonthViewComponent implements OnInit, OnChanges {
     let startDayPreviousMonth = previousMonthCountDays - 6 + diffDays;
 
     for (let i = startDayPreviousMonth; i <= previousMonthCountDays; i++) {
-      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, i);
+      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, i, this.currentDate.getHours(), this.currentDate.getMinutes(), this.currentDate.getSeconds());
       prevMonthDateArray.push(day);
     }
 
@@ -54,7 +54,7 @@ export class MonthViewComponent implements OnInit, OnChanges {
     let endDayNextMonth = 7 - endDayCurrentMonth;
 
     for (let i = 1; i <= endDayNextMonth; i++) {
-      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, i);
+      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, i, this.currentDate.getHours(), this.currentDate.getMinutes(), this.currentDate.getSeconds());
       nextMonthDateArray.push(day);
     }
 
@@ -65,7 +65,7 @@ export class MonthViewComponent implements OnInit, OnChanges {
     let currMonthDateArray: Date[] = [];
     let daysCount = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
     for (let i = 1; i <= daysCount; i++) {
-      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), i);
+      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), i, this.currentDate.getHours(), this.currentDate.getMinutes(), this.currentDate.getSeconds());
       currMonthDateArray.push(day);
     }
 

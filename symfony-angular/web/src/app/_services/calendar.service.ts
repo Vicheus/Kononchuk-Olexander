@@ -113,7 +113,7 @@ export class CalendarService {
     let options = new RequestOptions({ headers: headers });
     let formattedNote = {
       'color': note.color,
-      'date': note.date.toLocaleString(),
+      'date': note.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }),
       'note_title': note.noteTitle,
       'text': note.text,
       'type': note.type
@@ -121,7 +121,6 @@ export class CalendarService {
     let body = JSON.stringify(formattedNote);
     let url = this.baseUrl + this.createNewNoteUrl;
 
-    console.log(body);
     return this.http.post(url, body, options)
                     .map((res: Response) => {res.json(); console.log(res.json())})
                     .subscribe(
@@ -131,12 +130,40 @@ export class CalendarService {
                     );
   }
 
-  editNote(posFrom, posTo, note) {
-    this.notes.splice(posFrom, posTo, note);
+  editNote(note: Note) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let formattedNote = {
+      'color': note.color,
+      'date': note.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }),
+      'note_title': note.noteTitle,
+      'text': note.text,
+      'type': note.type
+    };
+    let body = JSON.stringify(formattedNote);
+    let url = this.baseUrl + this.createNewNoteUrl + '/' + note.id;
+
+    return this.http.put(url, body, options)
+      .map((res: Response) => {res.json(); console.log(res.json())})
+      .subscribe(
+        (data) => console.log(data),
+        (err)  => this.handleError,
+        ()     => console.log('complete')
+      );
   }
 
-  deleteNote(posFrom, count) {
-    this.notes.splice(posFrom, count);
+  deleteNote(note: Note) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this.baseUrl + this.createNewNoteUrl + '/' + note.id;
+
+    return this.http.delete(url,options)
+      .map((res: Response) => {res.json(); console.log(res.json())})
+      .subscribe(
+        (data) => console.log(data),
+        (err)  => this.handleError,
+        ()     => console.log('complete')
+      );
   }
 
 }

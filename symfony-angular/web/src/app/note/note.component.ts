@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {Note} from "../shared/models/note";
 import {CalendarService} from "../_services/calendar.service";
 import {NoteEditorComponent} from "../note-editor/note-editor.component";
@@ -10,7 +10,7 @@ import {Subscription} from "rxjs/Subscription";
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.sass']
 })
-export class NoteComponent implements OnInit, OnChanges {
+export class NoteComponent implements OnInit {
 
   @Input() day: Date;
 
@@ -32,17 +32,9 @@ export class NoteComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-  // onNoteCreated(event) {
-  //   this._cs.addNewNote(event);
-  // }
 
   createNote() {
     this.dialogService.addDialog(NoteEditorComponent,
@@ -51,21 +43,16 @@ export class NoteComponent implements OnInit, OnChanges {
       },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
-      //We get dialog result
       if (result && result instanceof Note) {
-        console.log(result);
-        result.id = this.note[this.note.length - 1].id + 1;
         this._cs.noteItem$.subscribe(data => {
           data.push(result);
         });
         this._cs.addNewNote(result);
       }
-      console.log(this._cs.noteItem$);
     });
   }
 
   editNote(n, event) {
-    console.log(n);
     event.stopPropagation();
     this.dialogService.addDialog(NoteEditorComponent,
       {
@@ -75,24 +62,25 @@ export class NoteComponent implements OnInit, OnChanges {
         color: n.color,
         type: n.type,
         text: n.text,
-        deletedAt: true
+        deletedAt: false
       },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
-      //We get dialog result
       if (result && result instanceof Note && !result.deletedAt) {
-        let positionFrom = result.id - 1;
-        let positionTo = result.id;
-        this.note.splice(positionFrom, positionTo, result);
-        this._cs.editNote(positionFrom, positionTo, result);
-        console.log(this._cs.notes);
+        this._cs.noteItem$.subscribe(data => {
+          let positionFrom = null;
+          data.forEach((item, index) => {if(item.hasOwnProperty('id') && item.id === result.id) {positionFrom = index}});
+          data.splice(positionFrom, 1, result);
+        });
+        this._cs.editNote(result);
       } else if (result && result instanceof Note && result.deletedAt === true) {
         console.log('deleted');
-        let positionFrom = result.id - 1;
-        // let positionTo = result.id;
-        this.note.splice(positionFrom, 1);
-        this._cs.deleteNote(positionFrom, 1);
-        console.log(this._cs.notes);
+        this._cs.noteItem$.subscribe(data => {
+          let positionFrom = null;
+          data.forEach((item, index) => {if(item.hasOwnProperty('id') && item.id === result.id) {positionFrom = index}});
+          data.splice(positionFrom, 1);
+        });
+        this._cs.deleteNote(result);
       }
     });
   }

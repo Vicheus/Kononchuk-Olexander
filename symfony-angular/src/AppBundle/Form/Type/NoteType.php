@@ -28,7 +28,9 @@ class NoteType extends AbstractType
             ->add('type', TextType::class)
             ->add('text', TextType::class)
             ->add('date', DateType::class, [
-                'format' => 'd / m / Y , h : i : s A'
+                'html5'  => false,
+                'widget' => 'single_text',
+                'format' => 'MMMM d, y, h:mm:ss a'
             ]);
     }
 

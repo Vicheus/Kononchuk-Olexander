@@ -3,7 +3,7 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AlertModule} from "ng2-bootstrap";
-import {DateTimePickerModule} from "ng2-date-time-picker";
+import {DateTimePickerModule} from "ng-pick-datetime";
 import {ColorPickerModule} from "ngx-color-picker";
 import {BootstrapModalModule} from "ng2-bootstrap-modal";
 import {CalendarService} from "./_services/calendar.service";
