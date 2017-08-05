@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <excludedPredefinedLibrary name="coursera-test/angular-calendar/calendar/node_modules" />
+    <excludedPredefinedLibrary name="coursera-test/angular2-symfony3/calendar-app/node_modules" />
+  </component>
+</project>

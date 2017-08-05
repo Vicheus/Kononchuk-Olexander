@@ -8,13 +8,13 @@
   </span>
 
     <div class="notes">
-        <div *ngFor="let n of note">
+        <div *ngFor="let note of notes">
             <div class="note"
-                 *ngIf="n.date.toLocaleDateString() === day.toLocaleDateString()"
-                 [ngStyle]="{ 'background-color': n.color }"
-                 (click)="editNote(n, $event)">
+                 *ngIf="note.date.toLocaleDateString() === day.toLocaleDateString()"
+                 [ngStyle]="{ 'background-color': note.color }"
+                 (click)="editNote(note, $event)">
                 <div class="note_info">
-                    {{ n.noteTitle }}
+                    {{ note.noteTitle }}
                 </div>
             </div>
         </div>

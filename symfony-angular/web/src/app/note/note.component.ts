@@ -14,7 +14,7 @@ export class NoteComponent implements OnInit {
 
   @Input() day: Date;
 
-  note: Note[];
+  notes: Note[];
   subscription: Subscription;
 
   today = new Date();
@@ -24,12 +24,9 @@ export class NoteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.subscription = this._cs.noteItem$.subscribe(data => {
-      if (data) {
-        data.map( (val) => { val.date = new Date(val.date) } );
-      };
-      this.note = data;
-    });
+    this.subscription = this._cs.noteItem$.subscribe(
+      (data) => { if (data) this.notes = data; },
+    );
   }
 
   ngOnDestroy() {
@@ -38,16 +35,13 @@ export class NoteComponent implements OnInit {
 
   createNote() {
     this.dialogService.addDialog(NoteEditorComponent,
-      {
-        date: this.day
-      },
+      {date: this.day},
       {closeByClickingOutside: true}
-    ).subscribe((result) => {
+    ).subscribe(result => {
       if (result && result instanceof Note) {
-        this._cs.noteItem$.subscribe(data => {
-          data.push(result);
-        });
+        this._cs.noteItem$.subscribe(data => data.push(result));
         this._cs.addNewNote(result);
+        this._cs.getNewNotes();
       }
     });
   }
@@ -66,7 +60,7 @@ export class NoteComponent implements OnInit {
       },
       {closeByClickingOutside: true}
     ).subscribe((result) => {
-      if (result && result instanceof Note && !result.deletedAt) {
+      if (result && result instanceof Note && result.deletedAt === false) {
         this._cs.noteItem$.subscribe(data => {
           let positionFrom = null;
           data.forEach((item, index) => {if(item.hasOwnProperty('id') && item.id === result.id) {positionFrom = index}});

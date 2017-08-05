@@ -21,63 +21,6 @@ export class CalendarService {
   constructor(private http: Http) {
   }
 
-  notes: Note[] = [
-    {
-      id: 1,
-      noteTitle: 'string',
-      color: '#e920e9',
-      type: 'Home',
-      text: 'string',
-      date: new Date(),
-      deletedAt: false
-    },
-    {
-      id: 2,
-      noteTitle: 'string',
-      color: '#fff500',
-      type: 'Home',
-      text: 'string',
-      date: new Date(),
-      deletedAt: false
-    },
-    {
-      id: 3,
-      noteTitle: 'string',
-      color: '#2889e9',
-      type: 'Home',
-      text: 'string',
-      date: new Date(),
-      deletedAt: false
-    },
-    {
-      id: 4,
-      noteTitle: 'string',
-      color: '#e920e9',
-      type: 'Home',
-      text: 'string',
-      date: new Date(),
-      deletedAt: false
-    },
-    {
-      id: 5,
-      noteTitle: 'string',
-      color: '#2889e9',
-      type: 'Home',
-      text: 'string',
-      date: new Date(),
-      deletedAt: false
-    },
-    {
-      id: 6,
-      noteTitle: 'string',
-      color: '#2889e9',
-      type: 'Home',
-      text: 'string',
-      date: new Date(),
-      deletedAt: false
-    }
-  ];
-
   changeNote(data) {
     this._notesSource.next(data);
   }
@@ -101,10 +44,14 @@ export class CalendarService {
     return Observable.throw(errMsg);
   }
 
-  getNewNotes() {
+  getNewNotes(): Observable<Note> {
 
     return this.http.get(this.baseUrl + this.getNotesUrl)
-      .map((res: Response) => res.json())
+      .map((res: Response) => {
+        const response = res.json();
+        response.map(item => item.date = new Date(item.date));
+        return response;
+      })
       .catch(this.handleError);
   }
 
@@ -113,7 +60,16 @@ export class CalendarService {
     let options = new RequestOptions({ headers: headers });
     let formattedNote = {
       'color': note.color,
-      'date': note.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }),
+      'date': note.date.toLocaleDateString(
+        'en-US',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric'
+        }),
       'note_title': note.noteTitle,
       'text': note.text,
       'type': note.type
@@ -122,11 +78,14 @@ export class CalendarService {
     let url = this.baseUrl + this.createNewNoteUrl;
 
     return this.http.post(url, body, options)
-                    .map((res: Response) => {res.json(); console.log(res.json())})
+                    .map((res: Response) => {
+                      const response = res.json();
+                      console.log(response);
+                    })
                     .subscribe(
-                      (data) => console.log(data),
-                      (err)  => this.handleError,
-                      ()     => console.log('complete')
+                      data => console.log(data),
+                      err  => this.handleError,
+                      ()   => console.log('complete')
                     );
   }
 
@@ -146,9 +105,9 @@ export class CalendarService {
     return this.http.put(url, body, options)
       .map((res: Response) => {res.json(); console.log(res.json())})
       .subscribe(
-        (data) => console.log(data),
-        (err)  => this.handleError,
-        ()     => console.log('complete')
+        data => console.log(data),
+        err  => this.handleError,
+        ()   => console.log('complete')
       );
   }
 

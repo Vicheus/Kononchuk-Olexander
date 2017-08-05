@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
   }
 
   setDefaultCurrentDate() {
-    console.log(new Date());
     this.currentDate = new Date();
   }
 
