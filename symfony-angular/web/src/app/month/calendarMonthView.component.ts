@@ -1,10 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {CalendarService} from "../_services/calendar.service";
-import {Month} from "../shared/models/month";
-import {Subscription} from "rxjs/Subscription";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Month} from '../shared/models/month';
 
 @Component({
-  selector: 'month-view',
+  selector: 'app-month-view',
   providers: [Month],
   templateUrl: './calendarMonthView.component.html',
   styleUrls: ['./calendarMonthView.component.sass']
@@ -14,23 +12,18 @@ export class MonthViewComponent implements OnInit, OnChanges {
   @Input() cD: Date;
 
   currentDate: Date;
-
-  subscription: Subscription;
-
   prevMonthDateArray: Date[];
   nextMonthDateArray: Date[];
   currMonthDateArray: Date[];
 
-  constructor(private month: Month,
-              private _cs: CalendarService) {
-  }
+  constructor(private month: Month) {}
 
 
   getDaysFromPreviousMonth() {
-    let prevMonthDateArray: Date[] = [];
+    const prevMonthDateArray: Date[] = [];
 
-    let startDayCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
-    let previousMonthCountDays = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 0).getDate();
+    const startDayCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
+    const previousMonthCountDays = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 0).getDate();
     let diffDays;
 
     (startDayCurrentMonth === 1) ?
@@ -38,10 +31,17 @@ export class MonthViewComponent implements OnInit, OnChanges {
       (startDayCurrentMonth === 0) ?
         diffDays = 1 :
         diffDays = 8 - startDayCurrentMonth;
-    let startDayPreviousMonth = previousMonthCountDays - 6 + diffDays;
+    const startDayPreviousMonth = previousMonthCountDays - 6 + diffDays;
 
     for (let i = startDayPreviousMonth; i <= previousMonthCountDays; i++) {
-      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, i, this.currentDate.getHours(), this.currentDate.getMinutes(), this.currentDate.getSeconds());
+      const day = new Date(
+        this.currentDate.getFullYear(),
+        this.currentDate.getMonth() - 1,
+        i,
+        this.currentDate.getHours(),
+        this.currentDate.getMinutes(),
+        this.currentDate.getSeconds()
+      );
       prevMonthDateArray.push(day);
     }
 
@@ -49,12 +49,19 @@ export class MonthViewComponent implements OnInit, OnChanges {
   }
 
   getDaysFromNextMonth() {
-    let nextMonthDateArray: Date[] = [];
-    let endDayCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDay();
-    let endDayNextMonth = 7 - endDayCurrentMonth;
+    const nextMonthDateArray: Date[] = [];
+    const endDayCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDay();
+    const endDayNextMonth = 7 - endDayCurrentMonth;
 
     for (let i = 1; i <= endDayNextMonth; i++) {
-      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, i, this.currentDate.getHours(), this.currentDate.getMinutes(), this.currentDate.getSeconds());
+      const day = new Date(
+        this.currentDate.getFullYear(),
+        this.currentDate.getMonth() + 1,
+        i,
+        this.currentDate.getHours(),
+        this.currentDate.getMinutes(),
+        this.currentDate.getSeconds()
+      );
       nextMonthDateArray.push(day);
     }
 
@@ -62,10 +69,17 @@ export class MonthViewComponent implements OnInit, OnChanges {
   }
 
   getDaysFromCurrentMonth() {
-    let currMonthDateArray: Date[] = [];
-    let daysCount = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
+    const currMonthDateArray: Date[] = [];
+    const daysCount = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
     for (let i = 1; i <= daysCount; i++) {
-      let day = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), i, this.currentDate.getHours(), this.currentDate.getMinutes(), this.currentDate.getSeconds());
+      const day = new Date(
+        this.currentDate.getFullYear(),
+        this.currentDate.getMonth(),
+        i,
+        this.currentDate.getHours(),
+        this.currentDate.getMinutes(),
+        this.currentDate.getSeconds()
+      );
       currMonthDateArray.push(day);
     }
 
@@ -80,9 +94,6 @@ export class MonthViewComponent implements OnInit, OnChanges {
     this.getDaysFromCurrentMonth();
     this.getDaysFromPreviousMonth();
     this.getDaysFromNextMonth();
-  }
-
-  ngOnDestroy() {
   }
 
 }

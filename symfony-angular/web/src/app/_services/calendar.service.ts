@@ -1,37 +1,23 @@
-import {Injectable} from "@angular/core";
-import {Note} from "../shared/models/note";
-import {NoteTypes} from "../shared/models/noteTypes";
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
-import {environment} from "../../environments/environment";
-import {Observable} from "rxjs/Rx";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Injectable} from '@angular/core';
+import {Note} from '../shared/models/note';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs/Rx';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/catch";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CalendarService {
 
-  private _notesSource = new BehaviorSubject<any>(null);
-
+  private _notesSource = new BehaviorSubject<Note[]>(null);
   private baseUrl: string = environment.production ? document.location.origin : document.location.origin + '/app_dev.php';
-  private getNotesUrl: string = '/notes';
-  private createNewNoteUrl: string = '/notes';
+  private getNotesUrl = '/notes';
+  private createNewNoteUrl = '/notes';
+  public notesObservable = this._notesSource.asObservable();
 
-  constructor(private http: Http) {
-  }
-
-  changeNote(data) {
-    this._notesSource.next(data);
-  }
-
-  noteItem$ = this._notesSource.asObservable();
-
-  getNoteTypes() {
-    return NoteTypes;
-  }
-
-  protected handleError(error: any) {
+  static handleError(error: Error) {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
@@ -44,21 +30,26 @@ export class CalendarService {
     return Observable.throw(errMsg);
   }
 
-  getNewNotes(): Observable<Note> {
+  constructor(private http: Http) {}
 
+  changeNotesSource(data: Note[]): void {
+    this._notesSource.next(data);
+  }
+
+  getNotes(): Observable<Note> {
     return this.http.get(this.baseUrl + this.getNotesUrl)
       .map((res: Response) => {
         const response = res.json();
         response.map(item => item.date = new Date(item.date));
         return response;
       })
-      .catch(this.handleError);
+      .catch(CalendarService.handleError);
   }
 
   addNewNote(note: Note) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let formattedNote = {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    const formattedNote = {
       'color': note.color,
       'date': note.date.toLocaleDateString(
         'en-US',
@@ -74,8 +65,8 @@ export class CalendarService {
       'text': note.text,
       'type': note.type
     };
-    let body = JSON.stringify(formattedNote);
-    let url = this.baseUrl + this.createNewNoteUrl;
+    const body = JSON.stringify(formattedNote);
+    const url = this.baseUrl + this.createNewNoteUrl;
 
     return this.http.post(url, body, options)
                     .map((res: Response) => {
@@ -84,43 +75,53 @@ export class CalendarService {
                     })
                     .subscribe(
                       data => console.log(data),
-                      err  => this.handleError,
+                      err  => CalendarService.handleError,
                       ()   => console.log('complete')
                     );
   }
 
   editNote(note: Note) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let formattedNote = {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    const formattedNote = {
       'color': note.color,
-      'date': note.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }),
+      'date': note.date.toLocaleDateString(
+        'en-US',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric'
+        }
+      ),
       'note_title': note.noteTitle,
       'text': note.text,
       'type': note.type
     };
-    let body = JSON.stringify(formattedNote);
-    let url = this.baseUrl + this.createNewNoteUrl + '/' + note.id;
+    const body = JSON.stringify(formattedNote);
+    const url = this.baseUrl + this.createNewNoteUrl + '/' + note.id;
 
     return this.http.put(url, body, options)
-      .map((res: Response) => {res.json(); console.log(res.json())})
+      .map((res: Response) => res.json() )
       .subscribe(
         data => console.log(data),
-        err  => this.handleError,
+        err  => CalendarService.handleError,
         ()   => console.log('complete')
       );
   }
 
   deleteNote(note: Note) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let url = this.baseUrl + this.createNewNoteUrl + '/' + note.id;
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    const url = this.baseUrl + this.createNewNoteUrl + '/' + note.id;
 
-    return this.http.delete(url,options)
-      .map((res: Response) => {res.json(); console.log(res.json())})
+    return this.http.delete(url, options)
+      .map((res: Response) => { res.json(); })
       .subscribe(
         (data) => console.log(data),
-        (err)  => this.handleError,
+        (err)  => CalendarService.handleError,
         ()     => console.log('complete')
       );
   }

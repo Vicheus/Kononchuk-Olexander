@@ -1,11 +1,11 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {CalendarService} from "../_services/calendar.service";
-import {Note} from "../shared/models/note";
-import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Note} from '../shared/models/note';
+import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
+import {NoteTypes} from '../shared/models/noteTypes';
+import {NoteType} from '../shared/models/NoteType';
 
 @Component({
-  selector: 'note-editor',
-  providers: [CalendarService],
+  selector: 'app-note-editor',
   templateUrl: './note-editor.component.html',
   styleUrls: ['./note-editor.component.sass']
 })
@@ -19,21 +19,17 @@ export class NoteEditorComponent extends DialogComponent<Note, Note | boolean> i
   date: Date;
   deleteNote: boolean;
 
-  noteTypes;
-
-  defaultColor = "#337ab7";
-
+  noteTypes: NoteType[];
+  defaultColor = '#337ab7';
   newNote: Note = new Note();
+  active = true;
 
-  active: boolean = true;
-
-  constructor(private _cs: CalendarService,
-              dialogService: DialogService) {
+  constructor(dialogService: DialogService) {
     super(dialogService);
   }
 
   ngOnInit() {
-    this.noteTypes = this._cs.getNoteTypes();
+    this.noteTypes = NoteTypes;
 
     this.newNote.id = this.id;
     this.newNote.noteTitle = this.noteTitle;

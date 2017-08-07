@@ -1,6 +1,3 @@
-/**
- * Created by shura on 28.04.17.
- */
 export const NoteTypes = [
   {
     name: 'Home',

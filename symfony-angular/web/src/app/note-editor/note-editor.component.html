@@ -8,7 +8,7 @@
         <form #form="ngForm" *ngIf="active">
             <div class="modal-body">
                 <div class="form-group" [ngClass]="{'has-error': title.invalid && title.touched}">
-                    <input type="text" class="form-control"
+                    <input class="form-control"
                            [(ngModel)]="newNote.noteTitle"
                            name="title"
                            placeholder="Title"

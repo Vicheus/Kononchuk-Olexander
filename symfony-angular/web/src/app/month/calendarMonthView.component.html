@@ -8,15 +8,15 @@
         </div>
 
         <div class="nonthCellDateContainer monthCell">
-            <note *ngFor="let day of prevMonthDateArray"
+            <app-note *ngFor="let day of prevMonthDateArray"
                   [day]="day" class="dayCell grey">
-            </note>
-            <note *ngFor="let day of currMonthDateArray"
+            </app-note>
+            <app-note *ngFor="let day of currMonthDateArray"
                   [day]="day" class="dayCell">
-            </note>
-            <note *ngFor="let day of nextMonthDateArray"
+            </app-note>
+            <app-note *ngFor="let day of nextMonthDateArray"
                   [day]="day" class="dayCell grey">
-            </note>
+            </app-note>
         </div>
 
     </div>

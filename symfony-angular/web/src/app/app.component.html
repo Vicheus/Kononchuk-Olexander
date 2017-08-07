@@ -14,9 +14,18 @@
                 </div>
 
                 <div class="calendar_header__nav_btns">
-                    <button class="my_btn--header" (click)="getNewNotes()">Month</button>
-                    <button class="my_btn--header">Week</button>
-                    <button class="my_btn--header">Day</button>
+                    <input type='button'
+                           class="my_btn--header"
+                           value="Month"
+                           (click)="changeView($event)">
+                    <input type='button'
+                           class="my_btn--header"
+                           value="Week"
+                           (click)="changeView($event)">
+                    <input type='button'
+                           class="my_btn--header"
+                           value="Day"
+                           (click)="changeView($event)">
                 </div>
 
             </nav>
@@ -24,7 +33,11 @@
     </div>
 </header>
 
-<month-view
+<app-month-view *ngIf="currentView === 'month'"
         [cD]="currentDate">
-</month-view>
+</app-month-view>
+
+<app-week-view *ngIf="currentView === 'week'"
+                [cD]="currentDate">
+</app-week-view>
 

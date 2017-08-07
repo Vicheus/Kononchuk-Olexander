@@ -1,8 +1,4 @@
-/**
- * Created by shura on 21.04.17.
- */
 export class Month {
-
   daysOfWeek: string[] = [
     'Monday',
     'Tuesday',
@@ -12,10 +8,5 @@ export class Month {
     'Saturday',
     'Sunday'
   ];
-
   weekendDays: number[] = [0, 6];
-
-  constructor() {
-  }
-
 }

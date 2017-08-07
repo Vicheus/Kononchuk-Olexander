@@ -1,13 +1,20 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnChanges, SimpleChanges, Input} from '@angular/core';
+import {Month} from '../shared/models/month';
 
 @Component({
-  selector: 'app-week',
+  selector: 'app-week-view',
   templateUrl: './weekView.component.html',
-  styleUrls: ['./weekView.component.sass']
+  styleUrls: ['./weekView.component.sass'],
+  providers: [Month],
 })
-export class WeekViewComponent implements OnInit {
+export class WeekViewComponent implements OnInit, OnChanges {
 
-  constructor() {
+  @Input() cD: Date;
+
+  constructor(private month: Month) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(this.cD);
   }
 
   ngOnInit() {
