@@ -1,0 +1,117 @@
+@import "../../assets/reset"
+@import "../../assets/vars"
+@import "../../assets/mixins"
+
+.header
+  height: 5vh
+  font-weight: bold
+  text-align: center
+  margin-bottom: 10px
+
+.cellContainer
+  display: flex
+  flex-wrap: wrap
+  & table
+    width: 100%
+    & th
+      border-right: 1px solid $textDark
+    & th:last-child
+      border-right: none
+    & td
+      border: 1px solid $textDark
+    & td:first-child
+      border-left: none
+    & td:last-child
+      border-right: none
+    & td, th
+      padding: 5px
+      
+.note
+  width: 200px
+  position: relative
+  padding: 15px
+  border-radius: 5px
+  margin-right: 5px
+  transition: all 0.3s
+  &:hover
+    transform: translate3d(-5px, -5px, -5px)
+    box-shadow: 10px 10px 10px 2px rgba(0,0,0,0.3)
+
+.controls-container
+  text-align: right
+  .edit-item
+    display: inline-block
+    width: 20px
+    height: 20px
+    z-index: 1
+    background: $mainBlue
+    color: #ffffff
+    > i
+      line-height: 20px
+  .check-item
+    display: inline-block
+    margin: 0
+    width: 20px
+    height: 20px
+    &:hover
+      border: none
+      outline: 0!important
+      box-shadow: 0 0 2px 2px rgba(0,0,0,0.3)
+  .remove-item
+    display: inline-block
+    position: relative
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    background-color: transparentize(#fff, .1)
+    transition: all 0.3s
+    &:hover
+      background-color: transparentize($mainBlue, .4)
+      &:after
+        color: #fff
+    &:after
+      position: absolute
+      top: 0
+      left: calc(50% - 7px)
+      content: "\274c"
+      font-size: 20px
+      color: $mainBlue
+      line-height: 20px
+      text-align: center
+      transition: all 0.3s
+
+.addNew
+  width: 200px
+  height: 200px
+  position: relative
+  padding: 15px
+  border-radius: 5px
+  background-color: transparentize($lightGray, .5)
+  display: flex
+  align-items: center
+  justify-content: center
+  box-shadow: none
+  transition: all 0.3s
+  &:hover
+    background-color: $lightGray
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.3)
+  .add
+    width: 100px
+    height: 100px
+    background-color: $lightGray
+    border-radius: 5px
+    position: relative
+    transition: all 0.3s
+    &:after, &:before
+      content: ''
+      position: absolute
+      top: 45px
+      left: 10px
+      width: 80px
+      height: 10px
+      border-radius: 2px
+      background-color: #fff
+    &:before
+      transform: rotate(90deg)
+    &:hover
+      background-color: #ccc

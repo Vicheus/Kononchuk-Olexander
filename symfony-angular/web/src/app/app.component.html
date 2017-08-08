@@ -34,10 +34,14 @@
 </header>
 
 <app-month-view *ngIf="currentView === 'month'"
-        [cD]="currentDate">
+                [cD]="currentDate">
 </app-month-view>
 
 <app-week-view *ngIf="currentView === 'week'"
                 [cD]="currentDate">
 </app-week-view>
+
+<app-day-view *ngIf="currentView === 'day'"
+               [cD]="currentDate">
+</app-day-view>
 

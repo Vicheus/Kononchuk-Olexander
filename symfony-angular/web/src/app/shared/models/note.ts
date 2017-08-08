@@ -1,9 +1,9 @@
 export class Note {
-  id: number;
-  noteTitle: string;
-  color: string;
-  text: string;
-  date: Date;
-  deletedAt: boolean;
-  type: string;
+  public id: number;
+  public noteTitle: string;
+  public color: string;
+  public text: string;
+  public date: Date;
+  public deletedAt: boolean;
+  public type: string;
 }

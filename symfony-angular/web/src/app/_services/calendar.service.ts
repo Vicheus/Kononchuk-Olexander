@@ -36,6 +36,16 @@ export class CalendarService {
     this._notesSource.next(data);
   }
 
+  getNotesByDate(date: Date): Observable<Note[]>  {
+    return this.http.get(this.baseUrl + this.getNotesUrl)
+      .map((res: Response) => {
+        const response = res.json();
+        response.forEach(item => item.date = new Date(item.date));
+        return response.filter(item => item.date.toDateString() === date.toDateString());
+      })
+      .catch(CalendarService.handleError);
+  }
+
   getNotes(): Observable<Note> {
     return this.http.get(this.baseUrl + this.getNotesUrl)
       .map((res: Response) => {

@@ -11,6 +11,7 @@ import {CalendarService} from './_services/calendar.service';
 import {AppComponent} from './app.component';
 import {MonthViewComponent} from './month/calendarMonthView.component';
 import {WeekViewComponent} from './week/weekView.component';
+import {DayViewComponent} from './day/dayView.component';
 import {NoteComponent} from './note/note.component';
 import {NoteEditorComponent} from './note-editor/note-editor.component';
 
@@ -19,6 +20,7 @@ import {NoteEditorComponent} from './note-editor/note-editor.component';
     AppComponent,
     MonthViewComponent,
     WeekViewComponent,
+    DayViewComponent,
     NoteComponent,
     NoteEditorComponent
   ],

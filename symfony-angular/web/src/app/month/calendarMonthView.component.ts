@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectorRef} from '@angular/core';
 import {Month} from '../shared/models/month';
 
 @Component({
@@ -16,7 +16,7 @@ export class MonthViewComponent implements OnInit, OnChanges {
   nextMonthDateArray: Date[];
   currMonthDateArray: Date[];
 
-  constructor(private month: Month) {}
+  constructor(private month: Month, private ref: ChangeDetectorRef) {}
 
 
   getDaysFromPreviousMonth() {
