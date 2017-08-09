@@ -2,10 +2,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {AlertModule} from 'ng2-bootstrap';
+import {AlertModule} from 'ngx-bootstrap';
 import {DateTimePickerModule} from 'ng-pick-datetime';
 import {ColorPickerModule} from 'ngx-color-picker';
-import {BootstrapModalModule} from 'ng2-bootstrap-modal';
+import {BootstrapModalModule} from 'ngx-bootstrap-modal';
 import {CalendarService} from './_services/calendar.service';
 
 import {AppComponent} from './app.component';

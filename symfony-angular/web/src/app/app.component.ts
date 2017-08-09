@@ -5,7 +5,7 @@ import {Note} from './shared/models/note';
 @Component({
   selector: 'app-calendar',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.sass'],
 })
 export class AppComponent implements OnInit {
 

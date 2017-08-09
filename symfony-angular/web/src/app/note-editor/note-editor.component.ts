@@ -1,6 +1,6 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Note} from '../shared/models/note';
-import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
+import {DialogComponent, DialogService} from 'ngx-bootstrap-modal';
 import {NoteTypes} from '../shared/models/noteTypes';
 import {NoteType} from '../shared/models/NoteType';
 

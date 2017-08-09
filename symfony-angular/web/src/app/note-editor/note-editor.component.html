@@ -49,10 +49,11 @@
                 </div>
 
                 <div class="form-group" [ngClass]="{'has-error': date.invalid && date.touched}">
-                    <input [ngModel]="newNote.date | date: 'short'"
-                           [(dateTimePicker)]="newNote.date"
+                    <input [value]="newNote.date | date: 'short'"
+                           [(ngModel)]="newNote.date"
                            name="date"
                            #date="ngModel"
+                           dateTimePicker
                            required
                            readonly
                            placeholder="Date"/>
@@ -61,7 +62,7 @@
                 </div>
 
                 <div class="form-group" [ngClass]="{'has-error': text.invalid && text.touched}">
-                    <input type="text" class="form-control"
+                    <input class="form-control"
                            [(ngModel)]="newNote.text"
                            name="text" placeholder="ToDo..." #text required>
 

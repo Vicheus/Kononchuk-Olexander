@@ -2,7 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Note} from '../shared/models/note';
 import {CalendarService} from '../_services/calendar.service';
 import {NoteEditorComponent} from '../note-editor/note-editor.component';
-import {DialogService} from 'ng2-bootstrap-modal';
+import {DialogService} from 'ngx-bootstrap-modal';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({
@@ -40,7 +40,6 @@ export class NoteComponent implements OnInit, OnDestroy {
   createNote() {
     this.dialogService.addDialog(NoteEditorComponent,
       {date: this.day},
-      {closeByClickingOutside: true}
     ).subscribe(result => {
       if (result && result instanceof Note) {
         this._cs.notesObservable.subscribe(data => data.push(result));
@@ -62,7 +61,6 @@ export class NoteComponent implements OnInit, OnDestroy {
         text: n.text,
         deletedAt: false
       },
-      {closeByClickingOutside: true}
     ).subscribe((result) => {
       if (result && result instanceof Note && result.deletedAt === false) {
         this._cs.notesObservable.subscribe(data => {

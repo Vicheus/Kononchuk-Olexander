@@ -176,7 +176,7 @@ module.exports = {
       {
         "include": [
           path.join(process.cwd(), "web/src/styles.css"),
-          path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.css")
+          path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.css"),
         ],
         "test": /\.styl$/,
         "loaders": ExtractTextPlugin.extract({
