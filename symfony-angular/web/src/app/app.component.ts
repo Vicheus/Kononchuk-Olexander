@@ -9,53 +9,71 @@ import {Note} from './shared/models/note';
 })
 export class AppComponent implements OnInit {
 
-  currentDate: Date;
-  notes: Note[] = [];
-  private currentView = 'month';
+    currentDate: Date;
+    notes: Note[] = [];
+    private currentView = 'month';
 
-  constructor(private _cs: CalendarService) {}
+    constructor(private _cs: CalendarService) {}
 
-  setNotesObservable(data) {
-    this._cs.changeNotesSource(data);
-  }
+    setNotesObservable(data) {
+        this._cs.changeNotesSource(data);
+    }
 
-  getNewNotes() {
-    let result;
-    this._cs.getNotes()
-      .subscribe(
-        (res) => { result = res; },
-        error => console.log('Error happened' + error),
-        () => { this.setNotesObservable(result); }
-      );
-  }
+    getNewNotes() {
+        let result;
+        this._cs.getNotes()
+          .subscribe(
+            (res) => { result = res; },
+            error => console.log('Error happened' + error),
+            () => { this.setNotesObservable(result); }
+          );
+    }
 
-  setNewCurrentDate(y = null, m = null, d = null) {
-    this.currentDate = new Date(y, m, d);
-  }
+    setNewCurrentDate(y = null, m = null, d = null) {
+        this.currentDate = new Date(y, m, d);
+    }
 
-  setDefaultCurrentDate() {
-    this.currentDate = new Date();
-  }
+    setDefaultCurrentDate() {
+        this.currentDate = new Date();
+    }
 
-  nextMonthButton() {
-    this.setNewCurrentDate(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 1);
-  }
+    nextButton() {
+        if (this.currentView === 'month') {
+            this.setNewCurrentDate(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 1);
+        } else if (this.currentView === 'week') {
+            this.currentDate = new Date(this.currentDate.setDate(this.currentDate.getDate() + 7));
+        } else if (this.currentView === 'day') {
+            this.currentDate = new Date(this.currentDate.setDate(this.currentDate.getDate() + 1));
+        }
+    }
 
-  previousMonthButton() {
-    this.setNewCurrentDate(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, 1);
-  }
+    previousButton() {
+        if (this.currentView === 'month') {
+            this.setNewCurrentDate(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, 1);
+        } else if (this.currentView === 'week') {
+            this.currentDate = new Date(this.currentDate.setDate(this.currentDate.getDate() - 7));
+        } else if (this.currentView === 'day') {
+            this.currentDate = new Date(this.currentDate.setDate(this.currentDate.getDate() - 1));
+        }
+    }
 
-  todayButton() {
-    this.setDefaultCurrentDate();
-  }
+    todayButton() {
+        this.setDefaultCurrentDate();
+    }
 
-  changeView(event) {
-    this.currentView = event.target.value.toLowerCase();
-  }
+    changeView(event) {
+        window.localStorage.currentView = event.target.value.toLowerCase();
+        this.currentView = event.target.value.toLowerCase();
+    }
 
-  ngOnInit() {
-    this.setDefaultCurrentDate();
-    this.getNewNotes();
-  }
+    onCurrentDateChange($event: Date) {
+        this.currentDate = $event;
+    }
+
+    ngOnInit() {
+        this.setDefaultCurrentDate();
+        this.getNewNotes();
+        this.currentView = window.localStorage.currentView;
+    }
 
 }

@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
+const express = require('express');
+const app = express();
 
 const {NoEmitOnErrorsPlugin, LoaderOptionsPlugin} = require('webpack');
 const {GlobCopyWebpackPlugin, BaseHrefWebpackPlugin} = require('@angular/cli/plugins/webpack');
@@ -14,7 +16,10 @@ const nodeModules = path.join(process.cwd(), 'node_modules');
 const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
 const baseHref = "";
 const deployUrl = "";
+const staticPath = '/assets/';
+app.use(staticPath, express.static('./static'));
 
+console.log(process.cwd());
 
 module.exports = {
   "devtool": "source-map",
@@ -24,7 +29,8 @@ module.exports = {
       ".js"
     ],
     "modules": [
-      "node_modules"
+      "node_modules",
+      "web/src",
     ]
   },
   "resolveLoader": {
@@ -45,9 +51,16 @@ module.exports = {
     ]
   },
   "output": {
-    "path": path.join(process.cwd(), "dist"),
+    "path": path.join(process.cwd(), "web/src/assets/"),
     "filename": "[name].bundle.js",
-    "chunkFilename": "[id].chunk.js"
+    "chunkFilename": "[id].chunk.js",
+    "publicPath": process.env.NODE_ENV === 'production'
+      ? '/dist/'
+      : 'http://127.0.0.1:4200/web/src/assets/'
+  },
+  "devServer": {
+    "contentBase": 'http://127.0.0.1:4200/',
+    "publicPath": '/web/src/assets/'
   },
   "module": {
     "rules": [
@@ -199,11 +212,11 @@ module.exports = {
     new NoEmitOnErrorsPlugin(),
     new GlobCopyWebpackPlugin({
       "patterns": [
-        "assets",
+        "assets/",
         "favicon.ico"
       ],
       "globOptions": {
-        "cwd": "/home/shura/projects/test/coursera-test/symfony-angular/web/src",
+        "cwd": "/web/src",
         "dot": true,
         "ignore": "**/.gitkeep"
       }

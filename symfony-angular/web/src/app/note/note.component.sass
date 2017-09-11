@@ -22,8 +22,8 @@
 
 .dayNumber
   position: absolute
-  top: 10px
-  left: 10px
+  top: 5px
+  left: 5px
   color: $mainBlue
 
 .active
@@ -34,25 +34,28 @@
 
 .notes
   position: absolute
-  width: 100%
-  height: 15px
   display: flex
+  justify-content: center
   align-items: center
-  flex-wrap: wrap
+  height: 15px
   padding: 0 5px
   bottom: 0
   left: 0
-
-.note
-  width: 10px
-  height: 10px
-  border-radius: 50%
-  margin-right: 5px
-  margin-bottom: 5px
-  position: relative
-  overflow: hidden
-  &:hover
-    overflow: visible
+  .more
+    position: relative
+    font-size: 10px
+    height: 100%
+    color: $mainBlue
+  .note
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    margin-right: 5px
+    margin-bottom: 5px
+    position: relative
+    overflow: hidden
+    &:hover
+      overflow: visible
 
 .note_info
   position: absolute

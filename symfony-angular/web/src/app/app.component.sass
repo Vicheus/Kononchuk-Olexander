@@ -12,6 +12,8 @@
   justify-content: space-between
   text-align: center
   padding: 20px 0
+  @media (max-width: $laptop-width)
+    display: block
 
 .calendar_header__nav_btns
   font-size: 0
@@ -23,19 +25,39 @@
     border-top-right-radius: 5px
     border-bottom-right-radius: 5px
     border-left: 1px solid #fff
+  @media (max-width: $laptop-width)
+    display: flex
+    justify-content: space-between
+    text-align: center
+    background: $mainBlue
+    border-radius: 5px
 
 .my_btn--header
   @extend .my_btn
   width: 80px
   height: 40px
-  @include phone
-    border-radius: 5px
-    border: 1px solid #fff
+  @media (max-width: $laptop-width)
+    display: block
+    &:hover
+      color: #ffffff
+      border: none
+      background: $mainBlue
 
 .calendar_header__nav_date
   font-family: $mainFont
   font-style: normal
   font-weight: normal
   color: $mainBlue
-  font-size: 40px
-  line-height: 40px
+  font-size: 20px
+  line-height: 20px
+  margin: 10px 0
+  @include phone
+    font-size: 20px
+
+.add_note
+  width: 100%
+  margin-top: 15px
+  display: flex
+  align-items: center
+  justify-content: center
+

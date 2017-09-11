@@ -9,35 +9,38 @@ import {BootstrapModalModule} from 'ngx-bootstrap-modal';
 import {CalendarService} from './_services/calendar.service';
 
 import {AppComponent} from './app.component';
-import {MonthViewComponent} from './month/calendarMonthView.component';
-import {WeekViewComponent} from './week/weekView.component';
-import {DayViewComponent} from './day/dayView.component';
+import {MonthViewComponent} from './month/month.component';
+import {WeekViewComponent} from './week/week.component';
+import {DayViewComponent} from './day/day.component';
 import {NoteComponent} from './note/note.component';
 import {NoteEditorComponent} from './note-editor/note-editor.component';
+import {AddNoteComponent} from './add-note/add-note.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MonthViewComponent,
-    WeekViewComponent,
-    DayViewComponent,
-    NoteComponent,
-    NoteEditorComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    DateTimePickerModule,
-    ColorPickerModule,
-    BootstrapModalModule,
-    AlertModule.forRoot()
-  ],
-  entryComponents: [
-    NoteEditorComponent
-  ],
-  providers: [CalendarService],
-  bootstrap: [AppComponent],
+    declarations: [
+        NoteEditorComponent,
+        AppComponent,
+        MonthViewComponent,
+        WeekViewComponent,
+        DayViewComponent,
+        NoteComponent,
+        AddNoteComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        DateTimePickerModule,
+        ColorPickerModule,
+        BootstrapModalModule,
+        AlertModule.forRoot()
+    ],
+    entryComponents: [
+        NoteEditorComponent
+    ],
+    providers: [CalendarService],
+    bootstrap: [AppComponent],
 })
+
 export class AppModule {
 }

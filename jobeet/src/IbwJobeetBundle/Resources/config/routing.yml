@@ -1,3 +1,0 @@
-ibw_jobeet_homepage:
-    path:     /
-    defaults: { _controller: IbwJobeetBundle:Default:index }

@@ -3,11 +3,11 @@
         <div class="row">
             <nav class="calendar_header__nav">
 
-                <div class="calendar_header__nav_btns">
-                    <button class="my_btn--header" (click)="previousMonthButton()">Prev</button>
+                <nav class="calendar_header__nav_btns">
+                    <button class="my_btn--header" (click)="previousButton()">Prev</button>
                     <button class="my_btn--header" (click)="todayButton()">Today</button>
-                    <button class="my_btn--header" (click)="nextMonthButton()">Next</button>
-                </div>
+                    <button class="my_btn--header" (click)="nextButton()">Next</button>
+                </nav>
 
                 <div class="calendar_header__nav_date">
                     {{ currentDate.toLocaleString(locale, { month: "long", year: "numeric" }) }}
@@ -34,14 +34,18 @@
 </header>
 
 <app-month-view *ngIf="currentView === 'month'"
-                [cD]="currentDate">
+                [cD]="currentDate"
+                (currentDateChanged)="onCurrentDateChange($event)">
 </app-month-view>
 
 <app-week-view *ngIf="currentView === 'week'"
-                [cD]="currentDate">
+                [cD]="currentDate"
+               (currentDateChanged)="onCurrentDateChange($event)">
 </app-week-view>
 
 <app-day-view *ngIf="currentView === 'day'"
                [cD]="currentDate">
 </app-day-view>
+
+<app-add-note class="add_note" [cD]="currentDate"></app-add-note>
 
