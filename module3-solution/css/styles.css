@@ -1,0 +1,71 @@
+/********** Reset styles **********/
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+/************ Main styles ************/
+h1 {
+    font-family: TakaoPGothic;
+    font-size: 1.75em;
+    font-weight: bold;
+}
+.menu__item {
+    background-color: darkgrey;
+    margin: 0 10px 20px;
+}
+.menu__item__title {
+    margin: 5px;
+    font-family: "Andale Mono";
+    font-weight: bold;
+    font-size: 1.25em;
+}
+.menu__item__content {
+    margin: 5px;
+}
+.navbar-brand a:hover, .navbar-brand a:active {
+    text-decoration: none;
+}
+/** HEADER **/
+#header-nav {
+    background-color: darkgrey;
+    border-radius: 0;
+    border: 0;
+}
+
+/* END HEADER */
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/********** Extra small devices only **********/
+@media (max-width: 767px) {
+    #collapsable-nav {
+        background-color: lightgrey;
+        border: 1px solid black
+    }
+    #nav-list {
+        margin: 0;
+        font-size: 1.2em;
+    }
+    #nav-list li:not(:last-child) {
+        border-bottom: 1px solid black
+    }
+}
+
